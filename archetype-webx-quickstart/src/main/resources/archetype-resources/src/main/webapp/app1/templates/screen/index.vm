@@ -1,0 +1,18 @@
+<form action="$app1Link.setTarget("index")" method="post">
+  $csrfToken.hiddenField
+  <input type="hidden" name="action" value="simple_action"/>
+
+  #set ($group = $form.simple.defaultInstance)
+
+  <p>Hello, what's your name?</p>
+
+  #if (!$group.name.valid)
+  <p>$group.name.message</p>
+  #end
+
+  <p>
+    <input type="text" name="$group.name.key" value="$!group.name.value"/>
+    <input type="submit" name="event_submit_do_greeting"/>
+  </p>
+
+</form>
