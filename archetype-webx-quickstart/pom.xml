@@ -5,6 +5,7 @@
         <groupId>com.alibaba.citrus.sample</groupId>
         <artifactId>citrus-sample-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>archetype-webx-quickstart</artifactId>
     <packaging>maven-archetype</packaging>
