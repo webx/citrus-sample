@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.alibaba.citrus.sample</groupId>
+        <artifactId>citrus-sample-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.alibaba.citrus.sample</groupId>
+    <artifactId>petstore-parent</artifactId>
+    <name>Pet Store Web Application</name>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <java.version>1.5</java.version>
+        <java.encoding>GBK</java.encoding>
+        <webx2-version>2.0.3</webx2-version>
+        <webx3-version>3.0.6-SNAPSHOT</webx3-version>
+        <springext-plugin-version>1.0</springext-plugin-version>
+        <autoconfig-plugin-version>1.0.9</autoconfig-plugin-version>
+        <jetty-version>6.1.22</jetty-version>
+    </properties>
+    <modules>
+        <module>dal</module>
+        <module>biz</module>
+        <module>web</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.citrus</groupId>
+            <artifactId>citrus-webx-all-in-one</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ibatis</groupId>
+            <artifactId>ibatis-sqlmap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- ======================================== -->
+            <!-- WEBX依赖 -->
+            <!-- ======================================== -->
+            <dependency>
+                <groupId>com.alibaba.citrus</groupId>
+                <artifactId>citrus-webx-all-in-one</artifactId>
+                <version>${webx3-version}</version>
+            </dependency>
+            <!-- ================================================= -->
+            <!-- 日志及相关依赖（用slf4j+logback代替jcl+log4j） -->
+            <!-- ================================================= -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>0.9.28</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.1.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- ======================================== -->
+            <!-- 其它第三方依赖 -->
+            <!-- ======================================== -->
+            <dependency>
+                <groupId>org.apache.ibatis</groupId>
+                <artifactId>ibatis-sqlmap</artifactId>
+                <version>2.3.4.726</version>
+            </dependency>
+            <dependency>
+                <groupId>hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>1.8.0.7</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <finalName>petstore</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${java.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <configuration>
+                            <tasks>
+                                <echo message="project home:        ${basedir}" />
+                                <echo message="java home:           ${java.home}" />
+                                <echo message="java source version: ${java.version}" />
+                                <echo message="java target version: ${java.version}" />
+                                <echo message="java source charset: ${java.encoding}" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                    <argLine>-Xmx256m</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <classpathContainers>
+                        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+                    </classpathContainers>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>${jetty-version}</version>
+                <configuration>
+                    <contextPath>/</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8081</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                    <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+                        <filename>target/access.log</filename>
+                        <retainDays>90</retainDays>
+                        <append>false</append>
+                        <extended>false</extended>
+                        <logTimeZone>GMT+8:00</logTimeZone>
+                    </requestLog>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>productionMode</name>
+                            <value>false</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.alibaba.citrus.tool</groupId>
+                <artifactId>maven-autoconfig-plugin</artifactId>
+                <version>${autoconfig-plugin-version}</version>
+                <configuration>
+                    <exploding>true</exploding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>autoconfig</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.alibaba.citrus.tool</groupId>
+                <artifactId>maven-springext-plugin</artifactId>
+                <version>${springext-plugin-version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
