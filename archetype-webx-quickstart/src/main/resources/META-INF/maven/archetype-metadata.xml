@@ -7,7 +7,7 @@
     name="webx-simple">
     <requiredProperties>
         <requiredProperty key="webx-version">
-            <defaultValue>3.0.5</defaultValue>
+            <defaultValue>3.0.6</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>
