@@ -8,11 +8,10 @@
     default-autowire="byName">
 
     <bean id="userDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisUserDao" />
-
-    <!--bean id="categoryDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisCategoryDao"
-         />
-    <bean id="itemDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisItemDao" />
-    <bean id="orderDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisOrderDao" />
+    <bean id="categoryDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisCategoryDao" />
     <bean id="productDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisProductDao" />
-    <bean id="sequenceDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisSequenceDao" /-->
+    <bean id="productItemDao"
+        class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisProductItemDao" />
+    <bean id="sequenceDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisSequenceDao" />
+
 </beans>
