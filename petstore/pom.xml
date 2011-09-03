@@ -10,14 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.alibaba.citrus.sample</groupId>
     <artifactId>petstore-parent</artifactId>
-    <name>Pet Store Web Application</name>
+    <name>Parent Project of Pet Store Web Application</name>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>1.5</java.version>
         <java.encoding>GBK</java.encoding>
-        <webx2-version>2.0.3</webx2-version>
-        <webx3-version>3.0.6-SNAPSHOT</webx3-version>
+        <webx-version>3.0.6-SNAPSHOT</webx-version>
+        <spring-version>3.0.6.RELEASE</spring-version>
         <springext-plugin-version>1.0</springext-plugin-version>
         <autoconfig-plugin-version>1.0.9</autoconfig-plugin-version>
         <jetty-version>6.1.22</jetty-version>
@@ -27,24 +27,6 @@
         <module>biz</module>
         <module>web</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba.citrus</groupId>
-            <artifactId>citrus-webx-all-in-one</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ibatis</groupId>
-            <artifactId>ibatis-sqlmap</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-        </dependency>
-    </dependencies>
     <dependencyManagement>
         <dependencies>
             <!-- ======================================== -->
@@ -53,7 +35,7 @@
             <dependency>
                 <groupId>com.alibaba.citrus</groupId>
                 <artifactId>citrus-webx-all-in-one</artifactId>
-                <version>${webx3-version}</version>
+                <version>${webx-version}</version>
             </dependency>
             <!-- ================================================= -->
             <!-- 日志及相关依赖（用slf4j+logback代替jcl+log4j） -->
@@ -71,7 +53,7 @@
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>0.9.28</version>
+                <version>0.9.29</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
@@ -79,6 +61,73 @@
                 <artifactId>commons-logging</artifactId>
                 <version>1.1.1</version>
                 <scope>provided</scope>
+            </dependency>
+            <!-- ================================================= -->
+            <!-- Spring框架 -->
+            <!-- ================================================= -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <!-- ================================================= -->
+            <!-- 单元测试 -->
+            <!-- ================================================= -->
+            <dependency>
+                <groupId>com.alibaba.citrus</groupId>
+                <artifactId>citrus-test-all-in-one</artifactId>
+                <version>${webx-version}</version>
+                <scope>test</scope>
             </dependency>
             <!-- ======================================== -->
             <!-- 其它第三方依赖 -->
@@ -89,6 +138,11 @@
                 <version>2.3.4.726</version>
             </dependency>
             <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>1.2.2</version>
+            </dependency>
+            <dependency>
                 <groupId>hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>1.8.0.7</version>
@@ -96,7 +150,6 @@
         </dependencies>
     </dependencyManagement>
     <build>
-        <finalName>petstore</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -158,7 +211,6 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>${jetty-version}</version>
                 <configuration>
                     <contextPath>/</contextPath>
                     <connectors>
@@ -185,7 +237,6 @@
             <plugin>
                 <groupId>com.alibaba.citrus.tool</groupId>
                 <artifactId>maven-autoconfig-plugin</artifactId>
-                <version>${autoconfig-plugin-version}</version>
                 <configuration>
                     <exploding>true</exploding>
                 </configuration>
@@ -201,8 +252,26 @@
             <plugin>
                 <groupId>com.alibaba.citrus.tool</groupId>
                 <artifactId>maven-springext-plugin</artifactId>
-                <version>${springext-plugin-version}</version>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>maven-jetty-plugin</artifactId>
+                    <version>${jetty-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.alibaba.citrus.tool</groupId>
+                    <artifactId>maven-autoconfig-plugin</artifactId>
+                    <version>${autoconfig-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.alibaba.citrus.tool</groupId>
+                    <artifactId>maven-springext-plugin</artifactId>
+                    <version>${springext-plugin-version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>

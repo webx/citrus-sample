@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <sqlMap resource="sqlmap/User.xml" />
+    <sqlMap resource="sqlmap/Category.xml" />
+    <sqlMap resource="sqlmap/Product.xml" />
+    <sqlMap resource="sqlmap/Sequence.xml" />
+    <sqlMap resource="sqlmap/LineItem.xml" />
+    <sqlMap resource="sqlmap/Order.xml" />
+    <sqlMap resource="sqlmap/Item.xml" />
+</sqlMapConfig>

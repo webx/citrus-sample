@@ -29,4 +29,24 @@
             <artifactId>hsqldb</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <finalName>petstore</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.alibaba.citrus.tool</groupId>
+                <artifactId>maven-autoconfig-plugin</artifactId>
+                <configuration>
+                    <exploding>true</exploding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>autoconfig</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

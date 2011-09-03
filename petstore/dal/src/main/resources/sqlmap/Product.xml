@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+<sqlMap namespace="Product">
+    <typeAlias alias="product" type="com.alibaba.sample.petstore.dal.dataobject.Product"/>
+    <cacheModel id="oneDayProduct" type="LRU">
+        <flushInterval hours="24"/>
+    </cacheModel>
+    <resultMap id="productResult" class="product">
+        <result property="productId" column="PRODUCTID"/>
+        <result property="name" column="NAME"/>
+        <result property="logo" column="LOGO"/>
+        <result property="description" column="DESCN"/>
+        <result property="categoryId" column="CATEGORY"/>
+    </resultMap>
+    <select id="getProduct" resultMap="productResult" parameterClass="string"><![CDATA[
+    select PRODUCTID, NAME, LOGO, DESCN, CATEGORY from PRODUCT where PRODUCTID = #value#
+  ]]></select>
+    <select id="getProductListByCategory" resultMap="productResult" parameterClass="string"><![CDATA[
+    select PRODUCTID, NAME, LOGO, DESCN, CATEGORY from PRODUCT where CATEGORY = #value#
+  ]]></select>
+    <select id="searchProductList" resultMap="productResult"> select PRODUCTID, NAME, LOGO, DESCN,
+        CATEGORY from PRODUCT <dynamic prepend="WHERE">
+            <iterate property="keywordList" open="" close="" conjunction="OR"> lower(name) like
+                #keywordList[]# OR lower(category) like #keywordList[]# OR lower(descn) like
+                #keywordList[]# </iterate>
+        </dynamic>
+    </select>
+    <insert id="insertProduct" parameterClass="product"><![CDATA[
+        insert into PRODUCT (
+            PRODUCTID,
+            NAME,
+            LOGO,
+            DESCN,
+            CATEGORY
+        ) values (
+            #productId#,
+            #name#,
+            #logo#,
+            #description#,
+            #categoryId#
+        )
+    ]]></insert>
+</sqlMap>

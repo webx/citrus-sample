@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+    <typeAlias alias="user" type="com.alibaba.sample.petstore.dal.dataobject.User"/>
+    <!--
+      - ===============================================
+      - 将user、account、profile三张表映射到User类
+      - ===============================================
+     -->
+    <resultMap id="userResult" class="user">
+        <result property="userId" column="USER_ID"/>
+        <result property="account.email" column="EMAIL"/>
+        <result property="account.firstName" column="FIRST_NAME"/>
+        <result property="account.lastName" column="LAST_NAME"/>
+        <result property="account.status" column="STATUS"/>
+        <result property="account.address1" column="ADDRESS_1"/>
+        <result property="account.address2" column="ADDRESS_2"/>
+        <result property="account.city" column="CITY"/>
+        <result property="account.state" column="STATE"/>
+        <result property="account.zip" column="ZIP"/>
+        <result property="account.country" column="COUNTRY"/>
+        <result property="account.phone" column="PHONE"/>
+        <result property="account.creditCardNumber" column="CREDIT_CARD_NUMBER"/>
+        <result property="account.creditCardType" column="CREDIT_CARD_TYPE"/>
+        <result property="account.creditCardExpiry" column="CREDIT_CARD_EXPIRY"/>
+        <result property="profile.languagePreference" column="LANGUAGE_PREFERENCE"/>
+        <result property="profile.favoriteCategoryId" column="FAVORITE_CATEGORY_ID"/>
+        <result property="profile.listOption" column="LIST_OPTION" nullValue="0"/>
+    </resultMap>
+    <!--
+      - ===============================================
+      - 通过userId查找user、account、profile
+      - ===============================================
+     -->
+    <select id="getUserByUserId" resultMap="userResult" parameterClass="string"><![CDATA[
+        select
+                USER.*,
+                ACCOUNT.*,
+                PROFILE.*
+        from
+                USER
+                left join ACCOUNT on USER.USER_ID = ACCOUNT.USER_ID
+                left join PROFILE on USER.USER_ID = PROFILE.USER_ID
+        where
+                USER.USER_ID = #userId#
+    ]]></select>
+    <!--
+      - ===============================================
+      - 验证userId、password，并返回user、account、profile
+      - ===============================================
+     -->
+    <select id="getUserByUserIdAndPassword" resultMap="userResult" parameterClass="user"><![CDATA[
+        select
+                USER.*,
+                ACCOUNT.*,
+                PROFILE.*
+        from
+                USER
+                left join ACCOUNT on USER.USER_ID = ACCOUNT.USER_ID
+                left join PROFILE on USER.USER_ID = PROFILE.USER_ID
+        where
+                USER.USER_ID = #userId#
+            and USER.PASSWORD = #password#
+    ]]></select>
+    <!--
+      - ===============================================
+      - 列出所有的userId
+      - ===============================================
+     -->
+    <select id="getUserIdList" resultClass="string" parameterClass="user"><![CDATA[
+        select
+                USER_ID as value
+        from
+                USER
+    ]]></select>
+    <!--
+      - ===============================================
+      - 创建一个user对象
+      - ===============================================
+     -->
+    <insert id="insertUser" parameterClass="user"><![CDATA[
+        insert into USER (
+                USER_ID,
+                PASSWORD
+        ) values (
+                #userId#,
+                #password#
+        )
+    ]]></insert>
+    <!--
+      - ===============================================
+      - 更新一个user对象
+      - ===============================================
+     -->
+    <update id="updateUser" parameterClass="user"><![CDATA[
+        update
+                USER
+        set
+                PASSWORD = #password#
+        where
+                USER_ID = #userId#
+    ]]></update>
+    <!--
+      - ===============================================
+      - 创建一个account对象
+      - ===============================================
+     -->
+    <insert id="insertAccount" parameterClass="user"><![CDATA[
+        insert into ACCOUNT (
+                USER_ID,
+                EMAIL,
+                FIRST_NAME,
+                LAST_NAME,
+                STATUS,
+                ADDRESS_1,
+                ADDRESS_2,
+                CITY,
+                STATE,
+                ZIP,
+                COUNTRY,
+                PHONE,
+                CREDIT_CARD_NUMBER,
+                CREDIT_CARD_TYPE,
+                CREDIT_CARD_EXPIRY
+        ) values (
+                #userId#,
+                #account.email#,
+                #account.firstName#,
+                #account.lastName#,
+                #account.status#,
+                #account.address1#,
+                #account.address2#,
+                #account.city#,
+                #account.state#,
+                #account.zip#,
+                #account.country#,
+                #account.phone#,
+                #account.creditCardNumber#,
+                #account.creditCardType#,
+                #account.creditCardExpiry#
+        )
+    ]]></insert>
+    <!--
+      - ===============================================
+      - 更新一个account对象
+      - ===============================================
+     -->
+    <update id="updateAccount" parameterClass="user"><![CDATA[
+        update
+                ACCOUNT
+        set
+                EMAIL = #account.email#,
+                FIRST_NAME = #account.firstName#,
+                LAST_NAME = #account.lastName#,
+                STATUS = #account.status#,
+                ADDRESS_1 = #account.address1#,
+                ADDRESS_2 = #account.address2#,
+                CITY = #account.city#,
+                STATE = #account.state#,
+                ZIP = #account.zip#,
+                COUNTRY = #account.country#,
+                PHONE = #account.phone#,
+                CREDIT_CARD_NUMBER = #account.creditCardNumber#,
+                CREDIT_CARD_TYPE = #account.creditCardType#,
+                CREDIT_CARD_EXPIRY = #account.creditCardExpiry#
+        where
+                USER_ID = #userId#
+    ]]></update>
+    <!--
+      - ===============================================
+      - 创建一个profile对象
+      - ===============================================
+     -->
+    <insert id="insertProfile" parameterClass="user"><![CDATA[
+        insert into PROFILE (
+            USER_ID,
+            LANGUAGE_PREFERENCE,
+            FAVORITE_CATEGORY_ID,
+            LIST_OPTION
+        ) values (
+            #userId#,
+            #profile.languagePreference#,
+            #profile.favoriteCategoryId#,
+            #profile.listOption#
+        )
+    ]]></insert>
+    <!--
+      - ===============================================
+      - 更新一个profile对象
+      - ===============================================
+     -->
+    <update id="updateProfile" parameterClass="user"><![CDATA[
+        update
+                PROFILE
+        set
+                LANGUAGE_PREFERENCE = #profile.languagePreference#,
+                FAVORITE_CATEGORY_ID = #profile.favoriteCategoryId#,
+                LIST_OPTION = #profile.listOption#
+        where
+                USER_ID = #userId#
+    ]]></update>
+</sqlMap>

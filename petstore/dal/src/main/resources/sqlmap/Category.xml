@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+ This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+<sqlMap namespace="Category">
+    <typeAlias alias="category" type="com.alibaba.sample.petstore.dal.dataobject.Category"/>
+    <cacheModel id="oneDayCategory" type="LRU">
+        <flushInterval hours="24"/>
+    </cacheModel>
+    <resultMap id="categoryResult" class="category">
+        <result property="categoryId" column="CATID"/>
+        <result property="name" column="NAME"/>
+        <result property="logo" column="LOGO"/>
+        <result property="description" column="DESCN"/>
+    </resultMap>
+    <select id="getCategory" resultMap="categoryResult" parameterClass="string"><![CDATA[
+    select * from CATEGORY where CATID = #value#
+  ]]>
+  </select>
+    <select id="getCategoryList" resultMap="categoryResult"><![CDATA[
+    select * from CATEGORY
+  ]]></select>
+</sqlMap>
