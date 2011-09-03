@@ -3,6 +3,7 @@ package com.alibaba.sample.petstore.dal;
 import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -41,6 +42,62 @@ public class UserDaoTests extends AbstractDataAccessTests {
         assertNull(user);
     }
 
+    @Test
+    public void insert_update() {
+        // init user ids
+        assertUserIdList(userDao.getUserIdList(), "ACID", "j2ee");
+
+        // insert new user
+        User user = userDao.getUserById("j2ee");
+
+        user.setUserId("myuser");
+        user.setPassword("mypass");
+
+        userDao.insertUser(user);
+
+        // check user ids again
+        assertUserIdList(userDao.getUserIdList(), "ACID", "j2ee", "myuser");
+
+        // check new user
+        user = userDao.getAuthenticatedUser("myuser", "mypass");
+        assertEquals("myuser", user.getUserId());
+        assertUser(user, false);
+
+        // change password
+        user.setPassword("newpass");
+        userDao.updateUser(user);
+
+        assertNull(userDao.getAuthenticatedUser("myuser", "mypass"));
+
+        user = userDao.getAuthenticatedUser("myuser", "newpass");
+        assertEquals("myuser", user.getUserId());
+        assertUser(user, false);
+
+        // update other data
+        user.getAccount().setCity("newcity");
+        user.getAccount().setCreditCardExpiryMonth(1);
+        user.getAccount().setCreditCardExpiryYear(2011);
+        user.getProfile().setLanguagePreference("chinese");
+        userDao.updateUser(user);
+
+        user = userDao.getAuthenticatedUser("myuser", "newpass");
+        assertEquals("myuser", user.getUserId());
+        assertEquals("newcity", user.getAccount().getCity());
+        assertEquals("2011-01-15", new SimpleDateFormat("yyyy-MM-dd").format(user.getAccount().getCreditCardExpiry()));
+        assertEquals(1, user.getAccount().getCreditCardExpiryMonth());
+        assertEquals(2011, user.getAccount().getCreditCardExpiryYear());
+        assertEquals("chinese", user.getProfile().getLanguagePreference());
+    }
+
+    private void assertUserIdList(List<String> userIdList, String... ids) {
+        String[] result = userIdList.toArray(new String[userIdList.size()]);
+
+        Arrays.sort(result);
+        Arrays.sort(ids);
+
+        assertArrayEquals(ids, result);
+    }
+
     private void assertUser(User user) {
         assertUser(user, true);
     }
@@ -77,54 +134,5 @@ public class UserDaoTests extends AbstractDataAccessTests {
         // profile
         assertEquals("english", profile.getLanguagePreference());
         assertEquals("DOGS", profile.getFavoriteCategoryId());
-    }
-
-    @Test
-    public void insert_update() {
-        // init user ids
-        List<String> userIdList = userDao.getUserIdList();
-        assertArrayEquals(new String[] { "ACID", "j2ee" }, userIdList.toArray(new String[userIdList.size()]));
-
-        // insert new user
-        User user = userDao.getUserById("j2ee");
-
-        user.setUserId("myuser");
-        user.setPassword("mypass");
-
-        userDao.insertUser(user);
-
-        // check user ids again
-        userIdList = userDao.getUserIdList();
-        assertArrayEquals(new String[] { "ACID", "j2ee", "myuser" }, userIdList.toArray(new String[userIdList.size()]));
-
-        // check new user
-        user = userDao.getAuthenticatedUser("myuser", "mypass");
-        assertEquals("myuser", user.getUserId());
-        assertUser(user, false);
-
-        // change password
-        user.setPassword("newpass");
-        userDao.updateUser(user);
-
-        assertNull(userDao.getAuthenticatedUser("myuser", "mypass"));
-
-        user = userDao.getAuthenticatedUser("myuser", "newpass");
-        assertEquals("myuser", user.getUserId());
-        assertUser(user, false);
-
-        // update other data
-        user.getAccount().setCity("newcity");
-        user.getAccount().setCreditCardExpiryMonth(1);
-        user.getAccount().setCreditCardExpiryYear(2011);
-        user.getProfile().setLanguagePreference("chinese");
-        userDao.updateUser(user);
-
-        user = userDao.getAuthenticatedUser("myuser", "newpass");
-        assertEquals("myuser", user.getUserId());
-        assertEquals("newcity", user.getAccount().getCity());
-        assertEquals("2011-01-15", new SimpleDateFormat("yyyy-MM-dd").format(user.getAccount().getCreditCardExpiry()));
-        assertEquals(1, user.getAccount().getCreditCardExpiryMonth());
-        assertEquals(2011, user.getAccount().getCreditCardExpiryYear());
-        assertEquals("chinese", user.getProfile().getLanguagePreference());
     }
 }
