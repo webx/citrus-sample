@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
-
-<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
- For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
- This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
- to be (i.e. not a bunch of concatenated strings in a Java class). -->
 <sqlMap namespace="Sequence">
-    <typeAlias alias="sequence" type="com.alibaba.sample.petstore.dal.dataobject.Sequence"/>
+    <typeAlias alias="sequence" type="com.alibaba.sample.petstore.dal.dataobject.Sequence" />
     <resultMap id="orderResult" class="sequence">
-        <result property="name" column="name"/>
-        <result property="nextId" column="nextid"/>
+        <result property="name" column="name" />
+        <result property="nextId" column="nextid" />
     </resultMap>
     <select id="getSequence" resultMap="orderResult" parameterClass="sequence"><![CDATA[
-    select name, nextid from SEQUENCE where NAME = #name# 
-  ]]></select>
+        select name, nextid from SEQUENCE where NAME = #name# 
+    ]]></select>
     <update id="updateSequence" parameterClass="sequence"><![CDATA[
-    update SEQUENCE set NEXTID = #nextId# where NAME = #name#
-  ]]></update>
+        update SEQUENCE set NEXTID = #nextId# where NAME = #name#
+    ]]></update>
 </sqlMap>

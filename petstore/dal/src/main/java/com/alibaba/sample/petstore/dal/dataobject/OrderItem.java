@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class OrderItem {
     private int orderId;
-    private int lineNumber;
+    private int orderItemId;
     private int quantity;
     private String itemId;
     private BigDecimal unitPrice;
@@ -14,8 +14,8 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public OrderItem(int lineNumber, CartItem cartItem) {
-        this.lineNumber = lineNumber;
+    public OrderItem(int orderItemId, CartItem cartItem) {
+        this.orderItemId = orderItemId;
         this.quantity = cartItem.getQuantity();
         this.itemId = cartItem.getItem().getItemId();
         this.unitPrice = cartItem.getItem().getListPrice();
@@ -30,12 +30,12 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    public int getLineNumber() {
-        return lineNumber;
+    public int getOrderItemId() {
+        return orderItemId;
     }
 
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
+    public void setOrderItemId(int orderItemId) {
+        this.orderItemId = orderItemId;
     }
 
     public String getProductItemId() {

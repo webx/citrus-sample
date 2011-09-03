@@ -4,16 +4,16 @@
     <typeAlias alias="orderItem" type="com.alibaba.sample.petstore.dal.dataobject.OrderItem" />
     <resultMap id="orderItemResult" class="orderItem">
         <result property="orderId" column="ORDERID" />
-        <result property="lineNumber" column="LINENUM" />
+        <result property="orderItemId" column="ORDERITEMID" />
         <result property="itemId" column="ITEMID" />
         <result property="quantity" column="QUANTITY" />
         <result property="unitPrice" column="UNITPRICE" />
     </resultMap>
     <select id="getOrderItemsByOrderId" resultMap="orderItemResult" parameterClass="int"><![CDATA[
-        select ORDERID, LINENUM, ITEMID, QUANTITY, UNITPRICE from ORDERITEM where ORDERID = #value#
+        select ORDERID, ORDERITEMID, ITEMID, QUANTITY, UNITPRICE from ORDERITEM where ORDERID = #value#
     ]]></select>
     <insert id="insertOrderItem" parameterClass="orderItem"><![CDATA[
-        insert into ORDERITEM (ORDERID, LINENUM, ITEMID, QUANTITY, UNITPRICE)
-        values (#orderId#, #lineNumber#, #itemId#, #quantity#, #unitPrice#)
+        insert into ORDERITEM (ORDERID, ORDERITEMID, ITEMID, QUANTITY, UNITPRICE)
+        values (#orderId#, #orderItemId#, #itemId#, #quantity#, #unitPrice#)
     ]]></insert>
 </sqlMap>

@@ -1,81 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
-
-<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
- For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
- This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
- to be (i.e. not a bunch of concatenated strings in a Java class). -->
-
 <sqlMap namespace="Order">
-
-  <typeAlias alias="order" type="com.alibaba.sample.petstore.dal.dataobject.Order"/>
-
-  <resultMap id="orderResult" class="order">
-    <result property="billAddress1" column="BILLADDR1"/>
-    <result property="billAddress2" column="BILLADDR2"/>
-    <result property="billCity" column="BILLCITY"/>
-    <result property="billCountry" column="BILLCOUNTRY"/>
-    <result property="billState" column="BILLSTATE"/>
-    <result property="billToFirstName" column="BILLTOFIRSTNAME"/>
-    <result property="billToLastName" column="BILLTOLASTNAME"/>
-    <result property="billZip" column="BILLZIP"/>
-    <result property="shipAddress1" column="SHIPADDR1"/>
-    <result property="shipAddress2" column="SHIPADDR2"/>
-    <result property="shipCity" column="SHIPCITY"/>
-    <result property="shipCountry" column="SHIPCOUNTRY"/>
-    <result property="shipState" column="SHIPSTATE"/>
-    <result property="shipToFirstName" column="SHIPTOFIRSTNAME"/>
-    <result property="shipToLastName" column="SHIPTOLASTNAME"/>
-    <result property="shipZip" column="SHIPZIP"/>
-    <result property="cardType" column="CARDTYPE"/>
-    <result property="courier" column="COURIER"/>
-    <result property="creditCard" column="CREDITCARD"/>
-    <result property="expiryDate" column="EXPRDATE"/>
-    <result property="locale" column="LOCALE"/>
-    <result property="orderDate" column="ORDERDATE"/>
-    <result property="orderId" column="ORDERID"/>
-    <result property="totalPrice" column="TOTALPRICE"/>
-    <result property="username" column="USERID"/>
-    <result property="status" column="STATUS"/>
-  </resultMap>
-
-  <statement id="getOrder" resultMap="orderResult" parameterClass="int"><![CDATA[
-    select
-        BILLADDR1, BILLADDR2, BILLCITY, BILLCOUNTRY, BILLSTATE,
-        BILLTOFIRSTNAME, BILLTOLASTNAME, BILLZIP, SHIPADDR1,
-        SHIPADDR2, SHIPCITY, SHIPCOUNTRY, SHIPSTATE, SHIPTOFIRSTNAME,
-        SHIPTOLASTNAME, SHIPZIP, CARDTYPE, COURIER, CREDITCARD,
-        EXPRDATE, LOCALE, ORDERDATE, ORDERS.ORDERID, TOTALPRICE,
-        USERID, STATUS
-    from ORDERS, ORDERSTATUS where ORDERS.ORDERID = #value# and ORDERS.ORDERID = ORDERSTATUS.ORDERID
-  ]]></statement>
-
-  <select id="getOrdersByUsername" resultMap="orderResult" parameterClass="string"><![CDATA[
-    select
-        BILLADDR1, BILLADDR2, BILLCITY, BILLCOUNTRY, BILLSTATE,
-        BILLTOFIRSTNAME, BILLTOLASTNAME, BILLZIP, SHIPADDR1,
-        SHIPADDR2, SHIPCITY, SHIPCOUNTRY, SHIPSTATE, SHIPTOFIRSTNAME,
-        SHIPTOLASTNAME, SHIPZIP, CARDTYPE, COURIER, CREDITCARD,
-        EXPRDATE, LOCALE, ORDERDATE, ORDERS.ORDERID, TOTALPRICE,
-        USERID, STATUS
-    from ORDERS, ORDERSTATUS where ORDERS.USERID = #value# and ORDERS.ORDERID = ORDERSTATUS.ORDERID
-    ORDER BY ORDERDATE
-  ]]></select>
-
-  <insert id="insertOrder" parameterClass="order"><![CDATA[
-    insert into ORDERS (ORDERID, USERID, ORDERDATE, SHIPADDR1, SHIPADDR2, SHIPCITY, SHIPSTATE,
-      SHIPZIP, SHIPCOUNTRY, BILLADDR1, BILLADDR2, BILLCITY, BILLSTATE, BILLZIP, BILLCOUNTRY,
-      COURIER, TOTALPRICE, BILLTOFIRSTNAME, BILLTOLASTNAME, SHIPTOFIRSTNAME, SHIPTOLASTNAME,
-      CREDITCARD, EXPRDATE, CARDTYPE, LOCALE)
-    values (#orderId#, #username#, #orderDate#, #shipAddress1#, #shipAddress2:VARCHAR#, #shipCity#,
-      #shipState#, #shipZip#, #shipCountry#, #billAddress1#, #billAddress2:VARCHAR#, #billCity#,
-      #billState#, #billZip#, #billCountry#, #courier#, #totalPrice#, #billToFirstName#, #billToLastName#,
-      #shipToFirstName#, #shipToLastName#, #creditCard#, #expiryDate#, #cardType#, #locale#)
-  ]]></insert>
-
-  <insert id="insertOrderStatus" parameterClass="order"><![CDATA[
-    insert into ORDERSTATUS (ORDERID, LINENUM, TIMESTAMP, STATUS)
-    values (#orderId:NUMERIC#, #orderId:NUMERIC#, #orderDate:TIMESTAMP#, #status:VARCHAR#)
-  ]]></insert>
-
+    <typeAlias alias="order" type="com.alibaba.sample.petstore.dal.dataobject.Order" />
+    <resultMap id="orderResult" class="order">
+        <result property="billAddress1" column="BILLADDR1" />
+        <result property="billAddress2" column="BILLADDR2" />
+        <result property="billCity" column="BILLCITY" />
+        <result property="billCountry" column="BILLCOUNTRY" />
+        <result property="billState" column="BILLSTATE" />
+        <result property="billToFirstName" column="BILLTOFIRSTNAME" />
+        <result property="billToLastName" column="BILLTOLASTNAME" />
+        <result property="billZip" column="BILLZIP" />
+        <result property="shipAddress1" column="SHIPADDR1" />
+        <result property="shipAddress2" column="SHIPADDR2" />
+        <result property="shipCity" column="SHIPCITY" />
+        <result property="shipCountry" column="SHIPCOUNTRY" />
+        <result property="shipState" column="SHIPSTATE" />
+        <result property="shipToFirstName" column="SHIPTOFIRSTNAME" />
+        <result property="shipToLastName" column="SHIPTOLASTNAME" />
+        <result property="shipZip" column="SHIPZIP" />
+        <result property="cardType" column="CARDTYPE" />
+        <result property="courier" column="COURIER" />
+        <result property="creditCard" column="CREDITCARD" />
+        <result property="expiryDate" column="EXPRDATE" />
+        <result property="locale" column="LOCALE" />
+        <result property="orderDate" column="ORDERDATE" />
+        <result property="orderId" column="ORDERID" />
+        <result property="totalPrice" column="TOTALPRICE" />
+        <result property="userId" column="USERID" />
+        <result property="status" column="STATUS" />
+    </resultMap>
+    <statement id="getOrder" resultMap="orderResult" parameterClass="int"><![CDATA[
+        select
+            BILLADDR1, BILLADDR2, BILLCITY, BILLCOUNTRY, BILLSTATE,
+            BILLTOFIRSTNAME, BILLTOLASTNAME, BILLZIP, SHIPADDR1,
+            SHIPADDR2, SHIPCITY, SHIPCOUNTRY, SHIPSTATE, SHIPTOFIRSTNAME,
+            SHIPTOLASTNAME, SHIPZIP, CARDTYPE, COURIER, CREDITCARD,
+            EXPRDATE, LOCALE, ORDERDATE, ORDERS.ORDERID, TOTALPRICE,
+            USERID, STATUS
+        from ORDERS, ORDERSTATUS where ORDERS.ORDERID = #value# and ORDERS.ORDERID = ORDERSTATUS.ORDERID
+    ]]></statement>
+    <select id="getOrdersByUserId" resultMap="orderResult" parameterClass="string"><![CDATA[
+        select
+            BILLADDR1, BILLADDR2, BILLCITY, BILLCOUNTRY, BILLSTATE,
+            BILLTOFIRSTNAME, BILLTOLASTNAME, BILLZIP, SHIPADDR1,
+            SHIPADDR2, SHIPCITY, SHIPCOUNTRY, SHIPSTATE, SHIPTOFIRSTNAME,
+            SHIPTOLASTNAME, SHIPZIP, CARDTYPE, COURIER, CREDITCARD,
+            EXPRDATE, LOCALE, ORDERDATE, ORDERS.ORDERID, TOTALPRICE,
+            USERID, STATUS
+        from ORDERS, ORDERSTATUS where ORDERS.USERID = #value# and ORDERS.ORDERID = ORDERSTATUS.ORDERID
+        ORDER BY ORDERDATE
+    ]]></select>
+    <insert id="insertOrder" parameterClass="order"><![CDATA[
+        insert into ORDERS (ORDERID, USERID, ORDERDATE, SHIPADDR1, SHIPADDR2, SHIPCITY, SHIPSTATE,
+            SHIPZIP, SHIPCOUNTRY, BILLADDR1, BILLADDR2, BILLCITY, BILLSTATE, BILLZIP, BILLCOUNTRY,
+            COURIER, TOTALPRICE, BILLTOFIRSTNAME, BILLTOLASTNAME, SHIPTOFIRSTNAME, SHIPTOLASTNAME,
+            CREDITCARD, EXPRDATE, CARDTYPE, LOCALE)
+        values (#orderId#, #userId#, #orderDate#, #shipAddress1#, #shipAddress2:VARCHAR#, #shipCity#,
+            #shipState#, #shipZip#, #shipCountry#, #billAddress1#, #billAddress2:VARCHAR#, #billCity#,
+            #billState#, #billZip#, #billCountry#, #courier#, #totalPrice#, #billToFirstName#, #billToLastName#,
+            #shipToFirstName#, #shipToLastName#, #creditCard#, #expiryDate#, #cardType#, #locale#)
+    ]]></insert>
+    <insert id="insertOrderStatus" parameterClass="order"><![CDATA[
+        insert into ORDERSTATUS (ORDERID, ORDERITEMID, TIMESTAMP, STATUS)
+        values (#orderId:NUMERIC#, #orderId:NUMERIC#, #orderDate:TIMESTAMP#, #status:VARCHAR#)
+    ]]></insert>
 </sqlMap>

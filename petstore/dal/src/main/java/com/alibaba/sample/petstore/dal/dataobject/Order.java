@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Order {
     private int orderId;
-    private String username;
+    private String userId;
     private Date orderDate;
     private String shipAddress1;
     private String shipAddress2;
@@ -43,12 +43,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Date getOrderDate() {
@@ -252,7 +252,7 @@ public class Order {
     }
 
     public void initOrder(Account account, Cart cart) {
-        username = account.getUser().getUserId();
+        userId = account.getUser().getUserId();
         orderDate = new Date();
 
         shipToFirstName = account.getFirstName();

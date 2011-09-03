@@ -13,5 +13,6 @@
     <bean id="productItemDao"
         class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisProductItemDao" />
     <bean id="sequenceDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisSequenceDao" />
-
+    <bean id="orderDao" class="com.alibaba.sample.petstore.dal.dao.ibatis.IbatisOrderDao" />
+    
 </beans>

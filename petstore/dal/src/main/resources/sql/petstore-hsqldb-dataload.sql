@@ -8,7 +8,7 @@ INSERT INTO profile VALUES('j2ee','english','DOGS',1,1);
 INSERT INTO profile VALUES('ACID','english','CATS',1,1);
 
 INSERT INTO sequence VALUES('ordernum', 1000);
-INSERT INTO sequence VALUES('linenum', 1000);
+INSERT INTO sequence VALUES('orderitemnum', 1000);
 
 INSERT INTO bannerdata VALUES ('FISH','<image src="../images/banner_fish.gif">');
 INSERT INTO bannerdata VALUES ('CATS','<image src="../images/banner_cats.gif">');

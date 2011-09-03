@@ -22,8 +22,8 @@ public class SequenceDaoTests extends AbstractDataAccessTests {
         assertEquals(1001, sequenceDao.getNextId("ordernum"));
         assertEquals(1002, sequenceDao.getNextId("ordernum"));
 
-        assertEquals(1000, sequenceDao.getNextId("linenum"));
-        assertEquals(1001, sequenceDao.getNextId("linenum"));
-        assertEquals(1002, sequenceDao.getNextId("linenum"));
+        assertEquals(1000, sequenceDao.getNextId("orderitemnum"));
+        assertEquals(1001, sequenceDao.getNextId("orderitemnum"));
+        assertEquals(1002, sequenceDao.getNextId("orderitemnum"));
     }
 }
