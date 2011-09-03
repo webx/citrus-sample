@@ -5,7 +5,7 @@ import java.util.List;
 import com.alibaba.sample.petstore.dal.dataobject.Category;
 
 public interface CategoryDao {
-    public List<Category> getCategoryList();
+    List<Category> getCategoryList();
 
-    public Category getCategoryById(String categoryId);
+    Category getCategoryById(String categoryId);
 }

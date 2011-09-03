@@ -7,7 +7,7 @@ public class CartItem implements Serializable {
     private static final long serialVersionUID = -8518016753555699796L;
     private String itemId;
     private int quantity;
-    private transient Item item;
+    private transient ProductItem item;
 
     public CartItem(String itemId) {
         this.itemId = itemId;
@@ -17,11 +17,11 @@ public class CartItem implements Serializable {
         return itemId;
     }
 
-    public Item getItem() {
+    public ProductItem getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(ProductItem item) {
         this.item = item;
     }
 

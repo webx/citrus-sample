@@ -33,7 +33,7 @@ public class Order {
     private String cardType;
     private String locale;
     private String status;
-    private List<LineItem> lineItems = createLinkedList();
+    private List<OrderItem> orderItems = createLinkedList();
 
     public int getOrderId() {
         return orderId;
@@ -243,12 +243,12 @@ public class Order {
         this.status = status;
     }
 
-    public void setLineItems(List<LineItem> lineItems) {
-        this.lineItems = lineItems;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
-    public List<LineItem> getLineItems() {
-        return lineItems;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
     public void initOrder(Account account, Cart cart) {
@@ -283,17 +283,17 @@ public class Order {
         status = "P";
 
         for (CartItem cartItem : cart.getCartItemList()) {
-            addLineItem(cartItem);
+            addOrderItem(cartItem);
         }
     }
 
-    public void addLineItem(CartItem cartItem) {
-        LineItem lineItem = new LineItem(lineItems.size() + 1, cartItem);
+    public void addOrderItem(CartItem cartItem) {
+        OrderItem orderItem = new OrderItem(orderItems.size() + 1, cartItem);
 
-        addLineItem(lineItem);
+        addOrderItem(orderItem);
     }
 
-    public void addLineItem(LineItem lineItem) {
-        lineItems.add(lineItem);
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
     }
 }

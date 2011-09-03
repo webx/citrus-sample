@@ -17,7 +17,7 @@ public class Cart implements Serializable {
     private Map<String, CartItem> cartItems = createHashMap();
 
     public CartItem getCartItem(String itemId) {
-        return (CartItem) cartItems.get(itemId);
+        return cartItems.get(itemId);
     }
 
     public Collection<CartItem> getCartItemList() {
@@ -25,7 +25,7 @@ public class Cart implements Serializable {
     }
 
     public void addItem(String itemId) {
-        CartItem cartItem = (CartItem) cartItems.get(itemId);
+        CartItem cartItem = cartItems.get(itemId);
 
         if (cartItem == null) {
             cartItem = new CartItem(itemId);
@@ -41,11 +41,11 @@ public class Cart implements Serializable {
     }
 
     public void setQuantity(String itemId, int quantity) {
-        CartItem cartItem = (CartItem) cartItems.get(itemId);
+        CartItem cartItem = cartItems.get(itemId);
 
         if (cartItem == null) {
             addItem(itemId);
-            cartItem = (CartItem) cartItems.get(itemId);
+            cartItem = cartItems.get(itemId);
         }
 
         cartItem.setQuantity(quantity);

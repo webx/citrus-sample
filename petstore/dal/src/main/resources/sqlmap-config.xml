@@ -4,8 +4,8 @@
     <sqlMap resource="sqlmap/User.xml" />
     <sqlMap resource="sqlmap/Category.xml" />
     <sqlMap resource="sqlmap/Product.xml" />
+    <sqlMap resource="sqlmap/ProductItem.xml" />
     <sqlMap resource="sqlmap/Sequence.xml" />
-    <sqlMap resource="sqlmap/LineItem.xml" />
+    <sqlMap resource="sqlmap/OrderItem.xml" />
     <sqlMap resource="sqlmap/Order.xml" />
-    <sqlMap resource="sqlmap/Item.xml" />
 </sqlMapConfig>

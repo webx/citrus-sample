@@ -2,7 +2,7 @@ package com.alibaba.sample.petstore.dal.dataobject;
 
 import java.math.BigDecimal;
 
-public class Item {
+public class ProductItem {
     private String itemId;
     private String productId;
     private BigDecimal listPrice;

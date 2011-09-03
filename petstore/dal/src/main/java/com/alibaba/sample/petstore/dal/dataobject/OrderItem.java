@@ -2,19 +2,19 @@ package com.alibaba.sample.petstore.dal.dataobject;
 
 import java.math.BigDecimal;
 
-public class LineItem {
+public class OrderItem {
     private int orderId;
     private int lineNumber;
     private int quantity;
     private String itemId;
     private BigDecimal unitPrice;
-    private Item item;
+    private ProductItem item;
     private BigDecimal total;
 
-    public LineItem() {
+    public OrderItem() {
     }
 
-    public LineItem(int lineNumber, CartItem cartItem) {
+    public OrderItem(int lineNumber, CartItem cartItem) {
         this.lineNumber = lineNumber;
         this.quantity = cartItem.getQuantity();
         this.itemId = cartItem.getItem().getItemId();
@@ -38,11 +38,11 @@ public class LineItem {
         this.lineNumber = lineNumber;
     }
 
-    public String getItemId() {
+    public String getProductItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setProductItemId(String itemId) {
         this.itemId = itemId;
     }
 
@@ -58,11 +58,11 @@ public class LineItem {
         return total;
     }
 
-    public Item getItem() {
+    public ProductItem getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(ProductItem item) {
         this.item = item;
         calculateTotal();
     }

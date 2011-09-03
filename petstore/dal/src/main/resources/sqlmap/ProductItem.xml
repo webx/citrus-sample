@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="ProductItem">
+    <typeAlias alias="item" type="com.alibaba.sample.petstore.dal.dataobject.ProductItem" />
+    <resultMap id="itemResult" class="item">
+        <result property="itemId" column="ITEMID" />
+        <result property="listPrice" column="LISTPRICE" />
+        <result property="unitCost" column="UNITCOST" />
+        <result property="supplierId" column="SUPPLIER" />
+        <result property="productId" column="PRODUCTID" />
+        <result property="product.productId" column="PRODUCTID" />
+        <result property="product.name" column="NAME" />
+        <result property="product.description" column="DESCN" />
+        <result property="product.categoryId" column="CATEGORY" />
+        <result property="status" column="STATUS" />
+        <result property="attribute1" column="ATTR1" />
+        <result property="attribute2" column="ATTR2" />
+        <result property="attribute3" column="ATTR3" />
+        <result property="attribute4" column="ATTR4" />
+        <result property="attribute5" column="ATTR5" />
+    </resultMap>
+    <resultMap id="resultWithQuantity" class="item" extends="itemResult">
+        <result property="quantity" column="QTY" />
+    </resultMap>
+    <select id="getItemListByProduct" resultMap="resultWithQuantity" parameterClass="string"><![CDATA[
+        select
+          ITEMID, LISTPRICE, UNITCOST, SUPPLIER, I.PRODUCTID, NAME,
+          DESCN, CATEGORY, STATUS, ATTR1, ATTR2, ATTR3, ATTR4, ATTR5, QTY
+        from ITEM I, PRODUCT P, INVENTORY N where P.PRODUCTID = I.PRODUCTID and I.PRODUCTID = #value# and N.ITEMID=I.ITEMID
+    ]]></select>
+    <select id="getItem" resultMap="resultWithQuantity" parameterClass="string"><![CDATA[
+        select
+          I.ITEMID, LISTPRICE, UNITCOST, SUPPLIER, I.PRODUCTID, NAME,
+          DESCN, CATEGORY, STATUS, ATTR1, ATTR2, ATTR3, ATTR4, ATTR5, QTY
+        from ITEM I, INVENTORY V, PRODUCT P where P.PRODUCTID = I.PRODUCTID and I.ITEMID = V.ITEMID and I.ITEMID = #value#
+    ]]></select>
+    <select id="getInventoryQuantity" resultClass="int" parameterClass="string"><![CDATA[
+        select QTY as value from INVENTORY where ITEMID = #value#
+    ]]></select>
+    <update id="updateInventoryQuantity" parameterClass="map"><![CDATA[
+        update INVENTORY set QTY = QTY - #quantity# where ITEMID = #itemId#
+    ]]></update>
+</sqlMap>
