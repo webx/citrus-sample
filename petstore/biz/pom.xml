@@ -21,12 +21,8 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.ibatis</groupId>
-            <artifactId>ibatis-sqlmap</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
+            <groupId>com.alibaba.citrus.sample</groupId>
+            <artifactId>petstore-dal</artifactId>
         </dependency>
     </dependencies>
 </project>
