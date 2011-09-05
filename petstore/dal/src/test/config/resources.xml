@@ -10,10 +10,7 @@
 
     <services:resource-loading xmlns="http://www.alibaba.com/schema/services">
 
-        <resource-alias pattern="/petstore/dal/sqlmap-config.xml"
-            name="/classpath/sqlmap-config.xml" />
-
-        <resource-alias pattern="/petstore/dal/sql" name="/classpath/sql" />
+        <resource-alias pattern="/petstore/dal" name="/classpath/petstore/dal" />
 
     </services:resource-loading>
 

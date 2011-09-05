@@ -12,8 +12,8 @@
     <!--  Hsqldb (Server mode)                                                    -->
     <!-- ======================================================================== -->
     <jdbc:embedded-database id="dataSource" type="HSQL">
-        <jdbc:script location="/petstore/dal/sql/petstore-hsqldb-schema.sql" />
-        <jdbc:script location="/petstore/dal/sql/petstore-hsqldb-dataload.sql" />
+        <jdbc:script location="/petstore/dal/sql/hsqldb-schema.sql" />
+        <jdbc:script location="/petstore/dal/sql/hsqldb-init-data.sql" />
     </jdbc:embedded-database>
 
     <!-- ======================================================================== -->
