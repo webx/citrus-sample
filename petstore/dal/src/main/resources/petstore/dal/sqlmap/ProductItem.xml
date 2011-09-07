@@ -3,7 +3,7 @@
 <sqlMap namespace="ProductItem">
     <typeAlias alias="item" type="com.alibaba.sample.petstore.dal.dataobject.ProductItem" />
     <resultMap id="itemResult" class="item">
-        <result property="itemId" column="ITEMID" />
+        <result property="productItemId" column="ITEMID" />
         <result property="listPrice" column="LISTPRICE" />
         <result property="unitCost" column="UNITCOST" />
         <result property="supplierId" column="SUPPLIER" />

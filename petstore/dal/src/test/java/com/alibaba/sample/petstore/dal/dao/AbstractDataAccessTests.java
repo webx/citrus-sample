@@ -1,4 +1,4 @@
-package com.alibaba.sample.petstore.dal;
+package com.alibaba.sample.petstore.dal.dao;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

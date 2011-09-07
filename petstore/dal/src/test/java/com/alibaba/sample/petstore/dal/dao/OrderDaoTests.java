@@ -1,4 +1,4 @@
-package com.alibaba.sample.petstore.dal;
+package com.alibaba.sample.petstore.dal.dao;
 
 import static org.junit.Assert.*;
 
@@ -9,8 +9,6 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.alibaba.sample.petstore.dal.dao.OrderDao;
-import com.alibaba.sample.petstore.dal.dao.SequenceDao;
 import com.alibaba.sample.petstore.dal.dataobject.Order;
 import com.alibaba.sample.petstore.dal.dataobject.OrderItem;
 

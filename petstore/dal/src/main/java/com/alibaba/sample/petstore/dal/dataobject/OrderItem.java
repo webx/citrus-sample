@@ -17,9 +17,9 @@ public class OrderItem {
     public OrderItem(int orderItemId, CartItem cartItem) {
         this.orderItemId = orderItemId;
         this.quantity = cartItem.getQuantity();
-        this.itemId = cartItem.getItem().getItemId();
-        this.unitPrice = cartItem.getItem().getListPrice();
-        this.item = cartItem.getItem();
+        this.itemId = cartItem.getProductItem().getProductItemId();
+        this.unitPrice = cartItem.getProductItem().getListPrice();
+        this.item = cartItem.getProductItem();
     }
 
     public int getOrderId() {

@@ -4,7 +4,7 @@ import static com.alibaba.citrus.util.CollectionUtil.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,11 +20,11 @@ public class Cart implements Serializable {
         return cartItems.get(itemId);
     }
 
-    public Collection<CartItem> getCartItemList() {
-        return cartItems.values();
+    public List<CartItem> getCartItemList() {
+        return createArrayList(cartItems.values());
     }
 
-    public void addItem(String itemId) {
+    public void addCartItem(String itemId) {
         CartItem cartItem = cartItems.get(itemId);
 
         if (cartItem == null) {
@@ -36,7 +36,7 @@ public class Cart implements Serializable {
         cartItem.incrementQuantity();
     }
 
-    public void removeItem(String itemId) {
+    public void removeProductItem(String itemId) {
         cartItems.remove(itemId);
     }
 
@@ -44,7 +44,7 @@ public class Cart implements Serializable {
         CartItem cartItem = cartItems.get(itemId);
 
         if (cartItem == null) {
-            addItem(itemId);
+            addCartItem(itemId);
             cartItem = cartItems.get(itemId);
         }
 

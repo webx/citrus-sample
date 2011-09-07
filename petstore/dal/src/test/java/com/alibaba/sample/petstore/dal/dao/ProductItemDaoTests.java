@@ -1,4 +1,4 @@
-package com.alibaba.sample.petstore.dal;
+package com.alibaba.sample.petstore.dal.dao;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.alibaba.sample.petstore.dal.dao.ProductItemDao;
 import com.alibaba.sample.petstore.dal.dataobject.Order;
 import com.alibaba.sample.petstore.dal.dataobject.OrderItem;
 import com.alibaba.sample.petstore.dal.dataobject.ProductItem;
@@ -27,7 +26,7 @@ public class ProductItemDaoTests extends AbstractDataAccessTests {
     public void getItemById() {
         ProductItem item = productItemDao.getItemById("EST-1");
 
-        assertEquals("EST-1", item.getItemId());
+        assertEquals("EST-1", item.getProductItemId());
         assertEquals("FI-SW-01", item.getProductId());
         assertEquals(new BigDecimal("16.50"), item.getListPrice());
         assertEquals(new BigDecimal("10.00"), item.getUnitCost());
@@ -70,7 +69,7 @@ public class ProductItemDaoTests extends AbstractDataAccessTests {
 
         int i = 0;
         for (ProductItem item : items) {
-            result[i++] = item.getItemId();
+            result[i++] = item.getProductItemId();
         }
 
         Arrays.sort(result);

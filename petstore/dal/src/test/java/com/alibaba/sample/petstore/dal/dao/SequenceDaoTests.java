@@ -1,11 +1,9 @@
-package com.alibaba.sample.petstore.dal;
+package com.alibaba.sample.petstore.dal.dao;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.alibaba.sample.petstore.dal.dao.SequenceDao;
 
 public class SequenceDaoTests extends AbstractDataAccessTests {
     @Autowired

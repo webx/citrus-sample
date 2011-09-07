@@ -5,23 +5,23 @@ import java.math.BigDecimal;
 
 public class CartItem implements Serializable {
     private static final long serialVersionUID = -8518016753555699796L;
-    private String itemId;
+    private String productItemId;
     private int quantity;
     private transient ProductItem item;
 
-    public CartItem(String itemId) {
-        this.itemId = itemId;
+    public CartItem(String productItemId) {
+        this.productItemId = productItemId;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getProductItemId() {
+        return productItemId;
     }
 
-    public ProductItem getItem() {
+    public ProductItem getProductItem() {
         return item;
     }
 
-    public void setItem(ProductItem item) {
+    public void setProductItem(ProductItem item) {
         this.item = item;
     }
 

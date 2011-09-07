@@ -1,4 +1,4 @@
-package com.alibaba.sample.petstore.dal;
+package com.alibaba.sample.petstore.dal.dao;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.alibaba.sample.petstore.dal.dao.UserDao;
 import com.alibaba.sample.petstore.dal.dataobject.Account;
 import com.alibaba.sample.petstore.dal.dataobject.Profile;
 import com.alibaba.sample.petstore.dal.dataobject.User;

@@ -3,7 +3,7 @@ package com.alibaba.sample.petstore.dal.dataobject;
 import java.math.BigDecimal;
 
 public class ProductItem {
-    private String itemId;
+    private String productItemId;
     private String productId;
     private BigDecimal listPrice;
     private BigDecimal unitCost;
@@ -17,12 +17,12 @@ public class ProductItem {
     private Product product;
     private int quantity;
 
-    public String getItemId() {
-        return itemId;
+    public String getProductItemId() {
+        return productItemId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId.trim();
+    public void setProductItemId(String productItemId) {
+        this.productItemId = productItemId.trim();
     }
 
     public int getQuantity() {
@@ -123,6 +123,6 @@ public class ProductItem {
 
     @Override
     public String toString() {
-        return "(" + getItemId() + "-" + getProductId() + ")";
+        return "(" + getProductItemId() + "-" + getProductId() + ")";
     }
 }

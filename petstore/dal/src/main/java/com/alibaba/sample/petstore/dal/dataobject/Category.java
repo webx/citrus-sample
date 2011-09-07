@@ -1,10 +1,13 @@
 package com.alibaba.sample.petstore.dal.dataobject;
 
+import java.util.List;
+
 public class Category {
     private String categoryId;
     private String name;
     private String logo;
     private String description;
+    private List<Product> productList;
 
     public String getCategoryId() {
         return categoryId;
@@ -36,6 +39,14 @@ public class Category {
 
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     @Override
