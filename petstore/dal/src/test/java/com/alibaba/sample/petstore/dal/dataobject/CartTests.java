@@ -19,6 +19,14 @@ public class CartTests {
     }
 
     @Test
+    public void getTotal() {
+        assertEquals(0, cart.getTotal().intValue());
+
+        cart.addCartItem("item1");
+        assertEquals(0, cart.getTotal().intValue());
+    }
+
+    @Test
     public void addCartItem() {
         assertEquals(0, cart.getCartItemList().size());
 
