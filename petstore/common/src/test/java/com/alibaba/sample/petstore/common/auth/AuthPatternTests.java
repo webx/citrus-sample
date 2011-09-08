@@ -22,7 +22,7 @@ public class AuthPatternTests {
     @Test
     public void getPatternName() {
         pattern = new AuthPattern("test");
-        assertEquals("/**/test", pattern.getPatternName());
+        assertEquals("/test", pattern.getPatternName());
 
         pattern = new AuthPattern("/test");
         assertEquals("/test", pattern.getPatternName());
@@ -33,9 +33,9 @@ public class AuthPatternTests {
         // relative path
         pattern = new AuthPattern("test");
 
-        assertMatches(true, "/a/b/test");
-        assertMatches(true, "/a/test/");
-        assertMatches(true, "/a/test/b");
+        assertMatches(false, "/a/b/test");
+        assertMatches(false, "/a/test/");
+        assertMatches(false, "/a/test/b");
         assertMatches(true, "/test");
         assertMatches(true, "/test/");
         assertMatches(true, "/test/b");
@@ -64,11 +64,29 @@ public class AuthPatternTests {
     }
 
     private void assertMatches(boolean matches, String s) {
-        assertEquals(s, matches, pattern.getPattern().matcher(s).find());
+        assertEquals(s, matches, pattern.matcher(s).find());
+    }
+
+    @Test
+    public void equalsAndHashCode() {
+        AuthPattern p1 = new AuthPattern("test");
+        AuthPattern p2 = new AuthPattern("/test");
+        AuthPattern p3 = new AuthPattern("/*/test");
+        AuthPattern p4 = new AuthPattern("/");
+
+        assertEquals(p1, p1);
+        assertEquals(p1, p2);
+        assertFalse(p1.equals(p3));
+        assertFalse(p1.equals(null));
+        assertFalse(p1.equals("test"));
+
+        assertEquals(p1.hashCode(), p2.hashCode());
+        assertFalse(p1.hashCode() == p3.hashCode());
+        assertFalse(p4.hashCode() == p3.hashCode());
     }
 
     @Test
     public void toString_() {
-        assertEquals("AuthPattern[/**/test]", new AuthPattern(" test ").toString());
+        assertEquals("/test", new AuthPattern(" test ").toString());
     }
 }

@@ -16,16 +16,10 @@ import com.alibaba.citrus.util.internal.ToStringBuilder.MapBuilder;
  * @author Michael Zhou
  */
 public class AuthGrant {
-    /** MATCH_EVERYTHING代表用户和role时，不包含匿名用户 */
-    public final static String MATCH_EVERYTHING = "*";
-
-    /** 特列用户名：匿名用户 */
-    public final static String ANONYMOUS_USER = "anonymous";
-
     private String user;
     private String role;
-    private Set<String> allowedNames = createLinkedHashSet();
-    private Set<String> deniedNames = createLinkedHashSet();
+    private Set<AuthPattern> allowedActions = createLinkedHashSet();
+    private Set<AuthPattern> deniedActions = createLinkedHashSet();
 
     public String getUser() {
         return user;
@@ -43,31 +37,46 @@ public class AuthGrant {
         this.role = trimToNull(role);
     }
 
-    public Set<String> getAllowedNames() {
-        return allowedNames;
+    public Set<AuthPattern> getAllowedActions() {
+        return allowedActions;
+    }
+
+    public boolean isActionAllowed(String action) {
+        return matches(allowedActions, action);
     }
 
     public void setAllow(String allow) {
-        setNames(allowedNames, allow);
+        setActions(allowedActions, allow);
     }
 
-    public Set<String> getDeniedNames() {
-        return deniedNames;
+    public Set<AuthPattern> getDeniedActions() {
+        return deniedActions;
+    }
+
+    public boolean isActionDenied(String action) {
+        return matches(deniedActions, action);
     }
 
     public void setDeny(String deny) {
-        setNames(deniedNames, deny);
+        setActions(deniedActions, deny);
     }
 
-    private void setNames(Set<String> nameSet, String names) {
-        for (String name : defaultIfNull(split(names, ", "), EMPTY_STRING_ARRAY)) {
-            nameSet.add(name);
+    private void setActions(Set<AuthPattern> actionSet, String actions) {
+        actionSet.clear();
+
+        for (String action : defaultIfNull(split(actions, ", "), EMPTY_STRING_ARRAY)) {
+            actionSet.add(new AuthPattern(action));
+        }
+    }
+
+    private boolean matches(Set<AuthPattern> actionSet, String action) {
+        for (AuthPattern pattern : actionSet) {
+            if (pattern.matcher(action).find()) {
+                return true;
+            }
         }
 
-        if (nameSet.size() > 1 && nameSet.contains(MATCH_EVERYTHING)) {
-            nameSet.clear();
-            nameSet.add(MATCH_EVERYTHING);
-        }
+        return false;
     }
 
     @Override
@@ -90,8 +99,8 @@ public class AuthGrant {
             mb.append("role", role);
         }
 
-        mb.append("allow", allowedNames);
-        mb.append("deny", deniedNames);
+        mb.append("allow", allowedActions);
+        mb.append("deny", deniedActions);
 
         return new ToStringBuilder().append("Grant").append(mb).toString();
     }

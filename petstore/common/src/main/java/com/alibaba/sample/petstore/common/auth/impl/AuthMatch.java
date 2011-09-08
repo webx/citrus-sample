@@ -2,7 +2,6 @@ package com.alibaba.sample.petstore.common.auth.impl;
 
 import static com.alibaba.citrus.util.Assert.*;
 import static com.alibaba.citrus.util.ObjectUtil.*;
-import static com.alibaba.citrus.util.StringUtil.*;
 
 import com.alibaba.citrus.util.internal.ToStringBuilder;
 import com.alibaba.citrus.util.internal.ToStringBuilder.MapBuilder;
@@ -14,18 +13,16 @@ import com.alibaba.citrus.util.internal.ToStringBuilder.MapBuilder;
  */
 public class AuthMatch {
     private final static AuthGrant[] NO_GRANTS = new AuthGrant[0];
-    private final String type;
-    private final AuthPattern pattern;
+    private final AuthPattern targetPattern;
     private final AuthGrant[] grants;
 
-    public AuthMatch(String type, AuthPattern pattern, AuthGrant[] grants) {
-        this.type = assertNotNull(trimToNull(type), "match type");
-        this.pattern = assertNotNull(pattern, "pattern");
+    public AuthMatch(AuthPattern pattern, AuthGrant[] grants) {
+        this.targetPattern = assertNotNull(pattern, "pattern");
         this.grants = defaultIfNull(grants, NO_GRANTS);
     }
 
-    public AuthPattern getPattern() {
-        return pattern;
+    public AuthPattern getTargetPattern() {
+        return targetPattern;
     }
 
     public AuthGrant[] getGrants() {
@@ -36,9 +33,9 @@ public class AuthMatch {
     public String toString() {
         MapBuilder mb = new MapBuilder();
 
-        mb.append(type, pattern.getPatternName());
+        mb.append("target", targetPattern);
         mb.append("grants", grants);
 
-        return new ToStringBuilder().append("AuthMatch").append(mb).toString();
+        return new ToStringBuilder().append("Match").append(mb).toString();
     }
 }

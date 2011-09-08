@@ -12,35 +12,30 @@ public class AuthMatchTests {
     private AuthMatch match;
 
     @Test(expected = IllegalArgumentException.class)
-    public void create_noType() {
-        new AuthMatch(null, new AuthPattern("test"), new AuthGrant[0]);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
     public void create_noPatterns() {
-        new AuthMatch("target", null, new AuthGrant[0]);
+        new AuthMatch(null, new AuthGrant[0]);
     }
 
     @Test
     public void getPattern() {
-        match = new AuthMatch("target", new AuthPattern("test"), new AuthGrant[0]);
-        assertEquals("/**/test", match.getPattern().getPatternName());
+        match = new AuthMatch(new AuthPattern("test"), new AuthGrant[0]);
+        assertEquals("/test", match.getTargetPattern().getPatternName());
     }
 
     @Test
     public void getGrants() {
-        match = new AuthMatch("target", new AuthPattern("test"), new AuthGrant[] { new AuthGrant() });
+        match = new AuthMatch(new AuthPattern("test"), new AuthGrant[] { new AuthGrant() });
         assertEquals(1, match.getGrants().length);
     }
 
     @Test
     public void toString_() {
-        match = new AuthMatch("target", new AuthPattern("test"), new AuthGrant[] { new AuthGrant() });
+        match = new AuthMatch(new AuthPattern("test"), new AuthGrant[] { new AuthGrant() });
 
         String s = "";
 
-        s += "AuthMatch {\n";
-        s += "  target = /**/test\n";
+        s += "Match {\n";
+        s += "  target = /test\n";
         s += "  grants = [\n";
         s += "             [1/1] Grant {\n";
         s += "                     allow = []\n";
