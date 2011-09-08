@@ -26,6 +26,7 @@
         <module>dal</module>
         <module>biz</module>
         <module>web</module>
+        <module>common</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -45,6 +46,11 @@
             <dependency>
                 <groupId>com.alibaba.citrus.sample</groupId>
                 <artifactId>petstore-web</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.citrus.sample</groupId>
+                <artifactId>petstore-common</artifactId>
                 <version>${pom.version}</version>
             </dependency>
             <!-- ======================================== -->

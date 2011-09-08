@@ -28,6 +28,14 @@
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.citrus.sample</groupId>
+            <artifactId>petstore-biz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.citrus.sample</groupId>
+            <artifactId>petstore-common</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>petstore</finalName>

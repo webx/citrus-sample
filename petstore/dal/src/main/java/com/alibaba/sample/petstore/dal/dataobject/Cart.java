@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class Cart implements Serializable {
     private static final long serialVersionUID = 43557847549256390L;
-    private Map<String, CartItem> cartItems = createHashMap();
+    private Map<String, CartItem> cartItems = createLinkedHashMap();
 
     public CartItem getCartItem(String itemId) {
         return cartItems.get(itemId);

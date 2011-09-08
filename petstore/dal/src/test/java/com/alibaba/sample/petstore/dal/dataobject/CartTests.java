@@ -39,11 +39,11 @@ public class CartTests {
         cart.addCartItem("item2");
         assertEquals(2, cart.getCartItemList().size());
 
-        assertProductItem(0, "item1", 1);
-        assertProductItem(1, "item2", 2);
+        assertProductItem(cart, 0, "item1", 1);
+        assertProductItem(cart, 1, "item2", 2);
     }
 
-    private void assertProductItem(int index, String itemId, int quantity) {
+    private void assertProductItem(Cart cart, int index, String itemId, int quantity) {
         CartItem item = cart.getCartItemList().get(index);
 
         assertSame(item, cart.getCartItem(itemId));
@@ -59,11 +59,11 @@ public class CartTests {
 
         cart.setQuantity("item1", 10);
         assertEquals(1, cart.getCartItemList().size());
-        assertProductItem(0, "item1", 10);
+        assertProductItem(cart, 0, "item1", 10);
 
         cart.setQuantity("item1", 100);
         assertEquals(1, cart.getCartItemList().size());
-        assertProductItem(0, "item1", 100);
+        assertProductItem(cart, 0, "item1", 100);
     }
 
     @Test
@@ -83,10 +83,10 @@ public class CartTests {
         cart.setQuantity("item1", 10);
         cart.setQuantity("item2", 100);
 
-        cart = deepClone();
+        Cart newcart = deepClone();
 
-        assertProductItem(0, "item1", 10);
-        assertProductItem(1, "item2", 100);
+        assertProductItem(newcart, 0, "item1", 10);
+        assertProductItem(newcart, 1, "item2", 100);
     }
 
     private Cart deepClone() throws Exception {
