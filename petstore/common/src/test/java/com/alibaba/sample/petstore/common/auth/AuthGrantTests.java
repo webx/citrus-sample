@@ -33,30 +33,30 @@ public class AuthGrantTests {
 
     @Test
     public void setAllow() {
-        assertTrue(grant.getAllowedActionSet().isEmpty());
+        assertTrue(grant.getAllowedNames().isEmpty());
 
         grant.setAllow(null);
-        assertTrue(grant.getAllowedActionSet().isEmpty());
+        assertTrue(grant.getAllowedNames().isEmpty());
 
         grant.setAllow("aa, bb, cc");
-        assertArrayEquals(new Object[] { "aa", "bb", "cc" }, grant.getAllowedActionSet().toArray());
+        assertArrayEquals(new Object[] { "aa", "bb", "cc" }, grant.getAllowedNames().toArray());
 
         grant.setAllow("aa, bb, *, cc");
-        assertArrayEquals(new Object[] { "*" }, grant.getAllowedActionSet().toArray());
+        assertArrayEquals(new Object[] { "*" }, grant.getAllowedNames().toArray());
     }
 
     @Test
     public void setDeny() {
-        assertTrue(grant.getDeniedActionSet().isEmpty());
+        assertTrue(grant.getDeniedNames().isEmpty());
 
         grant.setDeny(null);
-        assertTrue(grant.getDeniedActionSet().isEmpty());
+        assertTrue(grant.getDeniedNames().isEmpty());
 
         grant.setDeny("aa, bb, cc");
-        assertArrayEquals(new Object[] { "aa", "bb", "cc" }, grant.getDeniedActionSet().toArray());
+        assertArrayEquals(new Object[] { "aa", "bb", "cc" }, grant.getDeniedNames().toArray());
 
         grant.setDeny("aa, bb, *, cc");
-        assertArrayEquals(new Object[] { "*" }, grant.getDeniedActionSet().toArray());
+        assertArrayEquals(new Object[] { "*" }, grant.getDeniedNames().toArray());
     }
 
     @Test

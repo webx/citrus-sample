@@ -16,10 +16,16 @@ import com.alibaba.citrus.util.internal.ToStringBuilder.MapBuilder;
  * @author Michael Zhou
  */
 public class AuthGrant {
+    /** MATCH_EVERYTHING代表用户和role时，不包含匿名用户 */
+    public final static String MATCH_EVERYTHING = "*";
+
+    /** 特列用户名：匿名用户 */
+    public final static String ANONYMOUS_USER = "anonymous";
+
     private String user;
     private String role;
-    private Set<String> allowedActionSet = createLinkedHashSet();
-    private Set<String> deniedActionSet = createLinkedHashSet();
+    private Set<String> allowedNames = createLinkedHashSet();
+    private Set<String> deniedNames = createLinkedHashSet();
 
     public String getUser() {
         return user;
@@ -37,30 +43,30 @@ public class AuthGrant {
         this.role = trimToNull(role);
     }
 
-    public Set<String> getAllowedActionSet() {
-        return allowedActionSet;
+    public Set<String> getAllowedNames() {
+        return allowedNames;
     }
 
     public void setAllow(String allow) {
-        setActionSet(allowedActionSet, allow);
+        setNames(allowedNames, allow);
     }
 
-    public Set<String> getDeniedActionSet() {
-        return deniedActionSet;
+    public Set<String> getDeniedNames() {
+        return deniedNames;
     }
 
     public void setDeny(String deny) {
-        setActionSet(deniedActionSet, deny);
+        setNames(deniedNames, deny);
     }
 
-    private void setActionSet(Set<String> actionSet, String names) {
+    private void setNames(Set<String> nameSet, String names) {
         for (String name : defaultIfNull(split(names, ", "), EMPTY_STRING_ARRAY)) {
-            actionSet.add(name);
+            nameSet.add(name);
         }
 
-        if (actionSet.size() > 1 && actionSet.contains(PageAuthorizationServiceImpl.MATCH_EVERYTHING)) {
-            actionSet.clear();
-            actionSet.add(PageAuthorizationServiceImpl.MATCH_EVERYTHING);
+        if (nameSet.size() > 1 && nameSet.contains(MATCH_EVERYTHING)) {
+            nameSet.clear();
+            nameSet.add(MATCH_EVERYTHING);
         }
     }
 
@@ -84,8 +90,8 @@ public class AuthGrant {
             mb.append("role", role);
         }
 
-        mb.append("allow", allowedActionSet);
-        mb.append("deny", deniedActionSet);
+        mb.append("allow", allowedNames);
+        mb.append("deny", deniedNames);
 
         return new ToStringBuilder().append("Grant").append(mb).toString();
     }

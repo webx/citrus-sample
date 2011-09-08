@@ -34,29 +34,37 @@ public class AuthPatternTests {
         pattern = new AuthPattern("test");
 
         assertMatches(true, "/a/b/test");
+        assertMatches(true, "/a/test/");
+        assertMatches(true, "/a/test/b");
         assertMatches(true, "/test");
+        assertMatches(true, "/test/");
+        assertMatches(true, "/test/b");
 
-        assertMatches(false, "/testa");
-        assertMatches(false, "/test/");
+        assertMatches(false, "/atest");
+        assertMatches(false, "/testb");
+        assertMatches(false, "/atestb");
         assertMatches(false, "test");
         assertMatches(false, "test/");
-        assertMatches(false, "/a/b/test/");
 
         // abs path
         pattern = new AuthPattern("/t/est");
 
         assertMatches(false, "/a/b/t/est");
+        assertMatches(false, "/a/t/est/");
+        assertMatches(false, "/a/t/est/b");
         assertMatches(true, "/t/est");
+        assertMatches(true, "/t/est/");
+        assertMatches(true, "/t/est/b");
 
-        assertMatches(false, "/t/esta");
-        assertMatches(false, "/t/est/");
+        assertMatches(false, "/at/est");
+        assertMatches(false, "/t/estb");
+        assertMatches(false, "/at/estb");
         assertMatches(false, "t/est");
         assertMatches(false, "t/est/");
-        assertMatches(false, "/a/b/t/est/");
     }
 
     private void assertMatches(boolean matches, String s) {
-        assertEquals(s, matches, pattern.getPattern().matcher(s).matches());
+        assertEquals(s, matches, pattern.getPattern().matcher(s).find());
     }
 
     @Test

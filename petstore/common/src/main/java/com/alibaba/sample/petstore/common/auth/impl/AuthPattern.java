@@ -24,7 +24,7 @@ public class AuthPattern {
         }
 
         this.patternName = patternName;
-        this.pattern = compilePathName(patternName);
+        this.pattern = compilePathName(patternName, FORCE_MATCH_PREFIX);
     }
 
     public String getPatternName() {
