@@ -128,16 +128,8 @@ public class AuthGrantTests {
         s += "Grant {\n";
         s += "  user  = user\n";
         s += "  role  = role\n";
-        s += "  allow = [\n";
-        s += "            [1/3] /a\n";
-        s += "            [2/3] /b\n";
-        s += "            [3/3] /c\n";
-        s += "          ]\n";
-        s += "  deny  = [\n";
-        s += "            [1/3] /e\n";
-        s += "            [2/3] /f\n";
-        s += "            [3/3] /g\n";
-        s += "          ]\n";
+        s += "  allow = [/a, /b, /c]\n";
+        s += "  deny  = [/e, /f, /g]\n";
         s += "}";
 
         assertEquals(s, grant.toString());

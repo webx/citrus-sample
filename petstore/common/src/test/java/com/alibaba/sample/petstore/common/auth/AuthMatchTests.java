@@ -37,10 +37,7 @@ public class AuthMatchTests {
         s += "Match {\n";
         s += "  target = /test\n";
         s += "  grants = [\n";
-        s += "             [1/1] Grant {\n";
-        s += "                     allow = []\n";
-        s += "                     deny  = []\n";
-        s += "                   }\n";
+        s += "             [1/1] Grant{}\n";
         s += "           ]\n";
         s += "}";
 

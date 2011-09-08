@@ -8,6 +8,7 @@ import static com.alibaba.citrus.util.StringUtil.*;
 import java.util.Set;
 
 import com.alibaba.citrus.util.internal.ToStringBuilder;
+import com.alibaba.citrus.util.internal.ToStringBuilder.CollectionBuilder;
 import com.alibaba.citrus.util.internal.ToStringBuilder.MapBuilder;
 
 /**
@@ -81,15 +82,7 @@ public class AuthGrant {
 
     @Override
     public String toString() {
-        return toString(null);
-    }
-
-    public String toString(String matchedTarget) {
         MapBuilder mb = new MapBuilder();
-
-        if (matchedTarget != null) {
-            mb.append("target", matchedTarget);
-        }
 
         if (user != null) {
             mb.append("user", user);
@@ -99,8 +92,13 @@ public class AuthGrant {
             mb.append("role", role);
         }
 
-        mb.append("allow", allowedActions);
-        mb.append("deny", deniedActions);
+        if (!allowedActions.isEmpty()) {
+            mb.append("allow", new CollectionBuilder().appendAll(allowedActions).setOneLine(true));
+        }
+
+        if (!deniedActions.isEmpty()) {
+            mb.append("deny", new CollectionBuilder().appendAll(deniedActions).setOneLine(true));
+        }
 
         return new ToStringBuilder().append("Grant").append(mb).toString();
     }
