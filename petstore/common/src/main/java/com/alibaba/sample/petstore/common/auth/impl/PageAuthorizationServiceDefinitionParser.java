@@ -87,7 +87,7 @@ public class PageAuthorizationServiceDefinitionParser extends
         builder.addPropertyValue("allow", allows);
         builder.addPropertyValue("deny", denies);
 
-        return null;
+        return builder.getBeanDefinition();
     }
 
     @Override

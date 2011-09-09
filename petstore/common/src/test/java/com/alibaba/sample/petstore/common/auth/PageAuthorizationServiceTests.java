@@ -11,7 +11,7 @@ import com.alibaba.sample.petstore.common.auth.impl.AuthMatch;
 import com.alibaba.sample.petstore.common.auth.impl.PageAuthorizationServiceImpl;
 
 public class PageAuthorizationServiceTests {
-    private PageAuthorizationServiceImpl auth;
+    protected PageAuthorizationServiceImpl auth;
 
     @Before
     public void init() {
