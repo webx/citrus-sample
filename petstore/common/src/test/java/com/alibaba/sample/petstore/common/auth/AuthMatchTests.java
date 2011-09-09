@@ -19,7 +19,7 @@ public class AuthMatchTests {
     @Test
     public void getPattern() {
         match = new AuthMatch(new AuthPattern("test"), new AuthGrant[0]);
-        assertEquals("/test", match.getTargetPattern().getPatternName());
+        assertEquals("/test", match.getPattern().getPatternName());
     }
 
     @Test
@@ -35,10 +35,10 @@ public class AuthMatchTests {
         String s = "";
 
         s += "Match {\n";
-        s += "  target = /test\n";
-        s += "  grants = [\n";
-        s += "             [1/1] Grant{}\n";
-        s += "           ]\n";
+        s += "  pattern = /test\n";
+        s += "  grants  = [\n";
+        s += "              [1/1] Grant{}\n";
+        s += "            ]\n";
         s += "}";
 
         assertEquals(s, match.toString());

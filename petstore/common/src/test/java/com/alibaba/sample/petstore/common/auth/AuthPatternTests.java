@@ -65,6 +65,7 @@ public class AuthPatternTests {
 
     private void assertMatches(boolean matches, String s) {
         assertEquals(s, matches, pattern.matcher(s).find());
+        assertEquals(s, matches, pattern.getPattern().matcher(s).find());
     }
 
     @Test

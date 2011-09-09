@@ -47,20 +47,32 @@ public class PageAuthorizationServiceTests {
         return grant;
     }
 
+    @Test
+    public void noAction() {
+        assertTrue(auth.isAllow("/test.vm", "baobao", null, (String[]) null));
+        assertFalse(auth.isAllow("/user", "baobao", null, (String[]) null));
+    }
+
+    @Test
+    public void multiActions() {
+        assertTrue(auth.isAllow("/user", "baobao", null, "read", "write"));
+        assertFalse(auth.isAllow("/user", "baobao", null, "read", "write", "other"));
+    }
+
     /**
      * target不匹配。
      */
     @Test
-    public void testMatch() {
-        assertFalse(auth.isAllow("/", "baobao", null, null));
-        assertFalse(auth.isAllow("/notMatch", "baobao", null, null));
+    public void targetNotMatch() {
+        assertFalse(auth.isAllow("/", "baobao", null, (String[]) null));
+        assertFalse(auth.isAllow("/notMatch", "baobao", null, (String[]) null));
     }
 
     /**
      * 最长的匹配优先授权，相同的匹配以后面的为准。
      */
     @Test
-    public void testPriority() {
+    public void priority() {
         assertTrue(auth.isAllow("/user", "baobao", null, "read"));
         assertTrue(auth.isAllow("/user", "baobao", null, "write"));
     }
@@ -69,7 +81,7 @@ public class PageAuthorizationServiceTests {
      * target匹配，但用户未匹配。
      */
     @Test
-    public void testNonMatchedUser() {
+    public void nonMatchedUser() {
         assertFalse(auth.isAllow("/user", "other", null, "read"));
         assertFalse(auth.isAllow("/user", "other", null, "write"));
     }
@@ -78,7 +90,7 @@ public class PageAuthorizationServiceTests {
      * target匹配、用户匹配，但action不匹配。
      */
     @Test
-    public void testNonMatchedAction() {
+    public void nonMatchedAction() {
         assertFalse(auth.isAllow("/user", "baobao", null, "otherAction"));
     }
 
@@ -86,7 +98,7 @@ public class PageAuthorizationServiceTests {
      * 匹配role。
      */
     @Test
-    public void testRole() {
+    public void role() {
         assertTrue(auth.isAllow("/user/profile", "other", new String[] { "administrator" }, "read"));
         assertTrue(auth.isAllow("/user/profile/abc", "other", new String[] { "administrator" }, "write"));
     }
@@ -95,7 +107,7 @@ public class PageAuthorizationServiceTests {
      * 相对路径。
      */
     @Test
-    public void testRelativeTarget() {
+    public void relativeTarget() {
         assertTrue(auth.isAllow("/user/hello.vm", "other", null, "read"));
         assertTrue(auth.isAllow("/user/world.vm", "other", null, "write"));
     }
@@ -104,7 +116,7 @@ public class PageAuthorizationServiceTests {
      * 匿名访问。
      */
     @Test
-    public void testAnonymous() {
+    public void anonymous() {
         // * 不包括anonymous
         assertFalse(auth.isAllow("/user/public/hello", null, null, "action"));
         assertFalse(auth.isAllow("/user/public/hello", null, null, "read"));

@@ -40,11 +40,21 @@ public class PageAuthorizationServiceImpl extends AbstractService<PageAuthorizat
         }
     }
 
-    public boolean isAllow(String target, String userName, String[] roleNames, String action) {
+    public boolean isAllow(String target, String userName, String[] roleNames, String... actions) {
         userName = defaultIfNull(trimToNull(userName), ANONYMOUS_USER);
 
-        if (action != null && !action.startsWith("/")) {
-            action = "/" + action;
+        if (actions == null) {
+            actions = new String[] { null };
+        }
+
+        for (int i = 0; i < actions.length; i++) {
+            String action = trimToEmpty(actions[i]);
+
+            if (!action.startsWith("/")) {
+                action = "/" + action;
+            }
+
+            actions[i] = action;
         }
 
         String roleNameStr = null;
@@ -52,7 +62,7 @@ public class PageAuthorizationServiceImpl extends AbstractService<PageAuthorizat
 
         if (getLogger().isDebugEnabled()) {
             roleNameStr = ObjectUtil.toString(roleNames);
-            actionStr = action;
+            actionStr = ObjectUtil.toString(actions);
         }
 
         // 找出所有匹配的pattern，按匹配长度倒排序。
@@ -60,12 +70,23 @@ public class PageAuthorizationServiceImpl extends AbstractService<PageAuthorizat
 
         if (isEmptyArray(results)) {
             if (getLogger().isDebugEnabled()) {
-                logDebug("Access denied: no patterns matched", target, userName, roleNameStr, actionStr);
+                logDebug("Access denied: no patterns matched", target, userName, roleNameStr, actionStr, null);
             }
 
             return false;
         }
 
+        for (String action : actions) {
+            if (!isActionAllowed(results, target, userName, roleNames, roleNameStr, action)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isActionAllowed(MatchResult[] results, String target, String userName, String[] roleNames,
+                                    String roleNameStr, String action) {
         // 按顺序检查授权，直到role或user被allow或deny
         for (MatchResult result : results) {
             AuthMatch match = result.match;
@@ -106,9 +127,9 @@ public class PageAuthorizationServiceImpl extends AbstractService<PageAuthorizat
 
                 if (getLogger().isDebugEnabled()) {
                     if (allowed) {
-                        logDebug("Access permitted: " + match, target, userName, roleNameStr, actionStr);
+                        logDebug("Access permitted: ", target, userName, roleNameStr, action, match);
                     } else {
-                        logDebug("Access denied: " + match, target, userName, roleNameStr, actionStr);
+                        logDebug("Access denied: ", target, userName, roleNameStr, action, match);
                     }
                 }
 
@@ -118,19 +139,19 @@ public class PageAuthorizationServiceImpl extends AbstractService<PageAuthorizat
 
         // 默认为拒绝
         if (getLogger().isDebugEnabled()) {
-            logDebug("Access denied: user or role has not be authorized", target, userName, roleNameStr, actionStr);
+            logDebug("Access denied: user or role has not be authorized", target, userName, roleNameStr, action, null);
         }
 
         return false;
     }
 
-    public MatchResult[] getMatchResults(String target) {
+    private MatchResult[] getMatchResults(String target) {
         List<MatchResult> results = createArrayList(matches.size());
 
         // 匹配所有，注意，这里按倒序匹配，这样长度相同的匹配，以后面的为准。
         for (ListIterator<AuthMatch> i = matches.listIterator(matches.size()); i.hasPrevious();) {
             AuthMatch match = i.previous();
-            Matcher matcher = match.getTargetPattern().matcher(target);
+            Matcher matcher = match.getPattern().matcher(target);
 
             if (matcher.find()) {
                 MatchResult result = new MatchResult();
@@ -161,9 +182,15 @@ public class PageAuthorizationServiceImpl extends AbstractService<PageAuthorizat
     /**
      * 记录debug日志。
      */
-    private void logDebug(String message, String target, String userName, String roleNameStr, String actionStr) {
-        getLogger().debug("{}: target=\"{}\", user=\"{}\", roles=\"{}\", action=\"{}\"",
-                new Object[] { message, target, userName, roleNameStr, actionStr });
+    private void logDebug(String message, String target, String userName, String roleNameStr, String actionStr,
+                          AuthMatch match) {
+        if (match == null) {
+            getLogger().debug("{}: target=\"{}\", user=\"{}\", roles=\"{}\", action=\"{}\"",
+                    new Object[] { message, target, userName, roleNameStr, actionStr });
+        } else {
+            getLogger().debug("{}: target=\"{}\", user=\"{}\", roles=\"{}\", action=\"{}\"\n{}",
+                    new Object[] { message, target, userName, roleNameStr, actionStr, match });
+        }
     }
 
     private static class MatchResult implements Comparable<MatchResult> {

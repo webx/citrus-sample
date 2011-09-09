@@ -13,16 +13,16 @@ import com.alibaba.citrus.util.internal.ToStringBuilder.MapBuilder;
  */
 public class AuthMatch {
     private final static AuthGrant[] NO_GRANTS = new AuthGrant[0];
-    private final AuthPattern targetPattern;
+    private final AuthPattern pattern;
     private final AuthGrant[] grants;
 
     public AuthMatch(AuthPattern pattern, AuthGrant[] grants) {
-        this.targetPattern = assertNotNull(pattern, "pattern");
+        this.pattern = assertNotNull(pattern, "pattern");
         this.grants = defaultIfNull(grants, NO_GRANTS);
     }
 
-    public AuthPattern getTargetPattern() {
-        return targetPattern;
+    public AuthPattern getPattern() {
+        return pattern;
     }
 
     public AuthGrant[] getGrants() {
@@ -33,7 +33,7 @@ public class AuthMatch {
     public String toString() {
         MapBuilder mb = new MapBuilder();
 
-        mb.append("target", targetPattern);
+        mb.append("pattern", pattern);
         mb.append("grants", grants);
 
         return new ToStringBuilder().append("Match").append(mb).toString();
