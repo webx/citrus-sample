@@ -46,7 +46,7 @@ public class AuthGrant {
         return matches(allowedActions, action);
     }
 
-    public void setAllow(String allow) {
+    public void setAllow(String... allow) {
         setActions(allowedActions, allow);
     }
 
@@ -58,14 +58,14 @@ public class AuthGrant {
         return matches(deniedActions, action);
     }
 
-    public void setDeny(String deny) {
+    public void setDeny(String... deny) {
         setActions(deniedActions, deny);
     }
 
-    private void setActions(Set<AuthPattern> actionSet, String actions) {
+    private void setActions(Set<AuthPattern> actionSet, String[] actions) {
         actionSet.clear();
 
-        for (String action : defaultIfNull(split(actions, ", "), EMPTY_STRING_ARRAY)) {
+        for (String action : defaultIfNull(actions, EMPTY_STRING_ARRAY)) {
             actionSet.add(new AuthPattern(action));
         }
     }

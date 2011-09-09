@@ -1,6 +1,5 @@
 package com.alibaba.sample.petstore.common.auth.impl;
 
-import static com.alibaba.citrus.util.Assert.*;
 import static com.alibaba.citrus.util.ObjectUtil.*;
 
 import com.alibaba.citrus.util.internal.ToStringBuilder;
@@ -16,8 +15,8 @@ public class AuthMatch {
     private final AuthPattern pattern;
     private final AuthGrant[] grants;
 
-    public AuthMatch(AuthPattern pattern, AuthGrant[] grants) {
-        this.pattern = assertNotNull(pattern, "pattern");
+    public AuthMatch(String pattern, AuthGrant[] grants) {
+        this.pattern = new AuthPattern(pattern);
         this.grants = defaultIfNull(grants, NO_GRANTS);
     }
 

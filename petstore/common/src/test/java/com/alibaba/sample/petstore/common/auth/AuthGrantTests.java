@@ -38,13 +38,13 @@ public class AuthGrantTests {
     public void setAllow() {
         assertTrue(grant.getAllowedActions().isEmpty());
 
-        grant.setAllow(null);
+        grant.setAllow((String[]) null);
         assertTrue(grant.getAllowedActions().isEmpty());
 
-        grant.setAllow("aa, bb, cc");
+        grant.setAllow("aa", "bb", "cc");
         assertArrayEquals(new String[] { "/aa", "/bb", "/cc" }, toArray(grant.getAllowedActions()));
 
-        grant.setAllow(" bb, *, cc");
+        grant.setAllow(" bb", "*", "cc");
         assertArrayEquals(new String[] { "/bb", "/*", "/cc" }, toArray(grant.getAllowedActions()));
     }
 
@@ -52,13 +52,13 @@ public class AuthGrantTests {
     public void setDeny() {
         assertTrue(grant.getDeniedActions().isEmpty());
 
-        grant.setDeny(null);
+        grant.setDeny((String[]) null);
         assertTrue(grant.getDeniedActions().isEmpty());
 
-        grant.setDeny("aa, bb, cc");
+        grant.setDeny("aa", "bb", "cc");
         assertArrayEquals(new String[] { "/aa", "/bb", "/cc" }, toArray(grant.getDeniedActions()));
 
-        grant.setDeny(" bb, *, cc");
+        grant.setDeny(" bb", "*", "cc");
         assertArrayEquals(new String[] { "/bb", "/*", "/cc" }, toArray(grant.getDeniedActions()));
     }
 
@@ -81,7 +81,7 @@ public class AuthGrantTests {
         assertTrue(grant.isActionAllowed("/a"));
         assertTrue(grant.isActionAllowed("/"));
 
-        grant.setAllow("a, b");
+        grant.setAllow("a", "b");
 
         assertTrue(grant.isActionAllowed("/a/b"));
         assertTrue(grant.isActionAllowed("/b"));
@@ -103,7 +103,7 @@ public class AuthGrantTests {
         assertTrue(grant.isActionDenied("/a"));
         assertTrue(grant.isActionDenied("/"));
 
-        grant.setDeny("a, b");
+        grant.setDeny("a", "b");
 
         assertTrue(grant.isActionDenied("/a/b"));
         assertTrue(grant.isActionDenied("/b"));
@@ -119,8 +119,8 @@ public class AuthGrantTests {
 
     @Test
     public void toString_() {
-        grant.setAllow("a,b,c");
-        grant.setDeny("e,f,g");
+        grant.setAllow("a", "b", "c");
+        grant.setDeny("e", "f", "g");
         grant.setUser("user");
         grant.setRole("role");
 

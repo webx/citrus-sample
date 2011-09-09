@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import com.alibaba.sample.petstore.common.auth.impl.AuthGrant;
 import com.alibaba.sample.petstore.common.auth.impl.AuthMatch;
-import com.alibaba.sample.petstore.common.auth.impl.AuthPattern;
 
 public class AuthMatchTests {
     private AuthMatch match;
@@ -18,19 +17,19 @@ public class AuthMatchTests {
 
     @Test
     public void getPattern() {
-        match = new AuthMatch(new AuthPattern("test"), new AuthGrant[0]);
+        match = new AuthMatch("test", new AuthGrant[0]);
         assertEquals("/test", match.getPattern().getPatternName());
     }
 
     @Test
     public void getGrants() {
-        match = new AuthMatch(new AuthPattern("test"), new AuthGrant[] { new AuthGrant() });
+        match = new AuthMatch("test", new AuthGrant[] { new AuthGrant() });
         assertEquals(1, match.getGrants().length);
     }
 
     @Test
     public void toString_() {
-        match = new AuthMatch(new AuthPattern("test"), new AuthGrant[] { new AuthGrant() });
+        match = new AuthMatch("test", new AuthGrant[] { new AuthGrant() });
 
         String s = "";
 

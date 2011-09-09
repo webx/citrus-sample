@@ -1,5 +1,6 @@
 package com.alibaba.sample.petstore.common.auth;
 
+import static com.alibaba.citrus.util.StringUtil.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -7,7 +8,6 @@ import org.junit.Test;
 
 import com.alibaba.sample.petstore.common.auth.impl.AuthGrant;
 import com.alibaba.sample.petstore.common.auth.impl.AuthMatch;
-import com.alibaba.sample.petstore.common.auth.impl.AuthPattern;
 import com.alibaba.sample.petstore.common.auth.impl.PageAuthorizationServiceImpl;
 
 public class PageAuthorizationServiceTests {
@@ -33,7 +33,7 @@ public class PageAuthorizationServiceTests {
     }
 
     private AuthMatch match(String target, AuthGrant... grants) {
-        return new AuthMatch(new AuthPattern(target), grants);
+        return new AuthMatch(target, grants);
     }
 
     private AuthGrant grant(String user, String role, String allow, String deny) {
@@ -41,8 +41,8 @@ public class PageAuthorizationServiceTests {
 
         grant.setUser(user);
         grant.setRole(role);
-        grant.setAllow(allow);
-        grant.setDeny(deny);
+        grant.setAllow(split(allow, ", "));
+        grant.setDeny(split(deny, ", "));
 
         return grant;
     }
