@@ -1,12 +1,25 @@
 package com.alibaba.sample.petstore.biz.impl;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.commons.fileupload.FileItem;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.dao.DataIntegrityViolationException;
 
+import com.alibaba.citrus.util.io.StreamUtil;
+import com.alibaba.sample.petstore.biz.DuplicatedProductException;
 import com.alibaba.sample.petstore.biz.StoreManager;
+import com.alibaba.sample.petstore.biz.StoreManagerException;
 import com.alibaba.sample.petstore.dal.dao.CategoryDao;
 import com.alibaba.sample.petstore.dal.dao.ProductDao;
 import com.alibaba.sample.petstore.dal.dao.ProductItemDao;
@@ -16,7 +29,9 @@ import com.alibaba.sample.petstore.dal.dataobject.Category;
 import com.alibaba.sample.petstore.dal.dataobject.Product;
 import com.alibaba.sample.petstore.dal.dataobject.ProductItem;
 
-public class StoreManagerImpl implements StoreManager {
+public class StoreManagerImpl implements StoreManager, InitializingBean {
+    private final static String UPLOAD_DIR = "/petstore/upload";
+
     @Autowired
     private CategoryDao categoryDao;
 
@@ -25,6 +40,27 @@ public class StoreManagerImpl implements StoreManager {
 
     @Autowired
     private ProductItemDao productItemDao;
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+
+    private File uploadDir;
+
+    public void afterPropertiesSet() {
+        try {
+            uploadDir = resourceLoader.getResource(UPLOAD_DIR).getFile();
+
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            if (!uploadDir.isDirectory()) {
+                throw new IOException("Could not create directory " + uploadDir.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            throw new StoreManagerException("Could not get upload directory from ResourceLoader: " + UPLOAD_DIR);
+        }
+    }
 
     public List<Category> getAllCategories() {
         List<Category> catList = categoryDao.getCategoryList();
@@ -93,5 +129,56 @@ public class StoreManagerImpl implements StoreManager {
         });
 
         return cart;
+    }
+
+    public Category getCategory(String categoryId) {
+        return categoryDao.getCategoryById(categoryId);
+    }
+
+    public void addProduct(Product product, String categoryId, FileItem picture) throws StoreManagerException {
+        String imageFileName;
+
+        try {
+            imageFileName = getPictureName(picture);
+        } catch (IOException e) {
+            throw new StoreManagerException(e);
+        }
+
+        product.setLogo(imageFileName);
+        product.setCategoryId(categoryId);
+
+        try {
+            productDao.insertProduct(product);
+        } catch (DataIntegrityViolationException e) {
+            throw new DuplicatedProductException(product.getProductId());
+        }
+    }
+
+    private String getPictureName(FileItem picture) throws IOException {
+        String imageFileName = null;
+
+        if (picture != null) {
+            String fileName = picture.getName().replace('\\', '/');
+
+            fileName = fileName.substring(fileName.lastIndexOf("/") + 1);
+
+            String ext = "";
+            int index = fileName.lastIndexOf(".");
+
+            if (index > 0) {
+                ext = fileName.substring(index);
+            }
+
+            File imageFile = File.createTempFile("image_", ext, uploadDir);
+
+            imageFileName = imageFile.getName();
+
+            InputStream is = picture.getInputStream();
+            OutputStream os = new BufferedOutputStream(new FileOutputStream(imageFile));
+
+            StreamUtil.io(is, os, true, true);
+        }
+
+        return imageFileName;
     }
 }

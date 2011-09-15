@@ -1,6 +1,6 @@
 package com.alibaba.sample.petstore.biz;
 
-public class DuplicatedProductException extends AdminManagerException {
+public class DuplicatedProductException extends StoreManagerException {
     private static final long serialVersionUID = 8001823899691787517L;
 
     public DuplicatedProductException() {
