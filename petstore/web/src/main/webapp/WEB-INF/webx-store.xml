@@ -20,7 +20,7 @@
     <!-- 共享配置。 -->
     <beans:import resource="common/webx-component-and-root.xml" />
     <beans:import resource="common/webx-component.xml" />
-    
+
     <!-- 执行管道。 -->
     <beans:import resource="common/pipeline.xml" />
 
@@ -34,5 +34,14 @@
                 packages="com.alibaba.sample.petstore.web.store.module.*" />
         </ml-factories:class-modules>
     </services:module-loader>
+
+    <!-- 页面授权。-->
+    <services:page-authorization xmlns="http://www.alibaba.com/schema/services">
+        <match target="/">
+            <grant user="*, anonymous">
+                <allow>*</allow>
+            </grant>
+        </match>
+    </services:page-authorization>
 
 </beans:beans>

@@ -41,4 +41,21 @@
         </ml-factories:class-modules>
     </services:module-loader>
 
+    <!-- 页面授权。-->
+    <services:page-authorization xmlns="http://www.alibaba.com/schema/services">
+        <match target="/">
+            <grant user="*">
+                <allow>*</allow>
+            </grant>
+            <grant user="anonymous">
+                <deny>*</deny>
+            </grant>
+        </match>
+        <match target="/login, /register">
+            <grant user="anonymous">
+                <allow>*</allow>
+            </grant>
+        </match>
+    </services:page-authorization>
+
 </beans:beans>
