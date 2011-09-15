@@ -2,7 +2,7 @@
     #if (!$field.valid) $field.message #end
 #end
 
-<form action="$adminModule.setTarget("addProduct.vm")" method="post" enctype="multipart/form-data">
+<form action="$storeModule.setTarget("edit/addProduct.vm")" method="post" enctype="multipart/form-data">
   $csrfToken.hiddenField
   <input type="hidden" name="action" value="add_product_action"/>
   <input type="hidden" name="categoryId" value="$!category.categoryId"/>

@@ -33,7 +33,7 @@ public class RegisterAction {
             PetstoreUser petstoreUser = (PetstoreUser) session.getAttribute(WebConstant.PETSTORE_USER_SESSION_KEY);
 
             if (petstoreUser == null || petstoreUser.hasLoggedIn()) {
-                petstoreUser = new PetstoreUser(WebConstant.ACCESS_STORE_REALM);
+                petstoreUser = new PetstoreUser();
             }
 
             petstoreUser.upgrade(user.getUserId());

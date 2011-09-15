@@ -37,11 +37,6 @@
         <!-- 使用方法： link.setTarget('target.jhtml')                        -->
         <!--                  .addQueryData('name', 'value')                  -->
         <!-- ================================================================ -->
-        <!-- admin -->
-        <turbine-uri id="adminModule" exposed="true" extends="petstoreServer">
-            <componentPath>/admin</componentPath>
-        </turbine-uri>
-        <turbine-content-uri id="adminContent" exposed="true" extends="adminModule" />
         <!-- home -->
         <turbine-uri id="homeModule" exposed="true" extends="petstoreServer">
             <componentPath>/</componentPath>

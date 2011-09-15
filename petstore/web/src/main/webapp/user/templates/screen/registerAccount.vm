@@ -104,7 +104,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
         <tr>
           <td nowrap="nowrap">国家： </td>
           <td>
-            #select ($contactGroup.country.key $bundle.get("/petstore/bundle/select-box").country $contactGroup.country.value "-- 请选择国家 --")
+            #select ($contactGroup.country.key $selectCountries $contactGroup.country.value "-- 请选择国家 --")
           </td>
           <td class="errorMessage">
             #registerAccountMessage ($contactGroup.country)
@@ -143,7 +143,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
         <tr>
           <td nowrap="nowrap">信用卡类型：</td>
           <td width="100%">
-            #select ($creditGroup.creditCardType.key $bundle.get("/petstore/bundle/select-box").creditCardType $creditGroup.creditCardType.value "-- 请选择信用卡类型 --")
+            #select ($creditGroup.creditCardType.key $selectCreditCardType $creditGroup.creditCardType.value "-- 请选择信用卡类型 --")
           </td>
           <td class="errorMessage">
             #registerAccountMessage ($creditGroup.creditCardType)
@@ -152,9 +152,9 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
         <tr>
           <td nowrap="nowrap">信用卡过期时间：</td>
           <td width="100%" nowrap>
-            #select ($creditGroup.creditCardExpiryMonth.key $bundle.get("/petstore/bundle/select-box").month $creditGroup.creditCardExpiryMonth.value "-- 请选择月份 --")
+            #select ($creditGroup.creditCardExpiryMonth.key $selectMonth $creditGroup.creditCardExpiryMonth.value "-- 请选择月份 --")
             /
-            #select ($creditGroup.creditCardExpiryYear.key $bundle.get("/petstore/bundle/select-box").year $creditGroup.creditCardExpiryYear.value "-- 请选择年份 --")
+            #select ($creditGroup.creditCardExpiryYear.key $selectYear $creditGroup.creditCardExpiryYear.value "-- 请选择年份 --")
           </td>
           <td class="errorMessage">
             #registerAccountMessage ($creditGroup.creditCardExpiryMonth) <br>

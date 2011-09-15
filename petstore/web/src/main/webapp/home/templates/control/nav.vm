@@ -29,7 +29,7 @@
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$adminModule.setTarget("categoryList.vm")">库存管理</a>
+    <a href="$storeModule.setTarget("edit/categoryList.vm")">库存管理</a>
   </td>
 </tr>
 </table>

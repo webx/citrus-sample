@@ -13,10 +13,10 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 					<td class="subcategoryName">
 						#foreach ( $prod in $cat.productList)
 							#if($velocityCount > 1) | #end
-							<a href="$adminModule.setTarget("itemList.vm").addQueryData("productId", $prod.productId)" title="$prod.description">$prod.name</a>
+							<a href="$storeModule.setTarget("edit/itemList.vm").addQueryData("productId", $prod.productId)" title="$prod.description">$prod.name</a>
 						#end
 					</td>
-					<td align="right"><input type="button" value="添加产品" onclick="location='$adminModule.setTarget("addProduct.vm").addQueryData("categoryId", $cat.categoryId)'"/></td>
+					<td align="right"><input type="button" value="添加产品" onclick="location='$storeModule.setTarget("edit/addProduct.vm").addQueryData("categoryId", $cat.categoryId)'"/></td>
 				</tr>
 			</table>
 		</td>

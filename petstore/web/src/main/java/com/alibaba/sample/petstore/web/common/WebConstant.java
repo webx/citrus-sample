@@ -6,12 +6,6 @@ package com.alibaba.sample.petstore.web.common;
  * @author Michael Zhou
  */
 public interface WebConstant {
-    /** Petstore前台的ACL realm。 */
-    String ACCESS_STORE_REALM = "store";
-
-    /** Petstore后台的ACL realm。 */
-    String ACCESS_ADMIN_REALM = "admin";
-
     /** 在session中保存petstore用户对象的key。 */
     String PETSTORE_USER_SESSION_KEY = "petstoreUser";
 

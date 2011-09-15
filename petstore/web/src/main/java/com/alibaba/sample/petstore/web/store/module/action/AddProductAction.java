@@ -24,7 +24,7 @@ public class AddProductAction {
 
         try {
             storeManager.addProduct(product, catId, picture);
-            nav.redirectTo("adminModule").withTarget("categoryList.vm");
+            nav.redirectTo("storeModule").withTarget("edit/categoryList.vm");
         } catch (DuplicatedProductException e) {
             group.getField("productId").setMessage("duplicatedProductId");
         }
