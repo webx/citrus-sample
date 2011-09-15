@@ -40,6 +40,40 @@
                 </custom-error>
             </services:field>
         </services:group>
+
+        <services:group name="addProduct" extends="csrfTokenCheckGroup">
+            <services:field name="productId" displayName="产品ID">
+                <required-validator>
+                    <message>必须填写${displayName}</message>
+                </required-validator>
+                <custom-error id="duplicatedProductId">
+                    <message>产品ID和已有产品冲突</message>
+                </custom-error>
+            </services:field>
+            <services:field name="name" displayName="产品名称">
+                <required-validator>
+                    <message>必须填写${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="description" displayName="产品描述">
+                <required-validator>
+                    <message>必须填写${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="picture" displayName="产品图片">
+                <required-validator>
+                    <message>必须上传产品图片</message>
+                </required-validator>
+                <uploaded-file-validator
+                    contentType="image/gif, image/jpeg, image/pjpeg, image/jpg, image/png">
+                    <message>${displayName}不是合法的图片文件</message>
+                </uploaded-file-validator>
+                <uploaded-file-validator maxSize="100K">
+                    <message>${displayName}不能超过${maxSize}字节</message>
+                </uploaded-file-validator>
+            </services:field>
+        </services:group>
+
     </services:form>
 
 </beans:beans>

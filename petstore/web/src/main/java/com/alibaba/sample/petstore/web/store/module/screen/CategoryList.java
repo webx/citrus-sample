@@ -1,4 +1,4 @@
-package com.alibaba.sample.petstore.web.admin.module.screen;
+package com.alibaba.sample.petstore.web.store.module.screen;
 
 import java.util.List;
 
