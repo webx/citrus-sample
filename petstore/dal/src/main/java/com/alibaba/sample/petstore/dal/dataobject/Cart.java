@@ -36,7 +36,7 @@ public class Cart implements Serializable {
         cartItem.incrementQuantity();
     }
 
-    public void removeProductItem(String itemId) {
+    public void removeCartItem(String itemId) {
         cartItems.remove(itemId);
     }
 

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:services="http://www.alibaba.com/schema/services"
+    xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
+    xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
+    xmlns="http://www.alibaba.com/schema/services/form/validators"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
+        http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+    <services:form postOnlyByDefault="true">
+        <!--
+          - ===============================================
+          - 用来检查csrf token。
+          - ===============================================
+         -->
+        <services:group name="csrfTokenCheckGroup">
+            <services:field name="csrfToken">
+                <csrf-validator>
+                    <message>提交的数据已过期</message>
+                </csrf-validator>
+            </services:field>
+        </services:group>
+        <!--
+          - ===============================================
+          - 登录表单
+          - ===============================================
+         -->
+        <services:group name="login" extends="csrfTokenCheckGroup">
+            <services:field name="loginError">
+                <custom-error id="invalidUserOrPassword">
+                    <message>用户名或密码不正确,请重新输入</message>
+                </custom-error>
+            </services:field>
+            <services:field name="userId" displayName="登录名">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="password" displayName="密码">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+        </services:group>
+        <!--
+          - ===============================================
+          - 注册表单
+          - ===============================================
+         -->
+        <services:group name="register" extends="csrfTokenCheckGroup">
+            <services:field name="registerError">
+                <custom-error id="duplicatedUserId">
+                    <message>登录名“${userId}”已经被人注掉了，请尝试另一个名字</message>
+                </custom-error>
+            </services:field>
+            <services:field name="userId" displayName="登录名">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+                <regexp-validator pattern="^[A-Za-z_][A-Za-z_0-9]*$">
+                    <message>${displayName} 必须由字母、数字、下划线构成</message>
+                </regexp-validator>
+                <string-length-validator minLength="4" maxLength="10">
+                    <message>${displayName} 最少必须由${minLength}个字组成，最多不能超过${maxLength}个字</message>
+                </string-length-validator>
+            </services:field>
+            <services:field name="password" displayName="密码">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+                <string-length-validator minLength="4" maxLength="10">
+                    <message>${displayName} 最少必须由${minLength}个字组成，最多不能超过${maxLength}个字</message>
+                </string-length-validator>
+                <string-compare-validator notEqualTo="userId">
+                    <message>${displayName} 不能与 ${userId.displayName} 相同</message>
+                </string-compare-validator>
+            </services:field>
+            <services:field name="passwordConfirm" displayName="密码验证">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+                <string-compare-validator equalTo="password">
+                    <message>${displayName} 必须和 ${password.displayName} 相同</message>
+                </string-compare-validator>
+            </services:field>
+        </services:group>
+        <!--
+          - ===============================================
+          - 注册account信息表单
+          - ===============================================
+         -->
+        <services:group name="registerContact" extends="csrfTokenCheckGroup">
+            <services:field name="firstName" displayName="名字" propertyName="account.firstName">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="lastName" displayName="姓氏" propertyName="account.lastName">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="address1" displayName="地址" propertyName="account.address1">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="address2" displayName="地址" propertyName="account.address2"> </services:field>
+            <services:field name="city" displayName="城市" propertyName="account.city">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="zip" displayName="邮编" propertyName="account.zip">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+                <number-validator>
+                    <message>${displayName} 必须是数字</message>
+                </number-validator>
+            </services:field>
+            <services:field name="state" displayName="省份" propertyName="account.state">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="country" displayName="国家" propertyName="account.country">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="phone" displayName="电话" propertyName="account.phone">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="email" displayName="电子邮件" propertyName="account.email">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+                <mail-address-validator>
+                    <message>${displayName} 必须是合法的e-mail</message>
+                </mail-address-validator>
+            </services:field>
+        </services:group>
+        <!--
+          - ===============================================
+          - 注册credit信息表单
+          - ===============================================
+         -->
+        <services:group name="registerCredit" extends="csrfTokenCheckGroup">
+            <services:field name="creditCardNumber" displayName="信用卡号码"
+                propertyName="account.creditCardNumber">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+                <number-validator>
+                    <message>${displayName} 必须是数字</message>
+                </number-validator>
+            </services:field>
+            <services:field name="creditCardType" displayName="信用卡类型"
+                propertyName="account.creditCardType">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="creditCardExpiryMonth" displayName="信用卡过期月份"
+                propertyName="account.creditCardExpiryMonth">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="creditCardExpiryYear" displayName="信用卡过期年份"
+                propertyName="account.creditCardExpiryYear">
+                <required-validator>
+                    <message>必须填写 ${displayName}</message>
+                </required-validator>
+            </services:field>
+        </services:group>
+    </services:form>
+
+</beans:beans>

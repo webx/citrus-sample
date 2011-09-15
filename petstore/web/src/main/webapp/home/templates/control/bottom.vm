@@ -1,0 +1,19 @@
+<hr/>
+<div align="center">
+<table width="1" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="middle">
+    <td nowrap="true" align="center">
+    <p>
+      <strong>网上贸易 尽在阿里巴巴： <A href="http://china.alibaba.com/" target=_blank>中国站</A> | <A href="http://www.alibaba.com/" target=_blank>国际站</A> | <A href="http://japan.alibaba.com/" target=_blank>日文站</A> | <A href="http://www.taobao.com" target=_blank>淘宝站</A> | <A href="http://www.alipay.com" target=_blank>支付宝</A></strong>
+    </p>
+    <p>
+      Copyright &copy; 1999-2005 Alibaba.com Corporation and its licensors. All rights reserved.
+    </p>
+    </td>
+    <td><img src="$homeContent.getURI("images/dot_transparent.png")" width="30"/></td>
+    <td><a href="$homeModule.setTarget("redirect.do").addQueryData("location", $alibabaSite)" target=_blank><img src="$homeContent.getURI("images/logo_alibaba.gif")"></a></td>
+    <td><img src="$homeContent.getURI("images/dot_transparent.png")" width="30"/></td>
+    <td><a href="$homeModule.setTarget("redirect.do").addQueryData("location", $toolkitArchLink)" target=_blank><img src="$homeContent.getURI("images/logo_webx_small.png")"></a></td>
+  </tr>
+</table>
+</div>

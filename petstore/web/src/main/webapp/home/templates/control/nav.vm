@@ -1,0 +1,35 @@
+<table cellspacing=0 cellpadding=0 width="100%" border=0>
+<tr valign="bottom">
+  <td class="shortcut">
+    <a href="$petstoreRegisterLink">注册</a>
+  </td>
+  <td class="shortcut">
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  </td>
+  <td class="shortcut">
+    #if ($petstoreUser.hasLoggedIn())
+      <a href="$petstoreLogoutLink">退出 $petstoreUser.id</a>
+    #else
+      <a href="$petstoreLoginLink">登录</a>
+    #end
+  </td>
+  <td class="shortcut">
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  </td>
+  <td class="shortcut">
+    <a href="$userModule.setTarget("account.vm")">用户信息</a>
+  </td>
+  <td class="shortcut">
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  </td>
+  <td class="shortcut">
+    <a href="$storeModule.setTarget("viewCart.vm")"><img src="$homeContent.getURI("images/cart.png")"/>我的购物车</a>
+  </td>
+  <td class="shortcut">
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  </td>
+  <td class="shortcut">
+    <a href="$adminModule.setTarget("categoryList.vm")">库存管理</a>
+  </td>
+</tr>
+</table>

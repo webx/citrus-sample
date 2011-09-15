@@ -1,0 +1,72 @@
+#macro (addProductMessage $field)
+    #if (!$field.valid) $field.message #end
+#end
+
+<form action="$adminModule.setTarget("addProduct.vm")" method="post" enctype="multipart/form-data">
+  $csrfToken.hiddenField
+  <input type="hidden" name="action" value="add_product_action"/>
+  <input type="hidden" name="categoryId" value="$!category.categoryId"/>
+
+  #set ($group = $form.addProduct.defaultInstance)
+
+  <table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
+    <tr align="center">
+      <td><strong>添加产品</strong><br />
+        <hr/>
+      </td>
+    </tr>
+    <tr align="center">
+      <td><table border="0" cellpadding="0" cellspacing="10" width="10">
+        <tr>
+          <td nowrap="nowrap">产品类别：</td>
+          <td width="100%" colspan="2">
+            $category.name
+          </td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap">产品ID：</td>
+          <td width="100%">
+            <input type="text" name="$group.productId.key" value="$!group.productId.value"/>
+          </td>
+          <td class="errorMessage">
+            #addProductMessage ($group.productId)
+          </td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap">产品名称：</td>
+          <td width="100%">
+            <input type="text" name="$group.name.key" value="$!group.name.value"/>
+          </td>
+          <td class="errorMessage">
+            #addProductMessage ($group.name)
+          </td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap">产品描述： </td>
+          <td>
+            <textarea name="$group.description.key">$!group.description.value</textarea>
+          </td>
+          <td class="errorMessage">
+            #addProductMessage ($group.description)
+          </td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap">产品图片： </td>
+          <td>
+            <input type="file" name="$group.picture.key" value="$!group.picture.value"/>
+          </td>
+          <td class="errorMessage">
+            #addProductMessage ($group.picture)
+          </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><hr/></td>
+    </tr>
+    <tr align="center">
+      <td><input type="submit" name="event_submit_do_add" value="添加"/></td>
+    </tr>
+  </table>
+
+</form>

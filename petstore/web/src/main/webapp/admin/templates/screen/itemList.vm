@@ -1,0 +1,33 @@
+$page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+	<td rowspan="2" width="1%"><img src="$storeImageContent.getURI("$product.logo")"></td>
+	<td class="categoryName">$category.name</td>
+  </tr>
+  <tr>
+	<td colspan="2" class="subcategoryName">$product.name - $product.description</td>
+  </tr>
+  <tr>
+	<td colspan="2">
+		<table width="100%" border="0" cellspacing="1" cellpadding="10">
+			<tr bgcolor="#DDDDDD">
+				<th>ID</th>
+				<th>单价</th>
+				<th>描述</th>
+				<th>库存数量</th>
+				<th>&nbsp;</th>
+			</tr>
+        #foreach($item in $items)
+			<tr onmouseenter="this.style.backgroundColor='powderblue'" onmouseleave="this.style.backgroundColor=''">
+				<td>$item.itemId</td>
+				<td>$item.listPrice</td>
+				<td>$item.attribute1</td>
+				<td>$item.quantity</td>
+				<td align="right">[<a href="#" onclick="alert('未实现')">修改</a>]</td>
+			</tr>
+		#end
+		</table>
+	</td>
+  </tr>
+</table>

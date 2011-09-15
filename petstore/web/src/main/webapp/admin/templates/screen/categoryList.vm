@@ -1,0 +1,25 @@
+$page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
+
+#foreach ($cat in $cats)
+    <table width="100%"  border="0" cellspacing="0" cellpadding="10">
+      <tr>
+        <td><img src="$storeContent.getURI("images/$cat.logo")"></td>
+        <td width="100%">
+			<table width="100%"  border="0" cellspacing="0" cellpadding="5">
+				<tr>
+					<td colspan="2" class="categoryName">$cat.name</td>
+				</tr>
+				<tr>
+					<td class="subcategoryName">
+						#foreach ( $prod in $cat.productList)
+							#if($velocityCount > 1) | #end
+							<a href="$adminModule.setTarget("itemList.vm").addQueryData("productId", $prod.productId)" title="$prod.description">$prod.name</a>
+						#end
+					</td>
+					<td align="right"><input type="button" value="Ìí¼Ó²úÆ·" onclick="location='$adminModule.setTarget("addProduct.vm").addQueryData("categoryId", $cat.categoryId)'"/></td>
+				</tr>
+			</table>
+		</td>
+      </tr>
+    </table>
+#end

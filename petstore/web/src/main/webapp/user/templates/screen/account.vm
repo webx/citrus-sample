@@ -1,0 +1,97 @@
+$page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
+
+<table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
+  <tr align="center">
+    <td><strong>用户信息</strong><br />
+      <hr/>
+    </td>
+  </tr>
+  <tr align="center">
+    <td><table border="0" cellpadding="0" cellspacing="10" width="10">
+      <tr>
+        <td colspan="3" class="subtitle">基本信息</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">用户名：</td>
+        <td width="100%">$user.userId</td>
+        <td class="errorMessage">&nbsp;</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">密码：</td>
+        <td width="100%">********</td>
+        <td class="errorMessage">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="subtitle">联系信息</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">姓氏：</td>
+        <td width="100%">$!user.account.lastName</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">名字：</td>
+        <td>$!user.account.firstName</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">地址： </td>
+        <td>$!user.account.address1</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">&nbsp;</td>
+        <td>$!user.account.address2</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">邮编： </td>
+        <td>$!user.account.zip</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">城市： </td>
+        <td>$!user.account.city</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">省份： </td>
+        <td>$!user.account.state</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">国家： </td>
+        <td>$!bundle.get("/petstore/bundle/select-box").country.get($user.account.country)</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">电话： </td>
+        <td>$!user.account.phone</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">电子邮件： </td>
+        <td>$!user.account.email</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="subtitle">信用卡信息</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">信用卡号：</td>
+        <td width="100%">$!user.account.creditCardNumber</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">信用卡类型：</td>
+        <td width="100%">$!bundle.get("/petstore/bundle/select-box").creditCardType.get($user.account.creditCardType)</td>
+      </tr>
+      <tr>
+        <td nowrap="nowrap">信用卡过期时间：</td>
+        <td width="100%" nowrap>
+          $bundle.get("/petstore/bundle/select-box").month.get("$user.account.creditCardExpiryMonth")
+          /
+          $bundle.get("/petstore/bundle/select-box").year.get("$user.account.creditCardExpiryYear")
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><hr/></td>
+  </tr>
+  <tr align="center">
+    <td>
+      <input type="button" value="返回" onclick="location='$petstoreHomeLink'"/>
+      <input type="button" value="修改用户信息" onclick="location='$petstoreRegisterAccountLink'"/>
+    </td>
+  </tr>
+</table>

@@ -14,8 +14,6 @@
 
         <resource-alias pattern="/petstore/dal" name="/classpath/petstore/dal" />
 
-        <resource-alias pattern="/petstore/biz" name="/classpath/petstore/biz" />
-
         <resource-alias pattern="/petstore/upload" name="/destdir/upload" />
 
     </services:resource-loading>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+#showHead ("Petstore Sample")
+<link href="$homeContent.getURI("css/petstore-common.css")" rel="stylesheet" type="text/css">
+<link href="$homeContent.getURI("css/petstore-homepage.css")" rel="stylesheet" type="text/css">
+</head>
+
+<body #bodyAttributes ()>
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>$control.setTemplate("home:top.vm")</td>
+  </tr>
+  <tr>
+    <td align="center">
+		<table width="80%" border="0" cellspacing="0" cellpadding="0" class="box">
+			<tr>
+				<td>$screen_placeholder</td>
+			</tr>
+		</table>
+	</td>
+  </tr>
+  <tr>
+    <td>$control.setTemplate("home:bottom.vm")</td>
+  </tr>
+</table>
+
+</body>
+</html>

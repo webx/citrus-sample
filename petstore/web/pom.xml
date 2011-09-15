@@ -33,8 +33,8 @@
             <artifactId>petstore-biz</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.citrus.sample</groupId>
-            <artifactId>petstore-common</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
         </dependency>
     </dependencies>
     <build>

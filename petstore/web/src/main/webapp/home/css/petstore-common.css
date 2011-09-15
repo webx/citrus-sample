@@ -1,0 +1,39 @@
+body,p,th,td,input,select,textarea{
+    font-size:12px;
+    color:#111111;
+}
+body{
+        margin: 20px;
+        padding: 0px 10px 0px 10px;
+        text-align:center;
+}
+table{
+        text-align:left;
+}
+p{
+        margin: 15px 0px 15px 0px;
+        padding: 3px 0px 3px 0px;
+}
+hr{
+        border:#000000 0px solid;
+        border-top: #D1D7DC 1px solid;
+        height: 0px;
+}
+
+img{
+        border:0px;
+}
+
+form{
+        margin:0;
+        padding:0;
+}
+
+a:Link,a:Visited{
+        color:#0044DD;
+        text-decoration:none;
+}
+a:Hover,a:Active{
+        color:#FF5500;
+        text-decoration:underline;
+}

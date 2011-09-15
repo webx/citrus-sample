@@ -26,7 +26,6 @@
         <module>dal</module>
         <module>biz</module>
         <module>web</module>
-        <module>common</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -36,22 +35,17 @@
             <dependency>
                 <groupId>com.alibaba.citrus.sample</groupId>
                 <artifactId>petstore-dal</artifactId>
-                <version>${pom.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.citrus.sample</groupId>
                 <artifactId>petstore-biz</artifactId>
-                <version>${pom.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.citrus.sample</groupId>
                 <artifactId>petstore-web</artifactId>
-                <version>${pom.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.citrus.sample</groupId>
-                <artifactId>petstore-common</artifactId>
-                <version>${pom.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <!-- ======================================== -->
             <!-- WEBX依赖 -->
@@ -156,6 +150,12 @@
             <!-- ======================================== -->
             <!-- 其它第三方依赖 -->
             <!-- ======================================== -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
             <dependency>
                 <groupId>org.apache.ibatis</groupId>
                 <artifactId>ibatis-sqlmap</artifactId>

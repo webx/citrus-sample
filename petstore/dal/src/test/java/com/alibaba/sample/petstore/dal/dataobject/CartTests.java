@@ -68,13 +68,13 @@ public class CartTests {
 
     @Test
     public void removeProductItem() {
-        cart.removeProductItem("item1");
+        cart.removeCartItem("item1");
         assertEquals(0, cart.getCartItemList().size());
 
         cart.addCartItem("item1");
         assertEquals(1, cart.getCartItemList().size());
 
-        cart.removeProductItem("item1");
+        cart.removeCartItem("item1");
         assertEquals(0, cart.getCartItemList().size());
     }
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:services="http://www.alibaba.com/schema/services"
+    xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
+    xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
+    xmlns="http://www.alibaba.com/schema/services/form/validators"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
+        http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+    <services:form>
+        <!--
+          - ===============================================
+          - 用来检查csrf token。
+          - ===============================================
+         -->
+        <services:group name="csrfTokenCheckGroup">
+            <services:field name="csrfToken">
+                <csrf-validator>
+                    <message>提交的数据已过期</message>
+                </csrf-validator>
+            </services:field>
+        </services:group>
+
+        <services:group name="addProduct" extends="csrfTokenCheckGroup">
+            <services:field name="productId" displayName="产品ID">
+                <required-validator>
+                    <message>必须填写${displayName}</message>
+                </required-validator>
+                <custom-error id="duplicatedProductId">
+                    <message>产品ID和已有产品冲突</message>
+                </custom-error>
+            </services:field>
+            <services:field name="name" displayName="产品名称">
+                <required-validator>
+                    <message>必须填写${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="description" displayName="产品描述">
+                <required-validator>
+                    <message>必须填写${displayName}</message>
+                </required-validator>
+            </services:field>
+            <services:field name="picture" displayName="产品图片">
+                <required-validator>
+                    <message>必须上传产品图片</message>
+                </required-validator>
+                <uploaded-file-validator
+                    contentType="image/gif, image/jpeg, image/pjpeg, image/jpg, image/png">
+                    <message>${displayName}不是合法的图片文件</message>
+                </uploaded-file-validator>
+                <uploaded-file-validator maxSize="100K">
+                    <message>${displayName}不能超过${maxSize}字节</message>
+                </uploaded-file-validator>
+            </services:field>
+        </services:group>
+    </services:form>
+
+</beans:beans>

@@ -1,0 +1,73 @@
+$page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+	<td class="subcategoryName"><img src="$homeContent.getURI("images/cart.png")"/> 我的购物车</td>
+  </tr>
+  <tr>
+	<td>
+	<form action="$storeModule.setTarget("viewCart.vm")" method="post">
+        $csrfToken.hiddenField
+
+		<table width="100%" border="0" cellspacing="1" cellpadding="10">
+			<tr bgcolor="#DDDDDD">
+				<th width="1%">图片</th>
+				<th>ID</th>
+				<th>名称</th>
+				<th>描述</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th align="right">小计</th>
+				<th>&nbsp;</th>
+			</tr>
+
+		#if ($cart.cartItemList.empty)
+			<tr>
+				<td colspan="10">购物车是空的。</td>
+			</tr>
+		#else
+			#foreach($cartItem in $cart.cartItemList)
+			#set ($item = $cartItem.item)
+			#set ($group = $form.cartItem.getInstance($item.itemId))
+
+			$group.mapTo($cartItem)
+
+			<tr onmouseenter="this.style.backgroundColor='powderblue'" onmouseleave="this.style.backgroundColor=''">
+				<td width="1%"><img src="$storeImageContent.getURI("$item.product.logo")"></td>
+				<td>$item.itemId</td>
+				<td>$item.product.category.description，$item.product.description</td>
+				<td>$item.attribute1</td>
+				<td>$item.listPrice</td>
+				<td>
+					#if (!$group.quantity.valid) <span class="errorMessage">$group.quantity.message</span><br/> #end
+					<input type="text" name="$group.quantity.key" value="$!group.quantity.value" size="5" maxlength="5"/>
+				</td>
+				<td align="right">$messageUtil.formatMessage("{0,number}", $cartItem.total)</td>
+				<td align="right">
+					#set ($removeURL = $storeModule.setTarget("viewCart.vm").setAction("cartAction").addQueryData("itemId", $item.itemId).addQueryData("eventSubmitDoRemoveItem", "true"))
+					<input type="button" value="删除" onclick="location='$removeURL'"/>
+				</td>
+			</tr>
+			#end
+			<tr>
+				<td colspan="6">&nbsp;</td>
+				<td align="right"><hr size="1"/><br/>总计：$messageUtil.formatMessage("{0,number}", $cart.total)</td>
+				<td>&nbsp;</td>
+			</tr>
+		#end
+
+			<tr bgcolor="#DDDDDD">
+				<td colspan="10" align="right">
+					<input type="button" value="继续购物" onclick="location='$storeModule.setTarget("categoryList.vm")'"/>
+					#if (!$cart.cartItemList.empty)
+						<input type="hidden" name="action" value="cart_action"/>
+						<input type="submit" name="event_submit_do_update" value="更新购物车"/>
+						<input type="button" value="马上去付款" onclick="alert('支付宝，网上支付，安全快速！'); alert('支付宝，让天下无贼！'); alert('该功能尚未实现！')"/>
+					#end
+				</td>
+			</tr>
+		</table>
+	</form>
+	</td>
+  </tr>
+</table>

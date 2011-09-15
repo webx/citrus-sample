@@ -1,0 +1,3 @@
+$page.setTitle("Welcome to Petstore!")
+
+$control.setTemplate("store:categoryList.vm")

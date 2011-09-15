@@ -1,0 +1,60 @@
+.box {
+    border-top: 2px solid #ff9000;
+    border-bottom: 1px solid #ff9000;
+    border-left: 1px solid #ff9000;
+    border-right: 1px solid #ff9000;
+    background-image: url(../images/bg_topline.png);
+    background-repeat: repeat-x;
+}
+.selected {
+	text-align: left;
+	vertical-align: bottom;
+}
+.selected .tabLeft {
+	background-image: url(../images/tab_selected_left.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+.selected .tabMid {
+	background-image: url(../images/tab_selected_mid.png);
+	background-repeat: repeat-x;
+	vertical-align: bottom;
+	font-weight: bold;
+	color: #ffffff;
+	background-position: bottom;
+}
+.selected .tabRight {
+	background-image: url(../images/tab_selected_right.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+.unselected {
+	text-align: left;
+	vertical-align: bottom;
+}
+.unselected .tabLeft {
+	background-image: url(../images/tab_left.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+.unselected .tabMid {
+	background-image: url(../images/tab_mid.png);
+	background-repeat: repeat-x;
+	vertical-align: bottom;
+	background-position: bottom;
+	color: #ff9000
+}
+.unselected .tabRight {
+	background-image: url(../images/tab_right.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+.shortcut {
+	color: #0000FF;
+	white-space: nowrap;
+}
+.errorMessage {
+	color: #FF0000;
+	white-space: nowrap;
+	font-weight: bold;
+}
