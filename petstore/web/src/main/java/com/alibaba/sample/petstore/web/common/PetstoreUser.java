@@ -54,7 +54,7 @@ public class PetstoreUser implements Serializable {
     }
 
     public void upgrade(String userId) {
-        assertTrue(hasLoggedIn(), ExceptionType.ILLEGAL_STATE, "already logged in");
+        assertTrue(!hasLoggedIn(), ExceptionType.ILLEGAL_STATE, "already logged in");
 
         userId = assertNotNull(trimToNull(userId), "no user id");
 

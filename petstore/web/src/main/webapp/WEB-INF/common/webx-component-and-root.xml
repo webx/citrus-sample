@@ -86,7 +86,7 @@
         <direct-module-rule id="screen.notemplate" />
 
         <!-- Target name => Screen module name (*.jsp, *.vm) -->
-        <fallback-module-rule id="screen" moduleType="screen" />
+        <fallback-module-rule id="screen" moduleType="screen" matchLastName="true" />
 
         <!-- Target name => Screen template name -->
         <direct-template-rule id="screen.template" templatePrefix="screen" />

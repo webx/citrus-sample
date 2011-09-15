@@ -78,9 +78,9 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
       <tr>
         <td nowrap="nowrap">信用卡过期时间：</td>
         <td width="100%" nowrap>
-          $selectMonth.get("$user.account.creditCardExpiryMonth")
+          $!selectMonth.get("$user.account.creditCardExpiryMonth")
           /
-          $selectYear.get("$user.account.creditCardExpiryYear")
+          $!selectYear.get("$user.account.creditCardExpiryYear")
         </td>
       </tr>
     </table></td>

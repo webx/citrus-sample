@@ -4,7 +4,7 @@
 
 $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
 
-<form action="$userModule.setTarget("registerAccount.vm")" method="post">
+<form action="$userModule.setTarget("registerAccount")" method="post">
   $csrfToken.hiddenField
   <input type="hidden" name="action" value="RegisterAction"/>
 

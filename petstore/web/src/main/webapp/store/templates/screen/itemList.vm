@@ -8,7 +8,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
   <tr>
 	<td colspan="2" class="subcategoryName">$product.name - $product.description
 		#if ($itemAdded)
-			| <span class="errorMessage">已加入购物车，您可以 [<a href="$storeModule.setTarget("categoryList.vm")">继续购物</a>]</span>
+			| <span class="errorMessage">已加入购物车，您可以 [<a href="$storeModule.setTarget("categoryList")">继续购物</a>]</span>
 		#end
 	</td>
   </tr>
@@ -24,17 +24,17 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 			</tr>
         #foreach($item in $items)
 			<tr onmouseenter="this.style.backgroundColor='powderblue'" onmouseleave="this.style.backgroundColor=''">
-				<td>$item.itemId</td>
+				<td>$item.productItemId</td>
 				<td>$item.listPrice</td>
 				<td>$item.attribute1</td>
 				<td>$item.quantity</td>
-				<td align="right"><input type="button" value="放到购物车" onclick="location='$storeModule.setTarget("itemList.vm").addQueryData("productId", $product.productId).setAction("cartAction").addQueryData("itemId", $item.itemId).addQueryData("eventSubmitDoAddItem", "true")'"/></td>
+				<td align="right"><input type="button" value="放到购物车" onclick="location='$storeModule.setTarget("itemList").addQueryData("productId", $product.productId).setAction("cartAction").addQueryData("itemId", $item.productItemId).addQueryData("eventSubmitDoAddItem", "true")'"/></td>
 			</tr>
 		#end
 
 			<tr bgcolor="#DDDDDD">
 				<td colspan="10" align="right">
-					<input type="button" value="继 续 购 物" onclick="location='$storeModule.setTarget("categoryList.vm")'"/>
+					<input type="button" value="继 续 购 物" onclick="location='$storeModule.setTarget("categoryList")'"/>
 				</td>
 			</tr>
 		</table>

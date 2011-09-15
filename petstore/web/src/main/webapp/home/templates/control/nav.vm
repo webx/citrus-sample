@@ -17,19 +17,19 @@
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$userModule.setTarget("account.vm")">用户信息</a>
+    <a href="$userModule.setTarget("account")">用户信息</a>
   </td>
   <td class="shortcut">
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$storeModule.setTarget("viewCart.vm")"><img src="$homeContent.getURI("images/cart.png")"/>我的购物车</a>
+    <a href="$storeModule.setTarget("viewCart")"><img src="$homeContent.getURI("images/cart.png")"/>我的购物车</a>
   </td>
   <td class="shortcut">
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$storeModule.setTarget("edit/categoryList.vm")">库存管理</a>
+    <a href="$storeModule.setTarget("edit/categoryList")">库存管理</a>
   </td>
 </tr>
 </table>

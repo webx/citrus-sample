@@ -6,7 +6,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
   </tr>
   <tr>
 	<td>
-	<form action="$storeModule.setTarget("viewCart.vm")" method="post">
+	<form action="$storeModule.setTarget("viewCart")" method="post">
         $csrfToken.hiddenField
 
 		<table width="100%" border="0" cellspacing="1" cellpadding="10">
@@ -27,14 +27,14 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 			</tr>
 		#else
 			#foreach($cartItem in $cart.cartItemList)
-			#set ($item = $cartItem.item)
-			#set ($group = $form.cartItem.getInstance($item.itemId))
+			#set ($item = $cartItem.productItem)
+			#set ($group = $form.cartItem.getInstance($item.productItemId))
 
 			$group.mapTo($cartItem)
 
 			<tr onmouseenter="this.style.backgroundColor='powderblue'" onmouseleave="this.style.backgroundColor=''">
 				<td width="1%"><img src="$storeImageContent.getURI("$item.product.logo")"></td>
-				<td>$item.itemId</td>
+				<td>$item.productItemId</td>
 				<td>$item.product.category.description，$item.product.description</td>
 				<td>$item.attribute1</td>
 				<td>$item.listPrice</td>
@@ -44,7 +44,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 				</td>
 				<td align="right">$messageUtil.formatMessage("{0,number}", $cartItem.total)</td>
 				<td align="right">
-					#set ($removeURL = $storeModule.setTarget("viewCart.vm").setAction("cartAction").addQueryData("itemId", $item.itemId).addQueryData("eventSubmitDoRemoveItem", "true"))
+					#set ($removeURL = $storeModule.setTarget("viewCart").setAction("cartAction").addQueryData("itemId", $item.productItemId).addQueryData("eventSubmitDoRemoveItem", "true"))
 					<input type="button" value="删除" onclick="location='$removeURL'"/>
 				</td>
 			</tr>
@@ -58,7 +58,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 
 			<tr bgcolor="#DDDDDD">
 				<td colspan="10" align="right">
-					<input type="button" value="继续购物" onclick="location='$storeModule.setTarget("categoryList.vm")'"/>
+					<input type="button" value="继续购物" onclick="location='$storeModule.setTarget("categoryList")'"/>
 					#if (!$cart.cartItemList.empty)
 						<input type="hidden" name="action" value="cart_action"/>
 						<input type="submit" name="event_submit_do_update" value="更新购物车"/>
