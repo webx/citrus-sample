@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>archetype-webx-quickstart</module>
+        <module>petstore</module>
     </modules>
     <build>
         <pluginManagement>
