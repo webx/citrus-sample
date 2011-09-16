@@ -36,6 +36,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.citrus</groupId>
+            <artifactId>citrus-test-all-in-one</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>petstore</finalName>
