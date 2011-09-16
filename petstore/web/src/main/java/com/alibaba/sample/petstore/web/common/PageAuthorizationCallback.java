@@ -80,6 +80,9 @@ public class PageAuthorizationCallback extends BeanSupport implements Callback<P
         return null;
     }
 
+    public void onAllow(Status status) throws Exception {
+    }
+
     public void onDeny(Status status) throws Exception {
         HttpServletRequest request = status.rundata.getRequest();
         HttpServletResponse response = status.rundata.getResponse();

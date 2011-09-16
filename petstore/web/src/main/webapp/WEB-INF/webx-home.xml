@@ -36,12 +36,6 @@
     </services:module-loader>
 
     <!-- 页面授权。-->
-    <services:page-authorization xmlns="http://www.alibaba.com/schema/services">
-        <match target="/">
-            <grant user="*, anonymous">
-                <allow>*</allow>
-            </grant>
-        </match>
-    </services:page-authorization>
+    <services:page-authorization default="allow" xmlns="http://www.alibaba.com/schema/services" />
 
 </beans:beans>

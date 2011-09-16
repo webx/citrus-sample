@@ -4,7 +4,6 @@ import static java.util.Calendar.*;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class Account {
     private final User user;
@@ -146,7 +145,6 @@ public class Account {
     private int getCreditCardExpiryField(int field) {
         Calendar calendar = Calendar.getInstance();
 
-        calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
         calendar.clear();
 
         if (creditCardExpiry != null) {
@@ -168,7 +166,6 @@ public class Account {
     private void setCreditCardExpiryField(int field, int value) {
         Calendar calendar = Calendar.getInstance();
 
-        calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
         calendar.clear();
 
         if (creditCardExpiry != null) {
