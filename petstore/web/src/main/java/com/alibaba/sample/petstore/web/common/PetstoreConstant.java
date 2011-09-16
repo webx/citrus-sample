@@ -5,7 +5,7 @@ package com.alibaba.sample.petstore.web.common;
  * 
  * @author Michael Zhou
  */
-public interface WebConstant {
+public interface PetstoreConstant {
     /** 在session中保存petstore用户对象的key。 */
     String PETSTORE_USER_SESSION_KEY = "petstoreUser";
 

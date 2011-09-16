@@ -2,6 +2,7 @@ package com.alibaba.sample.petstore.web.common;
 
 import static com.alibaba.citrus.util.Assert.*;
 import static com.alibaba.citrus.util.StringUtil.*;
+import static com.alibaba.sample.petstore.web.common.PetstoreConstant.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,7 @@ import com.alibaba.citrus.springext.support.BeanSupport;
 import com.alibaba.citrus.turbine.TurbineRunData;
 import com.alibaba.citrus.turbine.pipeline.valve.PageAuthorizationValve.Callback;
 
-public class PageAuthorizationCallback extends BeanSupport implements Callback<PageAuthorizationCallback.Status> {
+public class PetstoreUserAuth extends BeanSupport implements Callback<PetstoreUserAuth.Status> {
     @Autowired
     private URIBrokerService uriBrokerService;
 
@@ -40,15 +41,15 @@ public class PageAuthorizationCallback extends BeanSupport implements Callback<P
         assertNotNull(uriBrokerService, "could not get URIBrokerService");
 
         if (sessionKey == null) {
-            sessionKey = WebConstant.PETSTORE_USER_SESSION_KEY;
+            sessionKey = PETSTORE_USER_SESSION_KEY;
         }
 
         if (brokerId == null) {
-            brokerId = WebConstant.PETSTORE_LOGIN_LINK;
+            brokerId = PETSTORE_LOGIN_LINK;
         }
 
         if (returnKey == null) {
-            returnKey = WebConstant.LOGIN_RETURN_KEY;
+            returnKey = LOGIN_RETURN_KEY;
         }
     }
 

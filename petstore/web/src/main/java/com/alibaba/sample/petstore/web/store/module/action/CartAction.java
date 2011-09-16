@@ -1,6 +1,7 @@
 package com.alibaba.sample.petstore.web.store.module.action;
 
 import static com.alibaba.citrus.util.CollectionUtil.*;
+import static com.alibaba.sample.petstore.web.common.PetstoreConstant.*;
 
 import java.util.Map;
 
@@ -15,14 +16,13 @@ import com.alibaba.citrus.turbine.dataresolver.Param;
 import com.alibaba.citrus.webx.WebxException;
 import com.alibaba.sample.petstore.biz.StoreManager;
 import com.alibaba.sample.petstore.dal.dataobject.Cart;
-import com.alibaba.sample.petstore.web.common.WebConstant;
 
 public class CartAction {
     @Autowired
     private StoreManager storeManager;
 
     public void doAddItem(HttpSession session, @Param("itemId") String itemId, Context context) throws Exception {
-        Cart cart = (Cart) session.getAttribute(WebConstant.PETSTORE_CART_KEY);
+        Cart cart = (Cart) session.getAttribute(PETSTORE_CART_KEY);
 
         if (cart == null) {
             cart = new Cart();
@@ -30,13 +30,13 @@ public class CartAction {
 
         cart.addCartItem(itemId);
 
-        session.setAttribute(WebConstant.PETSTORE_CART_KEY, cart);
+        session.setAttribute(PETSTORE_CART_KEY, cart);
 
         context.put("itemAdded", Boolean.TRUE);
     }
 
     public void doRemoveItem(HttpSession session, @Param("itemId") String itemId, Context context) throws WebxException {
-        Cart cart = (Cart) session.getAttribute(WebConstant.PETSTORE_CART_KEY);
+        Cart cart = (Cart) session.getAttribute(PETSTORE_CART_KEY);
 
         if (cart == null) {
             cart = new Cart();
@@ -44,12 +44,12 @@ public class CartAction {
 
         cart.removeCartItem(itemId);
 
-        session.setAttribute(WebConstant.PETSTORE_CART_KEY, cart);
+        session.setAttribute(PETSTORE_CART_KEY, cart);
     }
 
     public void doUpdate(HttpSession session, @FormGroups("cartItem") Group[] groups, Context context)
             throws WebxException {
-        Cart cart = (Cart) session.getAttribute(WebConstant.PETSTORE_CART_KEY);
+        Cart cart = (Cart) session.getAttribute(PETSTORE_CART_KEY);
 
         if (cart == null) {
             return;
@@ -72,6 +72,6 @@ public class CartAction {
             }
         }
 
-        session.setAttribute(WebConstant.PETSTORE_CART_KEY, cart);
+        session.setAttribute(PETSTORE_CART_KEY, cart);
     }
 }

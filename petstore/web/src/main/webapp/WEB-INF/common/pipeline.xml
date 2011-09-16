@@ -27,8 +27,7 @@
         <checkCsrfToken />
 
         <!-- 检查页面的授权，如果当前用户无权访问该页面，则跳转到petstoreLogin页面 -->
-        <pageAuthorization
-            callbackClass="com.alibaba.sample.petstore.web.common.PageAuthorizationCallback" />
+        <pageAuthorization callbackClass="com.alibaba.sample.petstore.web.common.PetstoreUserAuth" />
 
         <loop>
             <choose>

@@ -1,6 +1,7 @@
 package com.alibaba.sample.petstore.web.user.module.action;
 
 import static com.alibaba.citrus.util.CollectionUtil.*;
+import static com.alibaba.sample.petstore.web.common.PetstoreConstant.*;
 
 import java.util.Map;
 
@@ -17,7 +18,6 @@ import com.alibaba.sample.petstore.biz.DuplicatedUserException;
 import com.alibaba.sample.petstore.biz.UserManager;
 import com.alibaba.sample.petstore.dal.dataobject.User;
 import com.alibaba.sample.petstore.web.common.PetstoreUser;
-import com.alibaba.sample.petstore.web.common.WebConstant;
 
 public class RegisterAction {
     @Autowired
@@ -30,7 +30,7 @@ public class RegisterAction {
             userManager.register(user);
 
             // 在session中创建petstoreUser对象
-            PetstoreUser petstoreUser = (PetstoreUser) session.getAttribute(WebConstant.PETSTORE_USER_SESSION_KEY);
+            PetstoreUser petstoreUser = (PetstoreUser) session.getAttribute(PETSTORE_USER_SESSION_KEY);
 
             if (petstoreUser == null || petstoreUser.hasLoggedIn()) {
                 petstoreUser = new PetstoreUser();
@@ -38,10 +38,10 @@ public class RegisterAction {
 
             petstoreUser.upgrade(user.getUserId());
 
-            session.setAttribute(WebConstant.PETSTORE_USER_SESSION_KEY, petstoreUser);
+            session.setAttribute(PETSTORE_USER_SESSION_KEY, petstoreUser);
 
             // 跳转到registerAccount页面
-            nav.redirectTo(WebConstant.PETSTORE_REGISTER_ACCOUNT_LINK);
+            nav.redirectTo(PETSTORE_REGISTER_ACCOUNT_LINK);
         } catch (DuplicatedUserException e) {
             Map<String, Object> params = createHashMap();
             params.put("userId", user.getUserId());
@@ -61,6 +61,6 @@ public class RegisterAction {
 
         userManager.update(user);
 
-        nav.redirectTo(WebConstant.PETSTORE_ACCOUNT_LINK);
+        nav.redirectTo(PETSTORE_ACCOUNT_LINK);
     }
 }
