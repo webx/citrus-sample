@@ -14,7 +14,7 @@
     ">
 
     <services:uris>
-        <uri id="server" />
+        <uri id="server" requestAware="true" />
 
         <turbine-uri id="app1Link" exposed="true" extends="server">
             <componentPath>/</componentPath>
