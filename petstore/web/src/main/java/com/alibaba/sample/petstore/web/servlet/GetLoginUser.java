@@ -28,7 +28,7 @@ public class GetLoginUser extends HttpServlet {
         PrintWriter out = response.getWriter();
         PetstoreUser user = (PetstoreUser) request.getSession().getAttribute(PETSTORE_USER_SESSION_KEY);
 
-        if (user.hasLoggedIn()) {
+        if (user != null && user.hasLoggedIn()) {
             out.print(user.getId());
         } else {
             out.print("guest");
