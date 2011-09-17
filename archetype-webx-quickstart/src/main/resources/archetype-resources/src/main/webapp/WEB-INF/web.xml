@@ -24,19 +24,13 @@
         <filter-name>webx</filter-name>
         <filter-class>com.alibaba.citrus.webx.servlet.WebxFrameworkFilter</filter-class>
         <init-param>
-            <!-- 
-              - 这里所配置的uri将不被webx filter处理，由servlet容器直接处理，或者转交给其它的servlets、filters。
-              - 例如，所有*.html静态页面由servlet容器来直接读取。
-             -->
             <param-name>excludes</param-name>
-            <param-value ></param-value>
+            <param-value><!-- 需要被“排除”的URL路径，以逗号分隔，如/static, *.jpg。适合于映射静态页面、图片。 --></param-value>
         </init-param>
         <init-param>
-            <!-- 
-              - 这里所配置的uri将不被pipeline处理，但可以访问webx所管理的request、response、session等对象。
-             -->
             <param-name>passthru</param-name>
-            <param-value ></param-value>
+            <param-value><!-- 需要被“略过”的URL路径，以逗号分隔，如/myservlet, *.jsp。适用于映射servlet、filter。
+                对于passthru请求，webx的request-contexts服务、错误处理、开发模式等服务仍然可用。 --></param-value>
         </init-param>
     </filter>
 
