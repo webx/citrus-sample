@@ -54,7 +54,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
       </tr>
       <tr>
         <td nowrap="nowrap">国家： </td>
-        <td>$!bundle.get("/petstore/bundle/select-box").country.get($user.account.country)</td>
+        <td>$!selectCountries.get($user.account.country)</td>
       </tr>
       <tr>
         <td nowrap="nowrap">电话： </td>
@@ -73,7 +73,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
       </tr>
       <tr>
         <td nowrap="nowrap">信用卡类型：</td>
-        <td width="100%">$!bundle.get("/petstore/bundle/select-box").creditCardType.get($user.account.creditCardType)</td>
+        <td width="100%">$!selectCreditCardType.get($user.account.creditCardType)</td>
       </tr>
       <tr>
         <td nowrap="nowrap">信用卡过期时间：</td>
