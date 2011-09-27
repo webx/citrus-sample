@@ -88,19 +88,19 @@ create table orders (
 
 create table orderstatus (
       orderid int not null,
-      linenum int not null,
+      orderitemid int not null,
       timestamp date not null,
       status varchar(2) not null,
-      constraint pk_orderstatus primary key (orderid, linenum)
+      constraint pk_orderstatus primary key (orderid, orderitemid)
 );
 
-create table lineitem (
+create table orderitem (
       orderid int not null,
-      linenum int not null,
+      orderitemid int not null,
       itemid varchar(10) not null,
       quantity int not null,
       unitprice decimal(10,2) not null,
-      constraint pk_lineitem primary key (orderid, linenum)
+      constraint pk_orderitem primary key (orderid, orderitemid)
 );
 
 create table category (
