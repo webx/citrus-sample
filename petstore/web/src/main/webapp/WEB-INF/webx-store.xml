@@ -35,15 +35,23 @@
         </ml-factories:class-modules>
     </services:module-loader>
 
-    <!-- 页面授权。-->
-    <services:page-authorization xmlns="http://www.alibaba.com/schema/services">
+    <!--
+      - 页面授权：
+      - 默认允许所有screens，包括图片、css等，但不能执行actions。
+      - 默认禁止/edit下的screens。
+      - 对管理员开放edit/*下的screens、actions。
+     -->
+    <services:page-authorization default="allow" xmlns="http://www.alibaba.com/schema/services">
         <match target="/">
-            <grant user="*">
-                <allow>*</allow>
+            <grant user="anonymous, *">
+                <deny>action.*</deny>
             </grant>
         </match>
-        <match target="/images, /css">
-            <grant user="anonymous">
+        <match target="/edit">
+            <grant user="anonymous, *">
+                <deny>*</deny>
+            </grant>
+            <grant role="admin">
                 <allow>*</allow>
             </grant>
         </match>

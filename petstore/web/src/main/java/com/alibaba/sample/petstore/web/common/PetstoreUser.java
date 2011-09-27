@@ -1,12 +1,11 @@
 package com.alibaba.sample.petstore.web.common;
 
 import static com.alibaba.citrus.util.Assert.*;
-import static com.alibaba.citrus.util.CollectionUtil.*;
+import static com.alibaba.citrus.util.BasicConstant.*;
 import static com.alibaba.citrus.util.ObjectUtil.*;
 import static com.alibaba.citrus.util.StringUtil.*;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.alibaba.citrus.util.Assert.ExceptionType;
 
@@ -14,7 +13,7 @@ public class PetstoreUser implements Serializable {
     private static final long serialVersionUID = -7507510429755782596L;
     private static final ThreadLocal<PetstoreUser> userHolder = new ThreadLocal<PetstoreUser>();
     private String userId;
-    private List<String> roles = createArrayList();
+    private String[] roles;
 
     public static final PetstoreUser getCurrentUser() {
         return userHolder.get();
@@ -42,23 +41,20 @@ public class PetstoreUser implements Serializable {
     }
 
     public String[] getRoles() {
-        return roles.toArray(new String[roles.size()]);
+        return defaultIfNull(roles, EMPTY_STRING_ARRAY);
     }
 
-    public void addRole(String role) {
-        roles.add(role);
+    public void setRoles(String[] roles) {
+        this.roles = roles;
     }
 
-    public void cleanRoles() {
-        roles.clear();
-    }
-
-    public void upgrade(String userId) {
+    public void upgrade(String userId, String[] roles) {
         assertTrue(!hasLoggedIn(), ExceptionType.ILLEGAL_STATE, "already logged in");
 
         userId = assertNotNull(trimToNull(userId), "no user id");
 
         this.userId = userId;
+        this.roles = roles;
     }
 
     public boolean hasLoggedIn() {
@@ -67,6 +63,6 @@ public class PetstoreUser implements Serializable {
 
     @Override
     public String toString() {
-        return "PetstoreUser[" + defaultIfNull(userId, "anonymous") + "]";
+        return "PetstoreUser[" + defaultIfNull(userId, "anonymous") + ", roles=" + join(getRoles(), ":") + "]";
     }
 }

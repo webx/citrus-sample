@@ -30,7 +30,9 @@
         <!--                                                                  -->
         <!-- 使用方法： 不能直接使用，只被其它URI继承。                       -->
         <!-- ================================================================ -->
-        <uri id="petstoreServer" requestAware="true" />
+        <servlet-uri id="petstoreServer" requestAware="true">
+            <servletPath>/</servletPath>
+        </servlet-uri>
         <!-- ================================================================ -->
         <!-- Component Level： webx modules。                                 -->
         <!--                                                                  -->

@@ -33,7 +33,7 @@ public class LoginAction {
                 petstoreUser = new PetstoreUser();
             }
 
-            petstoreUser.upgrade(user.getUserId());
+            petstoreUser.upgrade(user.getUserId(), user.getRoles());
 
             session.setAttribute(PETSTORE_USER_SESSION_KEY, petstoreUser);
 
