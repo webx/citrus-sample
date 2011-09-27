@@ -9,6 +9,7 @@
      -->
     <resultMap id="userResult" class="user">
         <result property="userId" column="USER_ID"/>
+        <result property="role" column="ROLES"/>
         <result property="account.email" column="EMAIL"/>
         <result property="account.firstName" column="FIRST_NAME"/>
         <result property="account.lastName" column="LAST_NAME"/>
@@ -81,10 +82,12 @@
     <insert id="insertUser" parameterClass="user"><![CDATA[
         insert into USER (
                 USER_ID,
-                PASSWORD
+                PASSWORD,
+                ROLES
         ) values (
                 #userId#,
-                #password#
+                #password#,
+                #role#
         )
     ]]></insert>
     <!--
@@ -96,7 +99,8 @@
         update
                 USER
         set
-                PASSWORD = #password#
+                PASSWORD = #password#,
+                ROLES = #role#
         where
                 USER_ID = #userId#
     ]]></update>

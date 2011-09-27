@@ -1,6 +1,7 @@
 create table USER (
     USER_ID varchar(25) not null,
     PASSWORD varchar(25)  not null,
+    ROLES varchar(100),
 
     constraint PK_USER primary key (USER_ID)
 );

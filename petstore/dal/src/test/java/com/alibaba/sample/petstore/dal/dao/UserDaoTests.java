@@ -1,5 +1,6 @@
 package com.alibaba.sample.petstore.dal.dao;
 
+import static com.alibaba.citrus.util.ArrayUtil.*;
 import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
@@ -21,12 +22,18 @@ public class UserDaoTests extends AbstractDataAccessTests {
     public void getUserById() {
         User user = userDao.getUserById("j2ee");
         assertUser(user);
+
+        user = userDao.getUserById("admin");
+        assertUser(user, "admin");
     }
 
     @Test
     public void getAuthenticatedUser() {
         User user = userDao.getAuthenticatedUser("j2ee", "j2ee");
         assertUser(user);
+
+        user = userDao.getAuthenticatedUser("admin", "admin");
+        assertUser(user, "admin");
 
         // wrong password
         user = userDao.getAuthenticatedUser("j2ee", "wrongpass");
@@ -44,23 +51,24 @@ public class UserDaoTests extends AbstractDataAccessTests {
     @Test
     public void insert_update() {
         // init user ids
-        assertUserIdList(userDao.getUserIdList(), "ACID", "j2ee");
+        assertUserIdList(userDao.getUserIdList(), "admin", "j2ee");
 
         // insert new user
         User user = userDao.getUserById("j2ee");
 
         user.setUserId("myuser");
         user.setPassword("mypass");
+        user.setRole("r1, r2");
 
         userDao.insertUser(user);
 
         // check user ids again
-        assertUserIdList(userDao.getUserIdList(), "ACID", "j2ee", "myuser");
+        assertUserIdList(userDao.getUserIdList(), "admin", "j2ee", "myuser");
 
         // check new user
         user = userDao.getAuthenticatedUser("myuser", "mypass");
         assertEquals("myuser", user.getUserId());
-        assertUser(user, false);
+        assertUser(user, false, "r1", "r2");
 
         // change password
         user.setPassword("newpass");
@@ -70,7 +78,7 @@ public class UserDaoTests extends AbstractDataAccessTests {
 
         user = userDao.getAuthenticatedUser("myuser", "newpass");
         assertEquals("myuser", user.getUserId());
-        assertUser(user, false);
+        assertUser(user, false, "r1", "r2");
 
         // update other data
         user.getAccount().setCity("newcity");
@@ -97,20 +105,26 @@ public class UserDaoTests extends AbstractDataAccessTests {
         assertArrayEquals(ids, result);
     }
 
-    private void assertUser(User user) {
-        assertUser(user, true);
+    private void assertUser(User user, String... roles) {
+        assertUser(user, true, roles);
     }
 
-    private void assertUser(User user, boolean checkUserId) {
+    private void assertUser(User user, boolean checkUserId, String... roles) {
         Account account = user.getAccount();
         Profile profile = user.getProfile();
 
         // user
         if (checkUserId) {
-            assertEquals("j2ee", user.getUserId());
+            assertTrue(arrayContains(new String[] { "j2ee", "admin" }, user.getUserId()));
         }
 
         assertEquals(null, user.getPassword()); // √‹¬Î≤ªø…≤È—Ø
+
+        if (isEmptyArray(roles)) {
+            assertTrue(isEmptyArray(user.getRoles()));
+        } else {
+            assertArrayEquals(roles, user.getRoles());
+        }
 
         // account
         assertEquals("yourname@yourdomain.com", account.getEmail());

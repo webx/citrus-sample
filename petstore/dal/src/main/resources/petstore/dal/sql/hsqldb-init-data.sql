@@ -1,11 +1,11 @@
-INSERT INTO user VALUES('j2ee','j2ee');
-INSERT INTO user VALUES('ACID','ACID');
+INSERT INTO user VALUES('j2ee','j2ee',null);
+INSERT INTO user VALUES('admin','admin','admin');
 
 INSERT INTO account VALUES('j2ee','yourname@yourdomain.com','ABC', 'XYX', 'OK', '901 San Antonio Road', 'MS UCUP02-206', 'Palo Alto', 'CA', '94303', 'US',  '555-555-5555', '1234567', 'Visa', '2005-12-15');
-INSERT INTO account VALUES('ACID','acid@yourdomain.com','ABC', 'XYX', 'OK', '901 San Antonio Road', 'MS UCUP02-206', 'Palo Alto', 'CA', '94303', 'US',  '555-555-5555', '1234567', 'MasterCard', '2005-12-15');
+INSERT INTO account VALUES('admin','yourname@yourdomain.com','ABC', 'XYX', 'OK', '901 San Antonio Road', 'MS UCUP02-206', 'Palo Alto', 'CA', '94303', 'US',  '555-555-5555', '1234567', 'Visa', '2005-12-15');
 
 INSERT INTO profile VALUES('j2ee','english','DOGS',1,1);
-INSERT INTO profile VALUES('ACID','english','CATS',1,1);
+INSERT INTO profile VALUES('admin','english','DOGS',1,1);
 
 INSERT INTO sequence VALUES('ordernum', 1000);
 INSERT INTO sequence VALUES('orderitemnum', 1000);
