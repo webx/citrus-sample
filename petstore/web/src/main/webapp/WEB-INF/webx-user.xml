@@ -47,9 +47,6 @@
             <grant user="*">
                 <allow>*</allow>
             </grant>
-            <grant user="anonymous">
-                <deny>*</deny>
-            </grant>
         </match>
         <match target="/login, /register">
             <grant user="anonymous">
