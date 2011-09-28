@@ -55,6 +55,7 @@
             <!-- JSP -->
             <mapping extension="jhtml" to="" />
             <mapping extension="jsp" to="" />
+            <mapping extension="jspx" to="" />
             <mapping extension="php" to="" />
 
             <!-- Velocity -->
@@ -71,6 +72,7 @@
             <!-- JSP -->
             <mapping extension="jhtml" to="jhtml" />
             <mapping extension="jsp" to="jhtml" />
+            <mapping extension="jspx" to="jhtml" />
             <mapping extension="php" to="jhtml" />
 
             <!-- Velocity -->
