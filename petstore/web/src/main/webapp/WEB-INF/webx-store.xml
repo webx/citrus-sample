@@ -46,6 +46,9 @@
             <grant user="anonymous, *">
                 <deny>action.*</deny>
             </grant>
+            <grant user="anonymous, *">
+                <allow>action.CartAction.*</allow>
+            </grant>
         </match>
         <match target="/edit">
             <grant user="anonymous, *">
