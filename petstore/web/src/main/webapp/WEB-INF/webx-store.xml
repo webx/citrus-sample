@@ -37,7 +37,7 @@
 
     <!--
       - 页面授权：
-      - 默认允许所有screens，包括图片、css等，但不能执行actions。
+      - 默认允许所有screens，包括图片、css等，但不能执行除了CartAction以外的actions。
       - 默认禁止/edit下的screens。
       - 对管理员开放edit/*下的screens、actions。
      -->
