@@ -12,13 +12,15 @@
     </requiredProperties>
     <fileSets>
         <fileSet>
-            <directory>src/main/webapp</directory>
+            <directory />
             <includes>
                 <include>**/*</include>
             </includes>
             <excludes>
-                <exclude>WEB-INF/webx*.xml</exclude>
-                <exclude>WEB-INF/logback.xml</exclude>
+                <exclude>pom.xml</exclude>
+                <exclude>src/main/java/**</exclude>
+                <exclude>src/main/webapp/WEB-INF/webx*.xml</exclude>
+                <exclude>src/main/webapp/WEB-INF/logback.xml</exclude>
             </excludes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
