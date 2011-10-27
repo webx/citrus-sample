@@ -16,11 +16,12 @@
         <spring-version>3.0.6.RELEASE</spring-version>
         <springext-plugin-version>1.0</springext-plugin-version>
         <jetty-version>6.1.22</jetty-version>
+        <project.build.sourceEncoding>${D}{java.encoding}</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.alibaba.citrus</groupId>
-            <artifactId>citrus-webx-all-in-one</artifactId>
+            <artifactId>citrus-webx-all</artifactId>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -38,7 +39,7 @@
             <!-- ================================================= -->
             <dependency>
                 <groupId>com.alibaba.citrus</groupId>
-                <artifactId>citrus-webx-all-in-one</artifactId>
+                <artifactId>citrus-webx-all</artifactId>
                 <version>${D}{webx-version}</version>
             </dependency>
             <!-- ================================================= -->
@@ -132,7 +133,7 @@
             <!-- ================================================= -->
             <dependency>
                 <groupId>com.alibaba.citrus</groupId>
-                <artifactId>citrus-test-all-in-one</artifactId>
+                <artifactId>citrus-test-all</artifactId>
                 <version>${webx-version}</version>
                 <scope>test</scope>
             </dependency>
@@ -154,7 +155,6 @@
                 <configuration>
                     <source>${D}{java.version}</source>
                     <target>${D}{java.version}</target>
-                    <encoding>${D}{java.encoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -163,13 +163,13 @@
                     <execution>
                         <phase>compile</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <echo message="project home:        ${D}{basedir}" />
                                 <echo message="java home:           ${D}{java.home}" />
                                 <echo message="java source version: ${D}{java.version}" />
                                 <echo message="java target version: ${D}{java.version}" />
                                 <echo message="java source charset: ${D}{java.encoding}" />
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>
@@ -240,34 +240,32 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>1.6</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>2.3.2</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.5</version>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.2</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
+                <plugin>
                     <artifactId>maven-eclipse-plugin</artifactId>
                     <version>2.8</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>2.1.2</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>2.10</version>
                 </plugin>
                 <plugin>
                     <groupId>org.mortbay.jetty</groupId>

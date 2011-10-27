@@ -2,12 +2,46 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.alibaba.citrus.sample</groupId>
     <artifactId>citrus-sample-parent</artifactId>
     <packaging>pom</packaging>
     <name>Citrus Samples Parent Project</name>
     <version>1.0-SNAPSHOT</version>
+    <description>Sample Applications, Archetypes for Webx Framework</description>
+    <url>http://www.openwebx.org/</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/webx/citrus-sample</connection>
+        <developerConnection>scm:git:git@github.com:webx/citrus-sample.git</developerConnection>
+        <url>http://github.com/webx/citrus-sample</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>baobao</id>
+            <name>Michael Zhou</name>
+            <email>yizhi@taobao.com</email>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <properties>
+                <picUrl>http://i54.tinypic.com/2jewmjr.jpg</picUrl>
+            </properties>
+            <timezone>-6</timezone>
+        </developer>
+    </developers>
     <modules>
         <module>archetype-webx-quickstart</module>
         <module>petstore</module>
@@ -16,19 +50,58 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>2.7</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-archetype-plugin</artifactId>
-                    <version>2.0</version>
+                    <version>2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.archetype</groupId>
                     <artifactId>archetype-packaging</artifactId>
-                    <version>2.0</version>
+                    <version>2.1</version>
+                </plugin>
+                <!--
+                  - This plugin's configuration is used to store Eclipse m2e settings only.
+                  - It has no influence on the Maven build itself.
+                 -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-antrun-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>run</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>enforce</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

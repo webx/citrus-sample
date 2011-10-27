@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.alibaba.citrus</groupId>
-            <artifactId>citrus-webx-all-in-one</artifactId>
+            <artifactId>citrus-webx-all</artifactId>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -34,7 +34,7 @@
         </dependency>
         <dependency>
             <groupId>com.alibaba.citrus</groupId>
-            <artifactId>citrus-test-all-in-one</artifactId>
+            <artifactId>citrus-test-all</artifactId>
         </dependency>
     </dependencies>
 </project>
