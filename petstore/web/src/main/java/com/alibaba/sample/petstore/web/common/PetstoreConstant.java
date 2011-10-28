@@ -1,32 +1,32 @@
 package com.alibaba.sample.petstore.web.common;
 
 /**
- * Petstore WEB²ãµÄ³£Á¿¡£
+ * Petstore WEBå±‚çš„å¸¸é‡ã€‚
  * 
  * @author Michael Zhou
  */
 public interface PetstoreConstant {
-    /** ÔÚsessionÖĞ±£´æpetstoreÓÃ»§¶ÔÏóµÄkey¡£ */
+    /** åœ¨sessionä¸­ä¿å­˜petstoreç”¨æˆ·å¯¹è±¡çš„keyã€‚ */
     String PETSTORE_USER_SESSION_KEY = "petstoreUser";
 
-    /** ÔÚsessionÖĞ±£´æshopping cart¶ÔÏóµÄkey¡£ */
+    /** åœ¨sessionä¸­ä¿å­˜shopping cartå¯¹è±¡çš„keyã€‚ */
     String PETSTORE_CART_KEY = "petstoreCart";
 
-    /** LoginÒ³Ãæ·µ»ØURLµÄkey¡£ */
+    /** Loginé¡µé¢è¿”å›URLçš„keyã€‚ */
     String LOGIN_RETURN_KEY = "return";
 
-    /** Èç¹ûÎ´Ö¸¶¨return£¬µÇÂ¼ÒÔºó¾ÍÌøµ½¸ÃURL¡£ */
+    /** å¦‚æœæœªæŒ‡å®šreturnï¼Œç™»å½•ä»¥åå°±è·³åˆ°è¯¥URLã€‚ */
     String LOGIN_RETURN_DEFAULT_LINK = "petstoreHomeLink";
 
-    /** µÇÂ¼URLµÄÃû×Ö¡£ */
+    /** ç™»å½•URLçš„åå­—ã€‚ */
     String PETSTORE_LOGIN_LINK = "petstoreLoginLink";
 
-    /** µÇ¼ÇÓÃ»§URLµÄÃû×Ö¡£ */
+    /** ç™»è®°ç”¨æˆ·URLçš„åå­—ã€‚ */
     String PETSTORE_REGISTER_LINK = "petstoreRegisterLink";
 
-    /** µÇ¼ÇÓÃ»§ĞÅÏ¢URLµÄÃû×Ö¡£ */
+    /** ç™»è®°ç”¨æˆ·ä¿¡æ¯URLçš„åå­—ã€‚ */
     String PETSTORE_REGISTER_ACCOUNT_LINK = "petstoreRegisterAccountLink";
 
-    /** ²é¿´ÓÃ»§ĞÅÏ¢URLµÄÃû×Ö¡£ */
+    /** æŸ¥çœ‹ç”¨æˆ·ä¿¡æ¯URLçš„åå­—ã€‚ */
     String PETSTORE_ACCOUNT_LINK = "petstoreAccountLink";
 }

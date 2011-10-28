@@ -3,39 +3,39 @@ package com.alibaba.sample.petstore.biz;
 import com.alibaba.sample.petstore.dal.dataobject.User;
 
 /**
- * ÓĞ¹ØÓÃ»§µÄ²Ù×÷¡£
+ * æœ‰å…³ç”¨æˆ·çš„æ“ä½œã€‚
  * 
  * @author Michael Zhou
  */
 public interface UserManager {
     /**
-     * µÇÂ¼ÓÃ»§£¬Èç¹ûÓÃ»§ÃûºÍÃÜÂëÕıÈ·£¬Ôò·µ»ØÏàÓ¦µÄÓÃ»§ĞÅÏ¢¡£
+     * ç™»å½•ç”¨æˆ·ï¼Œå¦‚æœç”¨æˆ·åå’Œå¯†ç æ­£ç¡®ï¼Œåˆ™è¿”å›ç›¸åº”çš„ç”¨æˆ·ä¿¡æ¯ã€‚
      * 
-     * @param userId ÓÃ»§Ãû
-     * @param password ÃÜÂë
-     * @return ÓÃ»§ĞÅÏ¢£¬Èç¹ûÓÃ»§Ãû»òÃÜÂë²»ÕıÈ·£¬Ôò·µ»Ø<code>null</code>
+     * @param userId ç”¨æˆ·å
+     * @param password å¯†ç 
+     * @return ç”¨æˆ·ä¿¡æ¯ï¼Œå¦‚æœç”¨æˆ·åæˆ–å¯†ç ä¸æ­£ç¡®ï¼Œåˆ™è¿”å›<code>null</code>
      */
     User login(String userId, String password);
 
     /**
-     * ×¢²áÓÃ»§¡£
+     * æ³¨å†Œç”¨æˆ·ã€‚
      * 
-     * @param user ÓÃ»§¶ÔÏó
+     * @param user ç”¨æˆ·å¯¹è±¡
      */
     void register(User user) throws DuplicatedUserException;
 
     /**
-     * ¸üĞÂÓÃ»§µÄĞÅÏ¢¡£
+     * æ›´æ–°ç”¨æˆ·çš„ä¿¡æ¯ã€‚
      * 
-     * @param user ÓÃ»§¶ÔÏó
+     * @param user ç”¨æˆ·å¯¹è±¡
      */
     void update(User user);
 
     /**
-     * È¡µÃÖ¸¶¨idµÄÓÃ»§¡£
+     * å–å¾—æŒ‡å®šidçš„ç”¨æˆ·ã€‚
      * 
-     * @param userId ÓÃ»§id
-     * @return Ö¸¶¨idµÄÓÃ»§
+     * @param userId ç”¨æˆ·id
+     * @return æŒ‡å®šidçš„ç”¨æˆ·
      */
     User getUser(String userId);
 }

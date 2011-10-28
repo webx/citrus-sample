@@ -26,7 +26,7 @@ public class LoginAction {
         user = userManager.login(user.getUserId(), user.getPassword());
 
         if (user != null) {
-            // 在session中创建petstoreUser对象
+            // 鍦╯ession涓垱寤簆etstoreUser瀵硅薄
             PetstoreUser petstoreUser = (PetstoreUser) session.getAttribute(PETSTORE_USER_SESSION_KEY);
 
             if (petstoreUser == null || petstoreUser.hasLoggedIn()) {
@@ -37,7 +37,7 @@ public class LoginAction {
 
             session.setAttribute(PETSTORE_USER_SESSION_KEY, petstoreUser);
 
-            // 跳转到return页面
+            // 璺宠浆鍒皉eturn椤甸潰
             redirectToReturnPage(nav, params);
         } else {
             err.setMessage("invalidUserOrPassword");
@@ -45,10 +45,10 @@ public class LoginAction {
     }
 
     public void doLogout(HttpSession session, Navigator nav, ParameterParser params) throws Exception {
-        // 清除session中的user
+        // 娓呴櫎session涓殑user
         session.removeAttribute(PETSTORE_USER_SESSION_KEY);
 
-        // 跳转到return页面
+        // 璺宠浆鍒皉eturn椤甸潰
         redirectToReturnPage(nav, params);
     }
 

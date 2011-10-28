@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.alibaba.sample.petstore.web.common.PetstoreUser;
 
 /**
- * Õâ¸ö¼òµ¥µÄservletÓÃÀ´ÑİÊ¾ÈçºÎÔÚÆÕÍ¨µÄservletÖĞ·ÃÎÊwebxËù¹ÜÀíµÄrequest/response/sessionµÈ¶ÔÏó¡£ÄãĞèÒªÔÚwebx
- * framework filterµÄÅäÖÃÖĞ£¬ÎªÕâ¸öservletÌí¼ÓÒ»¸öpassthru¹ıÂË¡£
+ * è¿™ä¸ªç®€å•çš„servletç”¨æ¥æ¼”ç¤ºå¦‚ä½•åœ¨æ™®é€šçš„servletä¸­è®¿é—®webxæ‰€ç®¡ç†çš„request/response/sessionç­‰å¯¹è±¡ã€‚ä½ éœ€è¦åœ¨webx
+ * framework filterçš„é…ç½®ä¸­ï¼Œä¸ºè¿™ä¸ªservletæ·»åŠ ä¸€ä¸ªpassthruè¿‡æ»¤ã€‚
  * 
  * @author Michael Zhou
  */

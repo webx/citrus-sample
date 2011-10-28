@@ -7,7 +7,7 @@ import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.dataresolver.Param;
 
 /**
- * Íâ²¿ÖØ¶¨Ïò£¬ÓÃÀ´Ê¾·¶redirect tokenµÄÊ¹ÓÃ·½·¨¡£
+ * å¤–éƒ¨é‡å®šå‘ï¼Œç”¨æ¥ç¤ºèŒƒredirect tokençš„ä½¿ç”¨æ–¹æ³•ã€‚
  * 
  * @author Michael Zhou
  */

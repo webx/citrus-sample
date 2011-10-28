@@ -8,7 +8,7 @@ import com.alibaba.sample.petstore.dal.dao.UserDao;
 import com.alibaba.sample.petstore.dal.dataobject.User;
 
 /**
- * ÓĞ¹ØÓÃ»§µÄ²Ù×÷¡£
+ * æœ‰å…³ç”¨æˆ·çš„æ“ä½œã€‚
  * 
  * @author Michael Zhou
  */
@@ -17,21 +17,21 @@ public class UserManagerImpl implements UserManager {
     private UserDao userDao;
 
     /**
-     * µÇÂ¼ÓÃ»§£¬Èç¹ûÓÃ»§ÃûºÍÃÜÂëÕıÈ·£¬Ôò·µ»ØÏàÓ¦µÄÓÃ»§ĞÅÏ¢¡£
+     * ç™»å½•ç”¨æˆ·ï¼Œå¦‚æœç”¨æˆ·åå’Œå¯†ç æ­£ç¡®ï¼Œåˆ™è¿”å›ç›¸åº”çš„ç”¨æˆ·ä¿¡æ¯ã€‚
      * 
-     * @param userId ÓÃ»§Ãû
-     * @param password ÃÜÂë
-     * @return ÓÃ»§ĞÅÏ¢£¬Èç¹ûÓÃ»§Ãû»òÃÜÂë²»ÕıÈ·£¬Ôò·µ»Ø<code>null</code>
+     * @param userId ç”¨æˆ·å
+     * @param password å¯†ç 
+     * @return ç”¨æˆ·ä¿¡æ¯ï¼Œå¦‚æœç”¨æˆ·åæˆ–å¯†ç ä¸æ­£ç¡®ï¼Œåˆ™è¿”å›<code>null</code>
      */
     public User login(String userId, String password) {
         return userDao.getAuthenticatedUser(userId, password);
     }
 
     /**
-     * ×¢²áÓÃ»§¡£
+     * æ³¨å†Œç”¨æˆ·ã€‚
      * 
-     * @param user ÓÃ»§¶ÔÏó
-     * @return ĞÂµÄÓÃ»§ĞÅÏ¢
+     * @param user ç”¨æˆ·å¯¹è±¡
+     * @return æ–°çš„ç”¨æˆ·ä¿¡æ¯
      */
     public void register(User user) throws DuplicatedUserException {
         User dupuser = userDao.getUserById(user.getUserId());
@@ -44,20 +44,20 @@ public class UserManagerImpl implements UserManager {
     }
 
     /**
-     * ¸üĞÂÓÃ»§µÄĞÅÏ¢¡£
+     * æ›´æ–°ç”¨æˆ·çš„ä¿¡æ¯ã€‚
      * 
-     * @param user ÓÃ»§¶ÔÏó
-     * @return ĞÂµÄÓÃ»§ĞÅÏ¢
+     * @param user ç”¨æˆ·å¯¹è±¡
+     * @return æ–°çš„ç”¨æˆ·ä¿¡æ¯
      */
     public void update(User user) {
         userDao.updateUser(user);
     }
 
     /**
-     * È¡µÃÖ¸¶¨idµÄÓÃ»§¡£
+     * å–å¾—æŒ‡å®šidçš„ç”¨æˆ·ã€‚
      * 
-     * @param userId ÓÃ»§id
-     * @return Ö¸¶¨idµÄÓÃ»§
+     * @param userId ç”¨æˆ·id
+     * @return æŒ‡å®šidçš„ç”¨æˆ·
      */
     public User getUser(String userId) {
         return userDao.getUserById(userId);

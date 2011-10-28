@@ -118,7 +118,7 @@ public class UserDaoTests extends AbstractDataAccessTests {
             assertTrue(arrayContains(new String[] { "j2ee", "admin" }, user.getUserId()));
         }
 
-        assertEquals(null, user.getPassword()); // ÃÜÂë²»¿É²éÑ¯
+        assertEquals(null, user.getPassword()); // å¯†ç ä¸å¯æŸ¥è¯¢
 
         if (isEmptyArray(roles)) {
             assertTrue(isEmptyArray(user.getRoles()));

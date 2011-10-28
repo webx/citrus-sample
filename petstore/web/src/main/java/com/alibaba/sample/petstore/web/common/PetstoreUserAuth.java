@@ -68,12 +68,12 @@ public class PetstoreUserAuth extends BeanSupport implements Callback<PetstoreUs
         }
 
         if (user == null) {
-            // ´´½¨ÄäÃûÓÃ»§
+            // åˆ›å»ºåŒ¿åç”¨æˆ·
             user = new PetstoreUser();
             session.setAttribute(sessionKey, user);
         }
 
-        // ½«userÉèÖÃµ½rundataÖÐ£¬ÒÔ±ãÆäËü³ÌÐòÊ¹ÓÃ¡£
+        // å°†userè®¾ç½®åˆ°rundataä¸­ï¼Œä»¥ä¾¿å…¶å®ƒç¨‹åºä½¿ç”¨ã€‚
         PetstoreUser.setCurrentUser(user);
 
         return new Status(rundata, user);

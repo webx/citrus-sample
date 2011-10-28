@@ -101,7 +101,7 @@ public class StoreManagerImpl implements StoreManager, InitializingBean {
             cartItem.setProductItem(getProductItem(cartItem.getProductItemId()));
         }
 
-        // “¿¥Œ∞¥catId, productId, productItemId≈≈–Ú
+        // ‰æùÊ¨°ÊåâcatId, productId, productItemIdÊéíÂ∫è
         Collections.sort(cartItems, new Comparator<CartItem>() {
             public int compare(CartItem cartItem1, CartItem cartItem2) {
                 ProductItem item1 = cartItem1.getProductItem();

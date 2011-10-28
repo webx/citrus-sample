@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ´æ·ÅÔÚsessionÖĞµÄshopping cart¶ÔÏó¡£
+ * å­˜æ”¾åœ¨sessionä¸­çš„shopping cartå¯¹è±¡ã€‚
  * 
  * @author Michael Zhou
  */

@@ -29,7 +29,7 @@ public class RegisterAction {
         try {
             userManager.register(user);
 
-            // 在session中创建petstoreUser对象
+            // 鍦╯ession涓垱寤簆etstoreUser瀵硅薄
             PetstoreUser petstoreUser = (PetstoreUser) session.getAttribute(PETSTORE_USER_SESSION_KEY);
 
             if (petstoreUser == null || petstoreUser.hasLoggedIn()) {
@@ -40,7 +40,7 @@ public class RegisterAction {
 
             session.setAttribute(PETSTORE_USER_SESSION_KEY, petstoreUser);
 
-            // 跳转到registerAccount页面
+            // 璺宠浆鍒皉egisterAccount椤甸潰
             nav.redirectTo(PETSTORE_REGISTER_ACCOUNT_LINK);
         } catch (DuplicatedUserException e) {
             Map<String, Object> params = createHashMap();

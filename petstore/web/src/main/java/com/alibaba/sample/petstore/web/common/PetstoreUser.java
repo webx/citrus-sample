@@ -24,13 +24,13 @@ public class PetstoreUser implements Serializable {
     }
 
     /**
-     * ´´½¨ÄäÃûÓÃ»§¡£
+     * åˆ›å»ºåŒ¿åç”¨æˆ·ã€‚
      */
     public PetstoreUser() {
     }
 
     /**
-     * ´´½¨ÓÃ»§¡£
+     * åˆ›å»ºç”¨æˆ·ã€‚
      */
     public PetstoreUser(String userId) {
         this.userId = trimToNull(userId);
