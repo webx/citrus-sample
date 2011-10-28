@@ -5,13 +5,14 @@
     <parent>
         <groupId>com.alibaba.citrus.sample</groupId>
         <artifactId>citrus-sample-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>petstore-parent</artifactId>
     <name>Parent Project of Pet Store Web Application</name>
     <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>1.5</java.version>
         <java.encoding>GBK</java.encoding>
