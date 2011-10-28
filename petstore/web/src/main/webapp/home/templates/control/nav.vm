@@ -1,35 +1,35 @@
 <table cellspacing=0 cellpadding=0 width="100%" border=0>
 <tr valign="bottom">
   <td class="shortcut">
-    <a href="$petstoreRegisterLink">×¢²á</a>
+    <a href="$petstoreRegisterLink">æ³¨å†Œ</a>
   </td>
   <td class="shortcut">
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
     #if ($petstoreUser.hasLoggedIn())
-      <a href="$petstoreLogoutLink">ÍË³ö $petstoreUser.id</a>
+      <a href="$petstoreLogoutLink">é€€å‡º $petstoreUser.id</a>
     #else
-      <a href="$petstoreLoginLink">µÇÂ¼</a>
+      <a href="$petstoreLoginLink">ç™»å½•</a>
     #end
   </td>
   <td class="shortcut">
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$userModule.setTarget("account")">ÓÃ»§ĞÅÏ¢</a>
+    <a href="$userModule.setTarget("account")">ç”¨æˆ·ä¿¡æ¯</a>
   </td>
   <td class="shortcut">
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$storeModule.setTarget("viewCart")"><img src="$homeContent.getURI("images/cart.png")"/>ÎÒµÄ¹ºÎï³µ</a>
+    <a href="$storeModule.setTarget("viewCart")"><img src="$homeContent.getURI("images/cart.png")"/>æˆ‘çš„è´­ç‰©è½¦</a>
   </td>
   <td class="shortcut">
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   </td>
   <td class="shortcut">
-    <a href="$storeModule.setTarget("edit/categoryList")">¿â´æ¹ÜÀí</a>
+    <a href="$storeModule.setTarget("edit/categoryList")">åº“å­˜ç®¡ç†</a>
   </td>
 </tr>
 </table>

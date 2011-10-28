@@ -16,7 +16,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 							<a href="$storeModule.setTarget("edit/itemList").addQueryData("productId", $prod.productId)" title="$prod.description">$prod.name</a>
 						#end
 					</td>
-					<td align="right"><input type="button" value="Ìí¼Ó²úÆ·" onclick="location='$storeModule.setTarget("edit/addProduct").addQueryData("categoryId", $cat.categoryId)'"/></td>
+					<td align="right"><input type="button" value="æ·»åŠ äº§å“" onclick="location='$storeModule.setTarget("edit/addProduct").addQueryData("categoryId", $cat.categoryId)'"/></td>
 				</tr>
 			</table>
 		</td>

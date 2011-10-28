@@ -10,7 +10,7 @@
 
   <table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
     <tr align="center">
-      <td><strong>ÓÃ»§×¢²á</strong><br />
+      <td><strong>ç”¨æˆ·æ³¨å†Œ</strong><br />
         <hr/>
         <div class="errorMessage">
           #registerMessage ($group.registerError)
@@ -20,7 +20,7 @@
     <tr align="center">
       <td><table border="0" cellpadding="0" cellspacing="10" width="10">
         <tr>
-          <td nowrap="nowrap">ÓÃ»§Ãû£º</td>
+          <td nowrap="nowrap">ç”¨æˆ·åï¼š</td>
           <td width="100%">
             <input type="text" name="$group.userId.key" value="$!group.userId.value"/>
           </td>
@@ -29,7 +29,7 @@
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ÃÜÂë£º </td>
+          <td nowrap="nowrap">å¯†ç ï¼š </td>
           <td>
             <input type="password" name="$group.password.key" value="$!group.password.value"/>
           </td>
@@ -38,7 +38,7 @@
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ÔÙÊäÒ»±éÃÜÂë£º </td>
+          <td nowrap="nowrap">å†è¾“ä¸€éå¯†ç ï¼š </td>
           <td>
             <input type="password" name="$group.passwordConfirm.key" value="$!group.passwordConfirm.value"/>
           </td>
@@ -52,7 +52,7 @@
       <td><hr/></td>
     </tr>
     <tr align="center">
-      <td><input type="submit" name="event_submit_do_register" value="Á¢¼´×¢²á£¡"/></td>
+      <td><input type="submit" name="event_submit_do_register" value="ç«‹å³æ³¨å†Œï¼"/></td>
     </tr>
   </table>
 

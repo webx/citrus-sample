@@ -24,7 +24,7 @@
     <!-- Template渲染服务。 -->
     <services:template xmlns="http://www.alibaba.com/schema/services/template/engines"
         searchExtensions="true">
-        <velocity-engine templateEncoding="GBK" strictReference="false"
+        <velocity-engine templateEncoding="UTF-8" strictReference="false"
             path="/${component}/templates">
             <global-macros>
                 <name>global/*.vm</name>
@@ -40,7 +40,7 @@
                 </vm-plugins:escape-support>
             </plugins>
         </velocity-engine>
-        <freemarker-engine templateEncoding="GBK" path="/${component}/templates" />
+        <freemarker-engine templateEncoding="UTF-8" path="/${component}/templates" />
         <jsp-engine path="/${component}/templates" />
     </services:template>
 

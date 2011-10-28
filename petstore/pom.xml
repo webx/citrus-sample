@@ -15,7 +15,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>1.5</java.version>
-        <java.encoding>GBK</java.encoding>
+        <java.encoding>UTF-8</java.encoding>
         <webx-version>3.0.7</webx-version>
         <spring-version>3.0.6.RELEASE</spring-version>
         <springext-plugin-version>1.0</springext-plugin-version>

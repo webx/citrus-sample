@@ -13,9 +13,9 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 		<table width="100%" border="0" cellspacing="1" cellpadding="10">
 			<tr bgcolor="#DDDDDD">
 				<th>ID</th>
-				<th>µ¥¼Û</th>
-				<th>ÃèÊö</th>
-				<th>¿â´æÊıÁ¿</th>
+				<th>å•ä»·</th>
+				<th>æè¿°</th>
+				<th>åº“å­˜æ•°é‡</th>
 				<th>&nbsp;</th>
 			</tr>
         #foreach($item in $items)
@@ -24,7 +24,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 				<td>$item.listPrice</td>
 				<td>$item.attribute1</td>
 				<td>$item.quantity</td>
-				<td align="right">[<a href="#" onclick="alert('Î´ÊµÏÖ')">ĞŞ¸Ä</a>]</td>
+				<td align="right">[<a href="#" onclick="alert('æœªå®ç°')">ä¿®æ”¹</a>]</td>
 			</tr>
 		#end
 		</table>

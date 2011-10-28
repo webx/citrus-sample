@@ -8,7 +8,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
   <tr>
 	<td colspan="2" class="subcategoryName">$product.name - $product.description
 		#if ($itemAdded)
-			| <span class="errorMessage">ÒÑ¼ÓÈë¹ºÎï³µ£¬Äú¿ÉÒÔ [<a href="$storeModule.setTarget("categoryList")">¼ÌĞø¹ºÎï</a>]</span>
+			| <span class="errorMessage">å·²åŠ å…¥è´­ç‰©è½¦ï¼Œæ‚¨å¯ä»¥ [<a href="$storeModule.setTarget("categoryList")">ç»§ç»­è´­ç‰©</a>]</span>
 		#end
 	</td>
   </tr>
@@ -17,9 +17,9 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 		<table width="100%" border="0" cellspacing="1" cellpadding="10">
 			<tr bgcolor="#DDDDDD">
 				<th>ID</th>
-				<th>µ¥¼Û</th>
-				<th>ÃèÊö</th>
-				<th>¿â´æÊıÁ¿</th>
+				<th>å•ä»·</th>
+				<th>æè¿°</th>
+				<th>åº“å­˜æ•°é‡</th>
 				<th>&nbsp;</th>
 			</tr>
         #foreach($item in $items)
@@ -28,13 +28,13 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 				<td>$item.listPrice</td>
 				<td>$item.attribute1</td>
 				<td>$item.quantity</td>
-				<td align="right"><input type="button" value="·Åµ½¹ºÎï³µ" onclick="location='$storeModule.setTarget("itemList").addQueryData("productId", $product.productId).setAction("cartAction").addQueryData("itemId", $item.productItemId).addQueryData("eventSubmitDoAddItem", "true")'"/></td>
+				<td align="right"><input type="button" value="æ”¾åˆ°è´­ç‰©è½¦" onclick="location='$storeModule.setTarget("itemList").addQueryData("productId", $product.productId).setAction("cartAction").addQueryData("itemId", $item.productItemId).addQueryData("eventSubmitDoAddItem", "true")'"/></td>
 			</tr>
 		#end
 
 			<tr bgcolor="#DDDDDD">
 				<td colspan="10" align="right">
-					<input type="button" value="¼Ì Ğø ¹º Îï" onclick="location='$storeModule.setTarget("categoryList")'"/>
+					<input type="button" value="ç»§ ç»­ è´­ ç‰©" onclick="location='$storeModule.setTarget("categoryList")'"/>
 				</td>
 			</tr>
 		</table>

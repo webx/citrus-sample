@@ -16,30 +16,30 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
 
   <table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
     <tr align="center">
-      <td><strong>ÓÃ»§ĞÅÏ¢</strong><br />
+      <td><strong>ç”¨æˆ·ä¿¡æ¯</strong><br />
         <hr/>
       </td>
     </tr>
     <tr align="center">
       <td><table border="0" cellpadding="0" cellspacing="10" width="10">
         <tr>
-          <td colspan="3" class="subtitle">»ù±¾ĞÅÏ¢</td>
+          <td colspan="3" class="subtitle">åŸºæœ¬ä¿¡æ¯</td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ÓÃ»§Ãû£º</td>
+          <td nowrap="nowrap">ç”¨æˆ·åï¼š</td>
           <td width="100%">$user.userId</td>
           <td class="errorMessage">&nbsp;</td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ÃÜÂë£º</td>
+          <td nowrap="nowrap">å¯†ç ï¼š</td>
           <td width="100%">********</td>
           <td class="errorMessage">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="3" class="subtitle">ÁªÏµĞÅÏ¢</td>
+          <td colspan="3" class="subtitle">è”ç³»ä¿¡æ¯</td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ĞÕÊÏ£º</td>
+          <td nowrap="nowrap">å§“æ°ï¼š</td>
           <td width="100%">
             <input type="text" name="$contactGroup.lastName.key" value="$!contactGroup.lastName.value" size="30"/>
           </td>
@@ -48,7 +48,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">Ãû×Ö£º</td>
+          <td nowrap="nowrap">åå­—ï¼š</td>
           <td width="100%">
             <input type="text" name="$contactGroup.firstName.key" value="$!contactGroup.firstName.value" size="30"/>
           </td>
@@ -57,7 +57,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">µØÖ·£º </td>
+          <td nowrap="nowrap">åœ°å€ï¼š </td>
           <td>
             <input type="text" name="$contactGroup.address1.key" value="$!contactGroup.address1.value" size="60"/>
           </td>
@@ -75,7 +75,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ÓÊ±à£º </td>
+          <td nowrap="nowrap">é‚®ç¼–ï¼š </td>
           <td>
             <input type="text" name="$contactGroup.zip.key" value="$!contactGroup.zip.value" size="20"/>
           </td>
@@ -84,7 +84,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">³ÇÊĞ£º </td>
+          <td nowrap="nowrap">åŸå¸‚ï¼š </td>
           <td>
             <input type="text" name="$contactGroup.city.key" value="$!contactGroup.city.value" size="30"/>
           </td>
@@ -93,7 +93,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">Ê¡·İ£º </td>
+          <td nowrap="nowrap">çœä»½ï¼š </td>
           <td>
             <input type="text" name="$contactGroup.state.key" value="$!contactGroup.state.value" size="30"/>
           </td>
@@ -102,16 +102,16 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">¹ú¼Ò£º </td>
+          <td nowrap="nowrap">å›½å®¶ï¼š </td>
           <td>
-            #select ($contactGroup.country.key $selectCountries $contactGroup.country.value "-- ÇëÑ¡Ôñ¹ú¼Ò --")
+            #select ($contactGroup.country.key $selectCountries $contactGroup.country.value "-- è¯·é€‰æ‹©å›½å®¶ --")
           </td>
           <td class="errorMessage">
             #registerAccountMessage ($contactGroup.country)
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">µç»°£º </td>
+          <td nowrap="nowrap">ç”µè¯ï¼š </td>
           <td>
             <input type="text" name="$contactGroup.phone.key" value="$!contactGroup.phone.value" size="30"/>
           </td>
@@ -120,7 +120,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">µç×ÓÓÊ¼ş£º </td>
+          <td nowrap="nowrap">ç”µå­é‚®ä»¶ï¼š </td>
           <td>
             <input type="text" name="$contactGroup.email.key" value="$!contactGroup.email.value" size="60"/>
           </td>
@@ -129,10 +129,10 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td colspan="3" class="subtitle">ĞÅÓÃ¿¨ĞÅÏ¢</td>
+          <td colspan="3" class="subtitle">ä¿¡ç”¨å¡ä¿¡æ¯</td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ĞÅÓÃ¿¨ºÅ£º</td>
+          <td nowrap="nowrap">ä¿¡ç”¨å¡å·ï¼š</td>
           <td width="100%">
             <input type="text" name="$creditGroup.creditCardNumber.key" value="$!creditGroup.creditCardNumber.value" size="30"/>
           </td>
@@ -141,20 +141,20 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ĞÅÓÃ¿¨ÀàĞÍ£º</td>
+          <td nowrap="nowrap">ä¿¡ç”¨å¡ç±»å‹ï¼š</td>
           <td width="100%">
-            #select ($creditGroup.creditCardType.key $selectCreditCardType $creditGroup.creditCardType.value "-- ÇëÑ¡ÔñĞÅÓÃ¿¨ÀàĞÍ --")
+            #select ($creditGroup.creditCardType.key $selectCreditCardType $creditGroup.creditCardType.value "-- è¯·é€‰æ‹©ä¿¡ç”¨å¡ç±»å‹ --")
           </td>
           <td class="errorMessage">
             #registerAccountMessage ($creditGroup.creditCardType)
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">ĞÅÓÃ¿¨¹ıÆÚÊ±¼ä£º</td>
+          <td nowrap="nowrap">ä¿¡ç”¨å¡è¿‡æœŸæ—¶é—´ï¼š</td>
           <td width="100%" nowrap>
-            #select ($creditGroup.creditCardExpiryMonth.key $selectMonth $creditGroup.creditCardExpiryMonth.value "-- ÇëÑ¡ÔñÔÂ·İ --")
+            #select ($creditGroup.creditCardExpiryMonth.key $selectMonth $creditGroup.creditCardExpiryMonth.value "-- è¯·é€‰æ‹©æœˆä»½ --")
             /
-            #select ($creditGroup.creditCardExpiryYear.key $selectYear $creditGroup.creditCardExpiryYear.value "-- ÇëÑ¡ÔñÄê·İ --")
+            #select ($creditGroup.creditCardExpiryYear.key $selectYear $creditGroup.creditCardExpiryYear.value "-- è¯·é€‰æ‹©å¹´ä»½ --")
           </td>
           <td class="errorMessage">
             #registerAccountMessage ($creditGroup.creditCardExpiryMonth) <br>
@@ -167,7 +167,7 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
       <td><hr/></td>
     </tr>
     <tr align="center">
-      <td><input type="submit" name="event_submit_do_register_account" value="±£´æÉÏÃæµÄĞÅÏ¢"/></td>
+      <td><input type="submit" name="event_submit_do_register_account" value="ä¿å­˜ä¸Šé¢çš„ä¿¡æ¯"/></td>
     </tr>
   </table>
 

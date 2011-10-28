@@ -2,7 +2,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 
 <table width="100%" border="0" cellspacing="0" cellpadding="10">
   <tr>
-	<td class="subcategoryName"><img src="$homeContent.getURI("images/cart.png")"/> ÎÒµÄ¹ºÎï³µ</td>
+	<td class="subcategoryName"><img src="$homeContent.getURI("images/cart.png")"/> æˆ‘çš„è´­ç‰©è½¦</td>
   </tr>
   <tr>
 	<td>
@@ -11,19 +11,19 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 
 		<table width="100%" border="0" cellspacing="1" cellpadding="10">
 			<tr bgcolor="#DDDDDD">
-				<th width="1%">Í¼Æ¬</th>
+				<th width="1%">å›¾ç‰‡</th>
 				<th>ID</th>
-				<th>Ãû³Æ</th>
-				<th>ÃèÊö</th>
-				<th>µ¥¼Û</th>
-				<th>ÊıÁ¿</th>
-				<th align="right">Ğ¡¼Æ</th>
+				<th>åç§°</th>
+				<th>æè¿°</th>
+				<th>å•ä»·</th>
+				<th>æ•°é‡</th>
+				<th align="right">å°è®¡</th>
 				<th>&nbsp;</th>
 			</tr>
 
 		#if ($cart.cartItemList.empty)
 			<tr>
-				<td colspan="10">¹ºÎï³µÊÇ¿ÕµÄ¡£</td>
+				<td colspan="10">è´­ç‰©è½¦æ˜¯ç©ºçš„ã€‚</td>
 			</tr>
 		#else
 			#foreach($cartItem in $cart.cartItemList)
@@ -35,7 +35,7 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 			<tr onmouseenter="this.style.backgroundColor='powderblue'" onmouseleave="this.style.backgroundColor=''">
 				<td width="1%"><img src="$storeImageContent.getURI("$item.product.logo")"></td>
 				<td>$item.productItemId</td>
-				<td>$item.product.category.description£¬$item.product.description</td>
+				<td>$item.product.category.descriptionï¼Œ$item.product.description</td>
 				<td>$item.attribute1</td>
 				<td>$item.listPrice</td>
 				<td>
@@ -45,24 +45,24 @@ $page.addStyleSheet("$storeContent.getURI('css/petstore-store.css')")
 				<td align="right">$messageUtil.formatMessage("{0,number}", $cartItem.total)</td>
 				<td align="right">
 					#set ($removeURL = $storeModule.setTarget("viewCart").setAction("cartAction").addQueryData("itemId", $item.productItemId).addQueryData("eventSubmitDoRemoveItem", "true"))
-					<input type="button" value="É¾³ı" onclick="location='$removeURL'"/>
+					<input type="button" value="åˆ é™¤" onclick="location='$removeURL'"/>
 				</td>
 			</tr>
 			#end
 			<tr>
 				<td colspan="6">&nbsp;</td>
-				<td align="right"><hr size="1"/><br/>×Ü¼Æ£º$messageUtil.formatMessage("{0,number}", $cart.total)</td>
+				<td align="right"><hr size="1"/><br/>æ€»è®¡ï¼š$messageUtil.formatMessage("{0,number}", $cart.total)</td>
 				<td>&nbsp;</td>
 			</tr>
 		#end
 
 			<tr bgcolor="#DDDDDD">
 				<td colspan="10" align="right">
-					<input type="button" value="¼ÌĞø¹ºÎï" onclick="location='$storeModule.setTarget("categoryList")'"/>
+					<input type="button" value="ç»§ç»­è´­ç‰©" onclick="location='$storeModule.setTarget("categoryList")'"/>
 					#if (!$cart.cartItemList.empty)
 						<input type="hidden" name="action" value="cart_action"/>
-						<input type="submit" name="event_submit_do_update" value="¸üĞÂ¹ºÎï³µ"/>
-						<input type="button" value="ÂíÉÏÈ¥¸¶¿î" onclick="alert('Ö§¸¶±¦£¬ÍøÉÏÖ§¸¶£¬°²È«¿ìËÙ£¡'); alert('Ö§¸¶±¦£¬ÈÃÌìÏÂÎŞÔô£¡'); alert('¸Ã¹¦ÄÜÉĞÎ´ÊµÏÖ£¡')"/>
+						<input type="submit" name="event_submit_do_update" value="æ›´æ–°è´­ç‰©è½¦"/>
+						<input type="button" value="é©¬ä¸Šå»ä»˜æ¬¾" onclick="alert('æ”¯ä»˜å®ï¼Œç½‘ä¸Šæ”¯ä»˜ï¼Œå®‰å…¨å¿«é€Ÿï¼'); alert('æ”¯ä»˜å®ï¼Œè®©å¤©ä¸‹æ— è´¼ï¼'); alert('è¯¥åŠŸèƒ½å°šæœªå®ç°ï¼')"/>
 					#end
 				</td>
 			</tr>

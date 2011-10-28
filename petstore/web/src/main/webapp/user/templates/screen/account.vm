@@ -2,38 +2,38 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
 
 <table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
   <tr align="center">
-    <td><strong>ÓÃ»§ĞÅÏ¢</strong><br />
+    <td><strong>ç”¨æˆ·ä¿¡æ¯</strong><br />
       <hr/>
     </td>
   </tr>
   <tr align="center">
     <td><table border="0" cellpadding="0" cellspacing="10" width="10">
       <tr>
-        <td colspan="3" class="subtitle">»ù±¾ĞÅÏ¢</td>
+        <td colspan="3" class="subtitle">åŸºæœ¬ä¿¡æ¯</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ÓÃ»§Ãû£º</td>
+        <td nowrap="nowrap">ç”¨æˆ·åï¼š</td>
         <td width="100%">$user.userId</td>
         <td class="errorMessage">&nbsp;</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ÃÜÂë£º</td>
+        <td nowrap="nowrap">å¯†ç ï¼š</td>
         <td width="100%">********</td>
         <td class="errorMessage">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="2" class="subtitle">ÁªÏµĞÅÏ¢</td>
+        <td colspan="2" class="subtitle">è”ç³»ä¿¡æ¯</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ĞÕÊÏ£º</td>
+        <td nowrap="nowrap">å§“æ°ï¼š</td>
         <td width="100%">$!user.account.lastName</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">Ãû×Ö£º</td>
+        <td nowrap="nowrap">åå­—ï¼š</td>
         <td>$!user.account.firstName</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">µØÖ·£º </td>
+        <td nowrap="nowrap">åœ°å€ï¼š </td>
         <td>$!user.account.address1</td>
       </tr>
       <tr>
@@ -41,42 +41,42 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
         <td>$!user.account.address2</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ÓÊ±à£º </td>
+        <td nowrap="nowrap">é‚®ç¼–ï¼š </td>
         <td>$!user.account.zip</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">³ÇÊĞ£º </td>
+        <td nowrap="nowrap">åŸå¸‚ï¼š </td>
         <td>$!user.account.city</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">Ê¡·İ£º </td>
+        <td nowrap="nowrap">çœä»½ï¼š </td>
         <td>$!user.account.state</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">¹ú¼Ò£º </td>
+        <td nowrap="nowrap">å›½å®¶ï¼š </td>
         <td>$!selectCountries.get($user.account.country)</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">µç»°£º </td>
+        <td nowrap="nowrap">ç”µè¯ï¼š </td>
         <td>$!user.account.phone</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">µç×ÓÓÊ¼ş£º </td>
+        <td nowrap="nowrap">ç”µå­é‚®ä»¶ï¼š </td>
         <td>$!user.account.email</td>
       </tr>
       <tr>
-        <td colspan="2" class="subtitle">ĞÅÓÃ¿¨ĞÅÏ¢</td>
+        <td colspan="2" class="subtitle">ä¿¡ç”¨å¡ä¿¡æ¯</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ĞÅÓÃ¿¨ºÅ£º</td>
+        <td nowrap="nowrap">ä¿¡ç”¨å¡å·ï¼š</td>
         <td width="100%">$!user.account.creditCardNumber</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ĞÅÓÃ¿¨ÀàĞÍ£º</td>
+        <td nowrap="nowrap">ä¿¡ç”¨å¡ç±»å‹ï¼š</td>
         <td width="100%">$!selectCreditCardType.get($user.account.creditCardType)</td>
       </tr>
       <tr>
-        <td nowrap="nowrap">ĞÅÓÃ¿¨¹ıÆÚÊ±¼ä£º</td>
+        <td nowrap="nowrap">ä¿¡ç”¨å¡è¿‡æœŸæ—¶é—´ï¼š</td>
         <td width="100%" nowrap>
           $!selectMonth.get("$user.account.creditCardExpiryMonth")
           /
@@ -90,8 +90,8 @@ $page.addStyleSheet("$userContent.getURI('css/petstore-user.css')")
   </tr>
   <tr align="center">
     <td>
-      <input type="button" value="·µ»Ø" onclick="location='$petstoreHomeLink'"/>
-      <input type="button" value="ĞŞ¸ÄÓÃ»§ĞÅÏ¢" onclick="location='$petstoreRegisterAccountLink'"/>
+      <input type="button" value="è¿”å›" onclick="location='$petstoreHomeLink'"/>
+      <input type="button" value="ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯" onclick="location='$petstoreRegisterAccountLink'"/>
     </td>
   </tr>
 </table>

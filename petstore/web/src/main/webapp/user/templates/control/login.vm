@@ -11,7 +11,7 @@
 
   <table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
     <tr align="center">
-      <td><strong>�û���¼</strong><br />
+      <td><strong>用户登录</strong><br />
         <hr/>
         <div class="errorMessage">
           #loginMessage ($group.loginError)
@@ -21,7 +21,7 @@
     <tr align="center">
       <td><table border="0" cellpadding="0" cellspacing="10" width="10">
         <tr>
-          <td nowrap="nowrap">�û�����</td>
+          <td nowrap="nowrap">用户名：</td>
           <td width="100%">
             <input type="text" name="$group.userId.key" value="$!group.userId.value"/>
           </td>
@@ -30,7 +30,7 @@
           </td>
         </tr>
         <tr>
-          <td nowrap="nowrap">���룺 </td>
+          <td nowrap="nowrap">密码： </td>
           <td>
             <input type="password" name="$group.password.key" value="$!group.password.value"/>
           </td>
@@ -47,7 +47,7 @@
       <td><table border="0" cellpadding="0" cellspacing="10" width="10">
         <tr>
           <td width="100%"><input type="image" src="$homeContent.getURI("images/btn_login.png")" name="event_submit_do_login"/></td>
-          <td nowrap><a href="$petstoreRegisterLink">��û��ע�����<br>�Ͽ�ע�ᣡ</a></td>
+          <td nowrap><a href="$petstoreRegisterLink">还没有注册过吗？<br>赶快注册！</a></td>
         </tr>
       </table></td>
     </tr>
