@@ -233,6 +233,12 @@
                 </executions>
             </plugin>
             <plugin>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.alibaba.citrus.tool</groupId>
                 <artifactId>maven-springext-plugin</artifactId>
             </plugin>
