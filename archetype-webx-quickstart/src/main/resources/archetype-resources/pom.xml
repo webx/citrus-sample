@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Maven POM #set ($D="$") -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
@@ -13,7 +13,7 @@
         <java.version>1.5</java.version>
         <java.encoding>UTF-8</java.encoding>
         <webx-version>${webx-version}</webx-version>
-        <spring-version>3.0.6.RELEASE</spring-version>
+        <spring-version>${spring-version}</spring-version>
         <springext-plugin-version>1.0</springext-plugin-version>
         <jetty-version>6.1.22</jetty-version>
         <project.build.sourceEncoding>${D}{java.encoding}</project.build.sourceEncoding>

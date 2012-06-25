@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archetype-descriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
-    xsi:schemaLocation="
-        http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd
-    "
-    name="webx-simple">
+                      xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+                      name="webx-simple">
     <requiredProperties>
         <requiredProperty key="webx-version">
-            <defaultValue>3.0.7</defaultValue>
+            <defaultValue>3.1.0</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="spring-version">
+            <defaultValue>3.1.1.RELEASE</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>
