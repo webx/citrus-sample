@@ -1,21 +1,38 @@
+/*
+ * Copyright (c) 2002-2012 Alibaba Group Holding Limited.
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.alibaba.sample.petstore.dal.dataobject;
 
 import java.math.BigDecimal;
 
 public class ProductItem {
-    private String productItemId;
-    private String productId;
+    private String     productItemId;
+    private String     productId;
     private BigDecimal listPrice;
     private BigDecimal unitCost;
-    private int supplierId;
-    private String status;
-    private String attribute1;
-    private String attribute2;
-    private String attribute3;
-    private String attribute4;
-    private String attribute5;
-    private Product product;
-    private int quantity;
+    private int        supplierId;
+    private String     status;
+    private String     attribute1;
+    private String     attribute2;
+    private String     attribute3;
+    private String     attribute4;
+    private String     attribute5;
+    private Product    product;
+    private int        quantity;
 
     public String getProductItemId() {
         return productItemId;

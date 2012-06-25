@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2002-2012 Alibaba Group Holding Limited.
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.alibaba.sample.petstore.biz;
 
 import static com.alibaba.citrus.test.TestEnvStatic.*;
@@ -9,11 +26,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-import org.apache.commons.fileupload.FileItem;
-import org.easymock.IAnswer;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.alibaba.citrus.util.io.StreamUtil;
 import com.alibaba.sample.petstore.dal.dao.ProductDao;
 import com.alibaba.sample.petstore.dal.dataobject.Cart;
@@ -21,6 +33,10 @@ import com.alibaba.sample.petstore.dal.dataobject.CartItem;
 import com.alibaba.sample.petstore.dal.dataobject.Category;
 import com.alibaba.sample.petstore.dal.dataobject.Product;
 import com.alibaba.sample.petstore.dal.dataobject.ProductItem;
+import org.apache.commons.fileupload.FileItem;
+import org.easymock.IAnswer;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class StoreManagerTests extends AbstractBizManagerTests {
     @Autowired
@@ -94,7 +110,7 @@ public class StoreManagerTests extends AbstractBizManagerTests {
         assertEquals(itemId, item.getProductItem().getProductItemId());
         assertEquals(quantity, item.getQuantity());
         assertEquals(item.getProductItem().getListPrice().doubleValue() * quantity, item.getTotal().doubleValue(),
-                0.01d);
+                     0.01d);
     }
 
     @Test
@@ -148,6 +164,6 @@ public class StoreManagerTests extends AbstractBizManagerTests {
         assertTrue(f.exists());
 
         assertEquals(StreamUtil.readText(new FileInputStream(srcfile), "8859_1", true),
-                StreamUtil.readText(new FileInputStream(f), "8859_1", true));
+                     StreamUtil.readText(new FileInputStream(f), "8859_1", true));
     }
 }

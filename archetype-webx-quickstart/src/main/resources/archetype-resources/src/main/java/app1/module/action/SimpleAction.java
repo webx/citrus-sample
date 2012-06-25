@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Alibaba Group Holding Limited.
+ * Copyright (c) 2002-2012 Alibaba Group Holding Limited.
  * All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
+
 package ${package}.app1.module.action;
 
 import com.alibaba.citrus.turbine.Navigator;

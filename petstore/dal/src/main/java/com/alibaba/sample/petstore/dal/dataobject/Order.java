@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2002-2012 Alibaba Group Holding Limited.
+ * All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.alibaba.sample.petstore.dal.dataobject;
 
 import static com.alibaba.citrus.util.CollectionUtil.*;
@@ -7,32 +24,32 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
-    private int orderId;
-    private String userId;
-    private Date orderDate;
-    private String shipAddress1;
-    private String shipAddress2;
-    private String shipCity;
-    private String shipState;
-    private String shipZip;
-    private String shipCountry;
-    private String billAddress1;
-    private String billAddress2;
-    private String billCity;
-    private String billState;
-    private String billZip;
-    private String billCountry;
-    private String courier;
+    private int        orderId;
+    private String     userId;
+    private Date       orderDate;
+    private String     shipAddress1;
+    private String     shipAddress2;
+    private String     shipCity;
+    private String     shipState;
+    private String     shipZip;
+    private String     shipCountry;
+    private String     billAddress1;
+    private String     billAddress2;
+    private String     billCity;
+    private String     billState;
+    private String     billZip;
+    private String     billCountry;
+    private String     courier;
     private BigDecimal totalPrice;
-    private String billToFirstName;
-    private String billToLastName;
-    private String shipToFirstName;
-    private String shipToLastName;
-    private String creditCard;
-    private String expiryDate;
-    private String cardType;
-    private String locale;
-    private String status;
+    private String     billToFirstName;
+    private String     billToLastName;
+    private String     shipToFirstName;
+    private String     shipToLastName;
+    private String     creditCard;
+    private String     expiryDate;
+    private String     cardType;
+    private String     locale;
+    private String     status;
     private List<OrderItem> orderItems = createLinkedList();
 
     public int getOrderId() {
