@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.alibaba.citrus:citrus-webx-all:3.0.7">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/citrus/citrus-webx-all/3.0.7/citrus-webx-all-3.0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/citrus/citrus-webx-all/3.0.7/citrus-webx-all-3.0.7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/citrus/citrus-webx-all/3.0.7/citrus-webx-all-3.0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
