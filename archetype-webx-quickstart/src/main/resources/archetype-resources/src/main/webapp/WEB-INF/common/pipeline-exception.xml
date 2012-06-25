@@ -22,10 +22,10 @@
         <handleException defaultPage="error.vm">
 
             <on-exception type="com.alibaba.citrus.service.template.TemplateNotFoundException"
-                          statusCode="404" />
+                          statusCode="404" logging="brief" />
 
             <on-exception type="com.alibaba.citrus.service.moduleloader.ModuleNotFoundException"
-                          statusCode="404" />
+                          statusCode="404" logging="brief" />
 
         </handleException>
 
