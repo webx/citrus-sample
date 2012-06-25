@@ -18,7 +18,8 @@
     <select id="searchProductList" resultMap="productResult"><![CDATA[
         select PRODUCTID, NAME, LOGO, DESCN,
         CATEGORY from PRODUCT
-        ]]><dynamic prepend="WHERE">
+        ]]>
+        <dynamic prepend="WHERE">
             <iterate property="keywordList" open="" close="" conjunction="OR"><![CDATA[
                    lower(name) like #keywordList[]#
                 OR lower(category) like #keywordList[]#

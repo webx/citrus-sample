@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:services="http://www.alibaba.com/schema/services"
-    xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
-    xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
-    xmlns="http://www.alibaba.com/schema/services/form/validators"
-    xmlns:beans="http://www.springframework.org/schema/beans"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xsi:schemaLocation="
+             xmlns:services="http://www.alibaba.com/schema/services"
+             xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
+             xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
+             xmlns="http://www.alibaba.com/schema/services/form/validators"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:p="http://www.springframework.org/schema/p"
+             xsi:schemaLocation="
         http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
         http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
         http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
@@ -111,7 +111,7 @@
                     <message>必须填写 ${displayName}</message>
                 </required-validator>
             </services:field>
-            <services:field name="address2" displayName="地址" propertyName="account.address2"> </services:field>
+            <services:field name="address2" displayName="地址" propertyName="account.address2"></services:field>
             <services:field name="city" displayName="城市" propertyName="account.city">
                 <required-validator>
                     <message>必须填写 ${displayName}</message>
@@ -156,7 +156,7 @@
          -->
         <services:group name="registerCredit" extends="csrfTokenCheckGroup">
             <services:field name="creditCardNumber" displayName="信用卡号码"
-                propertyName="account.creditCardNumber">
+                            propertyName="account.creditCardNumber">
                 <required-validator>
                     <message>必须填写 ${displayName}</message>
                 </required-validator>
@@ -165,19 +165,19 @@
                 </number-validator>
             </services:field>
             <services:field name="creditCardType" displayName="信用卡类型"
-                propertyName="account.creditCardType">
+                            propertyName="account.creditCardType">
                 <required-validator>
                     <message>必须填写 ${displayName}</message>
                 </required-validator>
             </services:field>
             <services:field name="creditCardExpiryMonth" displayName="信用卡过期月份"
-                propertyName="account.creditCardExpiryMonth">
+                            propertyName="account.creditCardExpiryMonth">
                 <required-validator>
                     <message>必须填写 ${displayName}</message>
                 </required-validator>
             </services:field>
             <services:field name="creditCardExpiryYear" displayName="信用卡过期年份"
-                propertyName="account.creditCardExpiryYear">
+                            propertyName="account.creditCardExpiryYear">
                 <required-validator>
                     <message>必须填写 ${displayName}</message>
                 </required-validator>

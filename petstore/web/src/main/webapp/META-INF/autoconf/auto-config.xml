@@ -3,11 +3,11 @@
     <group>
         <property name="petstore.work" description="应用程序的工作目录" />
         <property name="petstore.loggingRoot" defaultValue="${petstore.work}/logs"
-            description="日志文件目录" />
+                  description="日志文件目录" />
         <property name="petstore.upload" defaultValue="${petstore.work}/upload"
-            description="上传文件的目录" />
+                  description="上传文件的目录" />
         <property name="petstore.loggingLevel" defaultValue="warn" description="日志文件级别">
-            <validator name="choice" choice="trace, debug, info, warn, error"/>
+            <validator name="choice" choice="trace, debug, info, warn, error" />
         </property>
     </group>
     <script>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 <sqlMap namespace="Category">
-    <typeAlias alias="category" type="com.alibaba.sample.petstore.dal.dataobject.Category"/>
+    <typeAlias alias="category" type="com.alibaba.sample.petstore.dal.dataobject.Category" />
     <resultMap id="categoryResult" class="category">
-        <result property="categoryId" column="CATID"/>
-        <result property="name" column="NAME"/>
-        <result property="logo" column="LOGO"/>
-        <result property="description" column="DESCN"/>
+        <result property="categoryId" column="CATID" />
+        <result property="name" column="NAME" />
+        <result property="logo" column="LOGO" />
+        <result property="description" column="DESCN" />
     </resultMap>
     <select id="getCategory" resultMap="categoryResult" parameterClass="string"><![CDATA[
         select * from CATEGORY where CATID = #value#

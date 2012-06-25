@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 <sqlMap namespace="User">
-    <typeAlias alias="user" type="com.alibaba.sample.petstore.dal.dataobject.User"/>
+    <typeAlias alias="user" type="com.alibaba.sample.petstore.dal.dataobject.User" />
     <!--
       - ===============================================
       - 将user、account、profile三张表映射到User类
       - ===============================================
      -->
     <resultMap id="userResult" class="user">
-        <result property="userId" column="USER_ID"/>
-        <result property="role" column="ROLES"/>
-        <result property="account.email" column="EMAIL"/>
-        <result property="account.firstName" column="FIRST_NAME"/>
-        <result property="account.lastName" column="LAST_NAME"/>
-        <result property="account.status" column="STATUS"/>
-        <result property="account.address1" column="ADDRESS_1"/>
-        <result property="account.address2" column="ADDRESS_2"/>
-        <result property="account.city" column="CITY"/>
-        <result property="account.state" column="STATE"/>
-        <result property="account.zip" column="ZIP"/>
-        <result property="account.country" column="COUNTRY"/>
-        <result property="account.phone" column="PHONE"/>
-        <result property="account.creditCardNumber" column="CREDIT_CARD_NUMBER"/>
-        <result property="account.creditCardType" column="CREDIT_CARD_TYPE"/>
-        <result property="account.creditCardExpiry" column="CREDIT_CARD_EXPIRY"/>
-        <result property="profile.languagePreference" column="LANGUAGE_PREFERENCE"/>
-        <result property="profile.favoriteCategoryId" column="FAVORITE_CATEGORY_ID"/>
-        <result property="profile.listOption" column="LIST_OPTION" nullValue="0"/>
+        <result property="userId" column="USER_ID" />
+        <result property="role" column="ROLES" />
+        <result property="account.email" column="EMAIL" />
+        <result property="account.firstName" column="FIRST_NAME" />
+        <result property="account.lastName" column="LAST_NAME" />
+        <result property="account.status" column="STATUS" />
+        <result property="account.address1" column="ADDRESS_1" />
+        <result property="account.address2" column="ADDRESS_2" />
+        <result property="account.city" column="CITY" />
+        <result property="account.state" column="STATE" />
+        <result property="account.zip" column="ZIP" />
+        <result property="account.country" column="COUNTRY" />
+        <result property="account.phone" column="PHONE" />
+        <result property="account.creditCardNumber" column="CREDIT_CARD_NUMBER" />
+        <result property="account.creditCardType" column="CREDIT_CARD_TYPE" />
+        <result property="account.creditCardExpiry" column="CREDIT_CARD_EXPIRY" />
+        <result property="profile.languagePreference" column="LANGUAGE_PREFERENCE" />
+        <result property="profile.favoriteCategoryId" column="FAVORITE_CATEGORY_ID" />
+        <result property="profile.listOption" column="LIST_OPTION" nullValue="0" />
     </resultMap>
     <!--
       - ===============================================
