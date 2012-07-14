@@ -36,13 +36,19 @@
         <filter-name>webx</filter-name>
         <filter-class>com.alibaba.citrus.webx.servlet.WebxFrameworkFilter</filter-class>
         <init-param>
-            <!-- 需要被“排除”的URL路径，以逗号分隔，如/static, *.jpg。适合于映射静态页面、图片。 -->
+            <!--
+             - 需要被“排除”的URL路径，以逗号分隔，如/static, *.jpg。适合于映射静态页面、图片。
+             - 此处将所有静态html、图片文件交给servlet引擎直接处理；但/petstore/images下的图片仍由pipeline来处理。
+            -->
             <param-name>excludes</param-name>
-            <param-value>*.html</param-value>
+            <param-value>*.html, *.jpg, *.gif, *.png, !/petstore/images</param-value>
         </init-param>
         <init-param>
-            <!-- 需要被“略过”的URL路径，以逗号分隔，如/myservlet, *.jsp。适用于映射servlet、filter。
-                对于passthru请求，webx的request-contexts服务、错误处理、开发模式等服务仍然可用。 -->
+            <!--
+              - 需要被“略过”的URL路径，以逗号分隔，如/myservlet, *.jsp。适用于映射servlet、filter。
+              - 对于passthru请求，webx的request-contexts服务、错误处理、开发模式等服务仍然可用。
+              - 此处，/getloginuser是一个servlet，但通过passthru，这个servlet可以享用webx所提供的服务。
+             -->
             <param-name>passthru</param-name>
             <param-value>/getloginuser</param-value>
         </init-param>
