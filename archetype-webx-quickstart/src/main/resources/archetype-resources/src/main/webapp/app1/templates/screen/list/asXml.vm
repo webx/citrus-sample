@@ -1,0 +1,9 @@
+$rundata.response.setContentType("text/xml")
+$rundata.setLayoutEnabled(false)
+#escape("xml")
+<product-list>
+#foreach ($item in $list)
+  <item name="$item" />
+#end
+</product-list>
+#end

@@ -31,7 +31,7 @@
           - Simple form
           - ===============================================
          -->
-        <services:group name="simple" extends="csrfCheck">
+        <services:group name="register" extends="csrfCheck">
             <services:field name="name" displayName="你的名字">
                 <required-validator>
                     <message>必须填写 ${displayName}</message>

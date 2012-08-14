@@ -15,13 +15,20 @@
  * limitations under the License.
  */
 
-package ${package}.app1.module.screen;
+package ${package}.app1.module.screen.list;
 
 import com.alibaba.citrus.turbine.Context;
-import com.alibaba.citrus.turbine.dataresolver.Param;
 
-public class Hello {
-    public void execute(@Param("name") String name, Context context) {
-        context.put("name", name);
+public class Default {
+    public void execute(Context context) {
+        context.put("list", new String[] {
+                "Adobe Photoshop",
+                "Adobe Acrobat",
+                "Adobe Lightroom",
+                "Apple Aperture",
+                "Microsoft Office",
+                "IntelliJ IDEA",
+                "<<\"Objective-C\"指南>>"
+        });
     }
 }

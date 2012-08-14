@@ -20,11 +20,11 @@ package ${package}.app1.module.action;
 import com.alibaba.citrus.turbine.Navigator;
 import com.alibaba.citrus.turbine.dataresolver.FormGroup;
 
-import ${package}.app1.SimpleObject;
+import ${package}.app1.Visitor;
 
-public class SimpleAction {
-    public void doGreeting(@FormGroup("simple") SimpleObject simple, Navigator nav) {
-        String name = simple.getName();
-        nav.redirectTo("app1Link").withTarget("hello").withParameter("name", name);
+public class RegisterAction {
+    public void doRegister(@FormGroup("register") Visitor visitor, Navigator nav) {
+        String name = visitor.getName();
+        nav.redirectTo("app1Link").withTarget("form/welcome").withParameter("name", name);
     }
 }

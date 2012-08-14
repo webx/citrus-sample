@@ -1,0 +1,6 @@
+<h1>Product List</h1>
+<ul>
+#foreach ($item in $list)
+  <li>$item</li>
+#end
+</ul>

@@ -1,0 +1,20 @@
+$page.setTitle("Register")
+
+<form action="$app1Link.setTarget("form/register")" method="post">
+    $csrfToken.hiddenField
+    <input type="hidden" name="action" value="register_action"/>
+
+    #set ($group = $form.register.defaultInstance)
+
+    <p>Hello, what's your name?</p>
+
+    #if (!$group.name.valid)
+        <p>$group.name.message</p>
+    #end
+
+    <p>
+        <input type="text" name="$group.name.key" value="$!group.name.value"/>
+        <input type="submit" name="event_submit_do_register"/>
+    </p>
+
+</form>

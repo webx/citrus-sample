@@ -1,0 +1,11 @@
+$rundata.response.setContentType("application/json")
+$rundata.setLayoutEnabled(false)
+#escape("javascript")
+{
+  "productList":[
+  #foreach ($item in $list)
+    {"name":"$item"},
+  #end
+  ]
+}
+#end
