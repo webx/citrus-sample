@@ -1,1 +1,1 @@
-$control.setTemplate("categoryList.vm")
+$control.setTemplate("categoryList")

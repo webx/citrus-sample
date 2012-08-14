@@ -40,7 +40,7 @@ public class AddProductAction {
 
         try {
             storeManager.addProduct(product, catId, picture);
-            nav.redirectTo("storeModule").withTarget("edit/categoryList.vm");
+            nav.redirectTo("storeModule").withTarget("edit/categoryList");
         } catch (DuplicatedProductException e) {
             group.getField("productId").setMessage("duplicatedProductId");
         }

@@ -65,24 +65,24 @@
         <!-- 使用方法： link                                                  -->
         <!-- ================================================================ -->
         <turbine-uri id="petstoreHomeLink" exposed="true" extends="homeModule">
-            <target>homepage.vm</target>
+            <target>homepage</target>
         </turbine-uri>
         <turbine-uri id="petstoreLoginLink" exposed="true" extends="userModule">
-            <target>login.vm</target>
+            <target>login</target>
         </turbine-uri>
         <turbine-uri id="petstoreLogoutLink" exposed="true" extends="userModule">
-            <target>login.vm</target>
+            <target>login</target>
             <query key="action">loginAction</query>
             <query key="eventSubmitDoLogout">yes</query>
         </turbine-uri>
         <turbine-uri id="petstoreRegisterLink" exposed="true" extends="userModule">
-            <target>register.vm</target>
+            <target>register</target>
         </turbine-uri>
         <turbine-uri id="petstoreRegisterAccountLink" exposed="true" extends="userModule">
-            <target>registerAccount.vm</target>
+            <target>registerAccount</target>
         </turbine-uri>
         <turbine-uri id="petstoreAccountLink" exposed="true" extends="userModule">
-            <target>account.vm</target>
+            <target>account</target>
         </turbine-uri>
         <uri id="toolkitArchLink" exposed="true" extends="toolkitSite">
             <path>/arch/bigpicture.html</path>

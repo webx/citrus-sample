@@ -19,7 +19,7 @@
         <prepareForTurbine />
 
         <!-- 根据异常，选择适当的错误页面及statusCode。 -->
-        <handleException defaultPage="error.vm">
+        <handleException defaultPage="error">
 
             <on-exception type="com.alibaba.citrus.service.template.TemplateNotFoundException"
                           statusCode="404" logging="brief" />

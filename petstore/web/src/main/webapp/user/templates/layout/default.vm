@@ -11,13 +11,13 @@
 
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td>$control.setTemplate("home:top.vm")</td>
+    <td>$control.setTemplate("home:top")</td>
   </tr>
   <tr>
     <td>$screen_placeholder</td>
   </tr>
   <tr>
-    <td>$control.setTemplate("home:bottom.vm")</td>
+    <td>$control.setTemplate("home:bottom")</td>
   </tr>
 </table>
 

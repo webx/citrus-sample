@@ -33,7 +33,7 @@
             <choose>
                 <when>
                     <!-- 执行带模板的screen，默认有layout。 -->
-                    <pl-conditions:target-extension-condition extension="null, vm, jsp, jspx" />
+                    <pl-conditions:target-extension-condition extension="null" />
                     <performAction />
                     <performTemplateScreen />
                     <renderTemplate />

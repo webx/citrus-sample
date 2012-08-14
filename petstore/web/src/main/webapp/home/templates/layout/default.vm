@@ -19,15 +19,15 @@
         <td valign="top">&nbsp;</td>
       </tr>
       <tr>
-        <td valign="top">$control.setTemplate("user:login.vm")</td>
+        <td valign="top">$control.setTemplate("user:login")</td>
       </tr>
     </table></td>
     <td><img src="$homeContent.getURI("images/dot_transparent.png")" width="30"/></td>
     <td width="100%" valign="top">
-      $control.setTemplate("topNoLogo.vm")
+      $control.setTemplate("topNoLogo")
       <table width="100%"  border="0" cellspacing="0" cellpadding="0">
         <tr valign="bottom">
-          <td width="10" align="left">$control.setTemplate("tabs.vm")</td>
+          <td width="10" align="left">$control.setTemplate("tabs")</td>
         </tr>
         <tr>
           <td><table border="0" cellpadding="0" cellspacing="10" width="100%" class="box">
@@ -39,7 +39,7 @@
       </table></td>
   </tr>
   <tr>
-    <td colspan="3" valign="top">$control.setTemplate("bottom.vm")</td>
+    <td colspan="3" valign="top">$control.setTemplate("bottom")</td>
   </tr>
 </table>
 

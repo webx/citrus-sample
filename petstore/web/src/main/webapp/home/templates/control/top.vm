@@ -3,7 +3,7 @@
     <td width="321" rowspan="2"><a href="$petstoreHomeLink"><img src="$homeContent.getURI("images/logo_petstore_small.png")"></a> </td>
     <td width="321" rowspan="2"><img src="$homeContent.getURI("images/dot_transparent.png")" width="10" height="10"></td>
     <td width="100%" align="left"><a href="$petstoreHomeLink"><img src="$homeContent.getURI("images/petstore_title.png")"></a></td>
-    <td width="1" align="right">$control.setTemplate("nav.vm")</td>
+    <td width="1" align="right">$control.setTemplate("nav")</td>
   </tr>
   <tr>
     <td colspan=2><hr></td>
