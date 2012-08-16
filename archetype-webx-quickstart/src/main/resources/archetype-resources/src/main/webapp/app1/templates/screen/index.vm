@@ -39,20 +39,43 @@ $page.setTitle("It works.")
 </li>
 
 <li>
-    <h2>Screen with Multiple Templates</h2>
+    <h2>Single Screen for Multiple Templates</h2>
 
     <ul>
-    <li>#set($url = "$app1Link.setTarget('list/as_html.htm')")
-    <a href="$url">Show as HTML: $url</a>
-    </li>
+      <li>#set($url = "$app1Link.setTarget('list/as_html.htm')")
+      <a href="$url">Show as HTML: $url</a>
+      </li>
 
-    <li>#set($url = "$app1Link.setTarget('list/as_xml.htm')")
-    <a href="$url">Show as XML: $url</a>
-    </li>
+      <li>#set($url = "$app1Link.setTarget('list/as_xml.htm')")
+      <a href="$url">Show as XML: $url</a>
+      </li>
 
-    <li>#set($url = "$app1Link.setTarget('list/as_json.htm')")
-    <a href="$url">Show as JSON: $url</a>
-    </li>
+      <li>#set($url = "$app1Link.setTarget('list/as_json.htm')")
+      <a href="$url">Show as JSON: $url</a>
+      </li>
     </ul>
 </li>
+
+<li>
+    <h2>Single Screen with Multiple Event Handlers</h2>
+
+    <ul>
+      <li>#set($url = "$app1Link.setTarget('say_hello_in_language.do')")
+      <a href="$url">$url</a>
+      </li>
+
+      <li>#set($url = "$app1Link.setTarget('say_hello_in_language/chinese.do')")
+      <a href="$url">$url</a>
+      </li>
+
+      <li>#set($url = "$app1Link.setTarget('say_hello_in_language/french.do')")
+      <a href="$url">$url</a>
+      </li>
+
+      <li>#set($url = "$app1Link.setTarget('say_hello_in_language/spanish.do')")
+      <a href="$url">$url</a>
+      </li>
+    </ul>
+</li>
+
 </ol>
