@@ -76,57 +76,57 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aop</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-orm</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
-                <version>${spring-version}</version>
+                <version>${D}{spring-version}</version>
             </dependency>
             <!-- ================================================= -->
             <!-- 单元测试 -->
@@ -134,7 +134,7 @@
             <dependency>
                 <groupId>com.alibaba.citrus</groupId>
                 <artifactId>citrus-test-all</artifactId>
-                <version>${webx-version}</version>
+                <version>${D}{webx-version}</version>
                 <scope>test</scope>
             </dependency>
             <!-- ======================================== -->
