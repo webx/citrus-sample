@@ -5,7 +5,7 @@
                       name="webx-simple">
     <requiredProperties>
         <requiredProperty key="webx-version">
-            <defaultValue>3.1.1</defaultValue>
+            <defaultValue>3.1.2</defaultValue>
         </requiredProperty>
         <requiredProperty key="spring-version">
             <defaultValue>3.1.1.RELEASE</defaultValue>
