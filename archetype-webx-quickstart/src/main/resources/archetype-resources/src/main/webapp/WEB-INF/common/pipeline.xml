@@ -41,6 +41,12 @@
                     <performAction />
                     <performScreen />
                 </when>
+                <when>
+                    <!-- 执行不带模板的screen，默认无layout。 -->
+                    <pl-conditions:target-extension-condition extension="json" />
+                    <performScreen />
+                    <renderResultAsJson />
+                </when>
                 <otherwise>
                     <!-- 将控制交还给servlet engine。 -->
                     <exit />

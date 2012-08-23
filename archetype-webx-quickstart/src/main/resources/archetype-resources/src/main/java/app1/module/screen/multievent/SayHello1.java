@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package ${package}.app1.module.screen;
+package ${package}.app1.module.screen.multievent;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Michael Zhou
  */
-public class SayHelloInLanguage {
+public class SayHello1 {
     @Autowired
     private HttpServletResponse response;
 

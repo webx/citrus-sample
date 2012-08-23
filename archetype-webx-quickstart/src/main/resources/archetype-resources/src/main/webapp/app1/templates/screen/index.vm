@@ -60,22 +60,45 @@ $page.setTitle("It works.")
     <h2>Single Screen with Multiple Event Handlers</h2>
 
     <ul>
-      <li>#set($url = "$app1Link.setTarget('say_hello_in_language.do')")
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_1.do')")
       <a href="$url">$url</a>
       </li>
 
-      <li>#set($url = "$app1Link.setTarget('say_hello_in_language/chinese.do')")
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_1/chinese.do')")
       <a href="$url">$url</a>
       </li>
 
-      <li>#set($url = "$app1Link.setTarget('say_hello_in_language/french.do')")
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_1/french.do')")
       <a href="$url">$url</a>
       </li>
 
-      <li>#set($url = "$app1Link.setTarget('say_hello_in_language/spanish.do')")
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_1/spanish.do')")
       <a href="$url">$url</a>
       </li>
     </ul>
 </li>
+
+<li>
+    <h2>JSON</h2>
+
+    <ul>
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_2/english.json')")
+      <a href="$url">$url</a>
+      </li>
+
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_2/chinese.json')")
+      <a href="$url">$url</a>
+      </li>
+
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_2/french.json')")
+      <a href="$url">$url</a>
+      </li>
+
+      <li>#set($url = "$app1Link.setTarget('multievent/say_hello_2/spanish.json')")
+      <a href="$url">$url</a>
+      </li>
+    </ul>
+</li>
+
 
 </ol>
