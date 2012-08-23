@@ -39,10 +39,16 @@
                     <renderTemplate />
                 </when>
                 <when>
-                    <!-- 执行不带模板的screen，默认无layout。 -->
+                    <!-- 执行不带模板的screen，无layout。 -->
                     <pl-conditions:target-extension-condition extension="do" />
                     <performAction />
                     <performScreen />
+                </when>
+                <when>
+                    <!-- 创建JSON，无模板，无layout。 -->
+                    <pl-conditions:target-extension-condition extension="json" />
+                    <performScreen />
+                    <renderResultAsJson />
                 </when>
                 <when>
                     <!-- 读取资源文件。 -->
