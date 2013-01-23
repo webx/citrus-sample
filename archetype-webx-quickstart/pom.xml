@@ -24,6 +24,7 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
+                    <!-- 发布此项目 -->
                     <skip>false</skip>
                 </configuration>
             </plugin>
