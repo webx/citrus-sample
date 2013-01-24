@@ -84,7 +84,7 @@
                     <systemProperties>
                         <systemProperty>
                             <name>productionMode</name>
-                            <value>false</value>
+                            <value>${productionMode}</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>
