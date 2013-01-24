@@ -10,7 +10,7 @@
     </parent>
     <artifactId>archetype-webx-quickstart</artifactId>
     <packaging>maven-archetype</packaging>
-    <version>1.3</version>
+    <version>1.4</version>
     <name>Maven archetype for Webx application</name>
     <modelVersion>4.0.0</modelVersion>
     <build>
