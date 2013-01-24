@@ -14,7 +14,7 @@
         <java.encoding>UTF-8</java.encoding>
         <webx-version>${webx-version}</webx-version>
         <spring-version>${spring-version}</spring-version>
-        <springext-plugin-version>1.1</springext-plugin-version>
+        <springext-plugin-version>1.2</springext-plugin-version>
         <jetty-version>8.1.7.v20120910</jetty-version>
         <project.build.sourceEncoding>${D}{java.encoding}</project.build.sourceEncoding>
         <productionMode>false</productionMode>
