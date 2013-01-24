@@ -16,11 +16,11 @@
     <properties>
         <java.version>1.5</java.version>
         <java.encoding>UTF-8</java.encoding>
-        <webx-version>3.1.1</webx-version>
-        <spring-version>3.1.1.RELEASE</spring-version>
-        <springext-plugin-version>1.0</springext-plugin-version>
-        <autoconfig-plugin-version>1.0.10</autoconfig-plugin-version>
-        <jetty-version>6.1.22</jetty-version>
+        <webx-version>3.2.0</webx-version>
+        <spring-version>3.1.2.RELEASE</spring-version>
+        <springext-plugin-version>1.1</springext-plugin-version>
+        <autoconfig-plugin-version>1.1</autoconfig-plugin-version>
+        <jetty-version>8.1.7.v20120910</jetty-version>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
     </properties>
     <modules>
@@ -240,7 +240,7 @@
             </plugin>
             <plugin>
                 <groupId>com.alibaba.citrus.tool</groupId>
-                <artifactId>maven-springext-plugin</artifactId>
+                <artifactId>springext-maven-plugin</artifactId>
             </plugin>
         </plugins>
         <pluginManagement>
@@ -275,17 +275,17 @@
                 </plugin>
                 <plugin>
                     <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>maven-jetty-plugin</artifactId>
+                    <artifactId>jetty-maven-plugin</artifactId>
                     <version>${jetty-version}</version>
                 </plugin>
                 <plugin>
                     <groupId>com.alibaba.citrus.tool</groupId>
-                    <artifactId>maven-autoconfig-plugin</artifactId>
+                    <artifactId>autoconfig-maven-plugin</artifactId>
                     <version>${autoconfig-plugin-version}</version>
                 </plugin>
                 <plugin>
                     <groupId>com.alibaba.citrus.tool</groupId>
-                    <artifactId>maven-springext-plugin</artifactId>
+                    <artifactId>springext-maven-plugin</artifactId>
                     <version>${springext-plugin-version}</version>
                 </plugin>
                 <!--
