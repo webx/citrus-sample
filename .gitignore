@@ -8,6 +8,7 @@ target
 *.iml
 /out
 /.idea/workspace.xml
+/.idea/compiler.xml
 /.idea/modules.xml
 /.idea/libraries/Maven*.xml
 /.idea/artifacts/*.xml

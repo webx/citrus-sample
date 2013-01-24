@@ -12,7 +12,7 @@
     <artifactId>petstore-parent</artifactId>
     <name>Parent Project of Pet Store Web Application</name>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <properties>
         <java.version>1.5</java.version>
         <java.encoding>UTF-8</java.encoding>
