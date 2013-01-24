@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:p="http://www.springframework.org/schema/p"
              xmlns:services="http://www.alibaba.com/schema/services"
              xmlns:ml-adapters="http://www.alibaba.com/schema/services/module-loader/adapters"
              xmlns:ml-factories="http://www.alibaba.com/schema/services/module-loader/factories"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="
-                http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
-                http://www.alibaba.com/schema/services/module-loader/adapters http://localhost:8080/schema/services-module-loader-adapters.xsd
-                http://www.alibaba.com/schema/services/module-loader/factories http://localhost:8080/schema/services-module-loader-factories.xsd
-                http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+                 http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+                 http://www.alibaba.com/schema/services/module-loader/adapters http://localhost:8080/schema/services-module-loader-adapters.xsd
+                 http://www.alibaba.com/schema/services/module-loader/factories http://localhost:8080/schema/services-module-loader-factories.xsd
+                 http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
              ">
 
     <!-- 支持${xxx}替换。 -->
     <services:property-placeholder>
-        <services:property key="component">store</services:property>
+        <property key="component">store</property>
     </services:property-placeholder>
 
     <!-- 共享配置。 -->
@@ -30,8 +30,7 @@
     <!-- 装载模块。 -->
     <services:module-loader>
         <ml-factories:class-modules>
-            <ml-factories:search-packages type="$1"
-                                          packages="com.alibaba.sample.petstore.web.store.module.*" />
+            <search-packages type="$1" packages="com.alibaba.sample.petstore.web.store.module.*" />
         </ml-factories:class-modules>
     </services:module-loader>
 
@@ -41,7 +40,7 @@
       - 默认禁止/edit下的screens。
       - 对管理员开放edit/*下的screens、actions。
      -->
-    <services:page-authorization default="allow" xmlns="http://www.alibaba.com/schema/services">
+    <services:page-authorization default="allow">
         <match target="/">
             <grant user="anonymous, *">
                 <deny>action.*</deny>

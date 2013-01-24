@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:p="http://www.springframework.org/schema/p"
              xmlns:services="http://www.alibaba.com/schema/services"
              xmlns:ml-adapters="http://www.alibaba.com/schema/services/module-loader/adapters"
              xmlns:ml-factories="http://www.alibaba.com/schema/services/module-loader/factories"
              xmlns:pl-valves="http://www.alibaba.com/schema/services/pipeline/valves"
              xmlns:tpl-engines="http://www.alibaba.com/schema/services/template/engines"
              xmlns:vm-plugins="http://www.alibaba.com/schema/services/template/engines/velocity/plugins"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="
-                http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
-                http://www.alibaba.com/schema/services/module-loader/adapters http://localhost:8080/schema/services-module-loader-adapters.xsd
-                http://www.alibaba.com/schema/services/module-loader/factories http://localhost:8080/schema/services-module-loader-factories.xsd
-                http://www.alibaba.com/schema/services/pipeline/valves http://localhost:8080/schema/services-pipeline-valves.xsd
-                http://www.alibaba.com/schema/services/template/engines http://localhost:8080/schema/services-template-engines.xsd
-                http://www.alibaba.com/schema/services/template/engines/velocity/plugins http://localhost:8080/schema/services-template-engines-velocity-plugins.xsd
-                http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+                 http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+                 http://www.alibaba.com/schema/services/module-loader/adapters http://localhost:8080/schema/services-module-loader-adapters.xsd
+                 http://www.alibaba.com/schema/services/module-loader/factories http://localhost:8080/schema/services-module-loader-factories.xsd
+                 http://www.alibaba.com/schema/services/pipeline/valves http://localhost:8080/schema/services-pipeline-valves.xsd
+                 http://www.alibaba.com/schema/services/template/engines http://localhost:8080/schema/services-template-engines.xsd
+                 http://www.alibaba.com/schema/services/template/engines/velocity/plugins http://localhost:8080/schema/services-template-engines-velocity-plugins.xsd
+                 http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
              ">
 
     <!-- 支持${xxx}替换。 -->
     <services:property-placeholder>
-        <services:property key="component">user</services:property>
+        <property key="component">user</property>
     </services:property-placeholder>
 
     <!-- 共享配置。 -->
@@ -36,13 +36,12 @@
     <!-- 装载模块。 -->
     <services:module-loader>
         <ml-factories:class-modules>
-            <ml-factories:search-packages type="$1"
-                                          packages="com.alibaba.sample.petstore.web.user.module.*" />
+            <search-packages type="$1" packages="com.alibaba.sample.petstore.web.user.module.*" />
         </ml-factories:class-modules>
     </services:module-loader>
 
     <!-- 页面授权。-->
-    <services:page-authorization xmlns="http://www.alibaba.com/schema/services">
+    <services:page-authorization>
         <match target="/">
             <grant user="*">
                 <allow>*</allow>

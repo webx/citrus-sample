@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:p="http://www.springframework.org/schema/p"
              xmlns:services="http://www.alibaba.com/schema/services"
              xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
              xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
-             xmlns="http://www.alibaba.com/schema/services/form/validators"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="
-                http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
-                http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
-                http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
-                http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+                 http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+                 http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
+                 http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
+                 http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
              ">
 
     <services:form>
@@ -19,60 +18,59 @@
           - 用来检查csrf token。
           - ===============================================
          -->
-        <services:group name="csrfTokenCheckGroup">
-            <services:field name="csrfToken">
-                <csrf-validator>
+        <group name="csrfTokenCheckGroup">
+            <field name="csrfToken">
+                <fm-validators:csrf-validator>
                     <message>提交的数据已过期</message>
-                </csrf-validator>
-            </services:field>
-        </services:group>
+                </fm-validators:csrf-validator>
+            </field>
+        </group>
 
-        <services:group name="cartItem" extends="csrfTokenCheckGroup">
-            <services:field name="quantity" displayName="数量">
-                <required-validator>
+        <group name="cartItem" extends="csrfTokenCheckGroup">
+            <field name="quantity" displayName="数量">
+                <fm-validators:required-validator>
                     <message>必须填写${displayName}</message>
-                </required-validator>
-                <number-validator greaterThan="0">
+                </fm-validators:required-validator>
+                <fm-validators:number-validator greaterThan="0">
                     <message>${displayName}必须大于0</message>
-                </number-validator>
-                <custom-error id="outOfStock">
+                </fm-validators:number-validator>
+                <fm-validators:custom-error id="outOfStock">
                     <message>数量超过了库存：${stockQuantity}</message>
-                </custom-error>
-            </services:field>
-        </services:group>
+                </fm-validators:custom-error>
+            </field>
+        </group>
 
-        <services:group name="addProduct" extends="csrfTokenCheckGroup">
-            <services:field name="productId" displayName="产品ID">
-                <required-validator>
+        <group name="addProduct" extends="csrfTokenCheckGroup">
+            <field name="productId" displayName="产品ID">
+                <fm-validators:required-validator>
                     <message>必须填写${displayName}</message>
-                </required-validator>
-                <custom-error id="duplicatedProductId">
+                </fm-validators:required-validator>
+                <fm-validators:custom-error id="duplicatedProductId">
                     <message>产品ID和已有产品冲突</message>
-                </custom-error>
-            </services:field>
-            <services:field name="name" displayName="产品名称">
-                <required-validator>
+                </fm-validators:custom-error>
+            </field>
+            <field name="name" displayName="产品名称">
+                <fm-validators:required-validator>
                     <message>必须填写${displayName}</message>
-                </required-validator>
-            </services:field>
-            <services:field name="description" displayName="产品描述">
-                <required-validator>
+                </fm-validators:required-validator>
+            </field>
+            <field name="description" displayName="产品描述">
+                <fm-validators:required-validator>
                     <message>必须填写${displayName}</message>
-                </required-validator>
-            </services:field>
-            <services:field name="picture" displayName="产品图片">
-                <required-validator>
+                </fm-validators:required-validator>
+            </field>
+            <field name="picture" displayName="产品图片">
+                <fm-validators:required-validator>
                     <message>必须上传产品图片</message>
-                </required-validator>
-                <uploaded-file-validator
-                        contentType="image/gif, image/jpeg, image/pjpeg, image/jpg, image/png">
+                </fm-validators:required-validator>
+                <fm-validators:uploaded-file-validator contentType="image/gif, image/jpeg, image/pjpeg, image/jpg, image/png">
                     <message>${displayName}不是合法的图片文件</message>
-                </uploaded-file-validator>
-                <uploaded-file-validator maxSize="100K">
+                </fm-validators:uploaded-file-validator>
+                <fm-validators:uploaded-file-validator maxSize="100K">
                     <message>${displayName}不能超过${maxSize}字节</message>
-                </uploaded-file-validator>
-            </services:field>
-        </services:group>
+                </fm-validators:uploaded-file-validator>
+            </field>
+        </group>
 
     </services:form>
 
