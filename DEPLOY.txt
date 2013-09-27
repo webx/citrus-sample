@@ -34,7 +34,7 @@ mvn archetype:generate \
  -Dpackage=com.alibaba.webx.tutorial1 \
  -DarchetypeArtifactId=archetype-webx-quickstart \
  -DarchetypeGroupId=com.alibaba.citrus.sample \
- -DarchetypeVersion=1.4 \
+ -DarchetypeVersion=1.5 \
  -DinteractiveMode=false \
  -Psonatype
 
