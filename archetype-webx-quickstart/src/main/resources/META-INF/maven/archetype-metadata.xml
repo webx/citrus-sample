@@ -5,10 +5,10 @@
                       name="webx-simple">
     <requiredProperties>
         <requiredProperty key="webx-version">
-            <defaultValue>3.2.0</defaultValue>
+            <defaultValue>3.2.2</defaultValue>
         </requiredProperty>
         <requiredProperty key="spring-version">
-            <defaultValue>3.1.2.RELEASE</defaultValue>
+            <defaultValue>3.2.4.RELEASE</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>

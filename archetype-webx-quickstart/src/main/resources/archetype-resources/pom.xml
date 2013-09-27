@@ -15,7 +15,7 @@
         <webx-version>${webx-version}</webx-version>
         <spring-version>${spring-version}</spring-version>
         <springext-plugin-version>1.2</springext-plugin-version>
-        <jetty-version>8.1.7.v20120910</jetty-version>
+        <jetty-version>9.0.5.v20130815</jetty-version>
         <project.build.sourceEncoding>${D}{java.encoding}</project.build.sourceEncoding>
         <productionMode>false</productionMode>
     </properties>
@@ -31,6 +31,14 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -49,26 +57,26 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.6.1</version>
+                <version>1.7.5</version>
             </dependency>
             <!-- 将现有的jakarta commons logging的调用转换成lsf4j的调用。 -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
-                <version>1.6.1</version>
+                <version>1.7.5</version>
             </dependency>
             <!-- Hack：确保commons-logging的jar包不被引入，否则将和jcl-over-slf4j冲突 -->
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
-                <version>1.1.1</version>
+                <version>1.1.3</version>
                 <scope>provided</scope>
             </dependency>
             <!-- slf4j的实现：logback，用来取代log4j。更快、更强！ -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>0.9.24</version>
+                <version>1.0.13</version>
                 <scope>runtime</scope>
             </dependency>
             <!-- ================================================= -->
@@ -144,8 +152,18 @@
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
+                <version>3.1.0</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.20</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -208,20 +226,17 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
                     <stopKey>webx</stopKey>
-                    <stopKey>9999</stopKey>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8081</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
+                    <stopPort>9999</stopPort>
+                    <httpConnector>
+                        <port>8081</port>
+                    </httpConnector>
                     <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
                         <filename>target/access.log</filename>
                         <retainDays>90</retainDays>
@@ -277,7 +292,7 @@
                     <version>2.10</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.mortbay.jetty</groupId>
+                    <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>${D}{jetty-version}</version>
                 </plugin>
