@@ -16,11 +16,11 @@
     <properties>
         <java.version>1.5</java.version>
         <java.encoding>UTF-8</java.encoding>
-        <webx-version>3.2.0</webx-version>
-        <spring-version>3.1.2.RELEASE</spring-version>
+        <webx-version>3.2.2</webx-version>
+        <spring-version>3.2.4.RELEASE</spring-version>
         <springext-plugin-version>1.2</springext-plugin-version>
         <autoconfig-plugin-version>1.2</autoconfig-plugin-version>
-        <jetty-version>8.1.7.v20120910</jetty-version>
+        <jetty-version>9.0.5.v20130815</jetty-version>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
         <productionMode>false</productionMode>
     </properties>
@@ -63,23 +63,23 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.6.1</version>
+                <version>1.7.5</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
-                <version>1.6.1</version>
+                <version>1.7.5</version>
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>0.9.29</version>
+                <version>1.0.13</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
-                <version>1.1.1</version>
+                <version>1.1.3</version>
                 <scope>provided</scope>
             </dependency>
             <!-- ================================================= -->
@@ -155,7 +155,7 @@
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
+                <version>3.1.0</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -172,6 +172,16 @@
                 <groupId>hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>1.8.0.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.20</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -275,7 +285,7 @@
                     <version>2.10</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.mortbay.jetty</groupId>
+                    <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>${jetty-version}</version>
                 </plugin>
