@@ -15,7 +15,7 @@
         <webx-version>${webx-version}</webx-version>
         <spring-version>${spring-version}</spring-version>
         <springext-plugin-version>1.2</springext-plugin-version>
-        <jetty-version>9.0.5.v20130815</jetty-version>
+        <jetty-version>8.1.13.v20130916</jetty-version>
         <project.build.sourceEncoding>${D}{java.encoding}</project.build.sourceEncoding>
         <productionMode>false</productionMode>
     </properties>
@@ -226,17 +226,20 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
+                <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
                     <stopKey>webx</stopKey>
-                    <stopPort>9999</stopPort>
-                    <httpConnector>
-                        <port>8081</port>
-                    </httpConnector>
+                    <stopKey>9999</stopKey>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8081</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
                     <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
                         <filename>target/access.log</filename>
                         <retainDays>90</retainDays>
@@ -292,7 +295,7 @@
                     <version>2.10</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
+                    <groupId>org.mortbay.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>${D}{jetty-version}</version>
                 </plugin>

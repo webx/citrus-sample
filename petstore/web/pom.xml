@@ -68,17 +68,20 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
+                <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
                     <stopKey>webx</stopKey>
-                    <stopPort>9999</stopPort>
-                    <httpConnector>
-                        <port>8081</port>
-                    </httpConnector>
+                    <stopKey>9999</stopKey>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8081</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
                     <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
                         <filename>target/access.log</filename>
                         <retainDays>90</retainDays>

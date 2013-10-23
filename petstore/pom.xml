@@ -20,7 +20,7 @@
         <spring-version>3.2.4.RELEASE</spring-version>
         <springext-plugin-version>1.2</springext-plugin-version>
         <autoconfig-plugin-version>1.2</autoconfig-plugin-version>
-        <jetty-version>9.0.5.v20130815</jetty-version>
+        <jetty-version>8.1.13.v20130916</jetty-version>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
         <productionMode>false</productionMode>
     </properties>
@@ -285,7 +285,7 @@
                     <version>2.10</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
+                    <groupId>org.mortbay.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>${jetty-version}</version>
                 </plugin>
